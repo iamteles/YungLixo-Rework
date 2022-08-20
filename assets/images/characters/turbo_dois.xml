@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="HACKER TURBO_PHASE2.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="TURBOTIBBA_down0000" x="0" y="0" width="429" height="556" frameX="0" frameY="-20" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0001" x="0" y="0" width="429" height="556" frameX="0" frameY="-20" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0002" x="429" y="0" width="393" height="575" frameX="-14" frameY="-1" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0003" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0004" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0005" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0006" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0007" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0008" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0009" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0010" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0011" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0012" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0013" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_down0014" x="822" y="0" width="383" height="576" frameX="-18" frameY="0" frameWidth="429" frameHeight="576"/>
+	<SubTexture name="TURBOTIBBA_idle0000" x="1205" y="0" width="359" height="562" frameX="-20" frameY="-17" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0001" x="1205" y="0" width="359" height="562" frameX="-20" frameY="-17" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0002" x="1564" y="0" width="353" height="573" frameX="-19" frameY="-6" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0003" x="1564" y="0" width="353" height="573" frameX="-19" frameY="-6" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0004" x="1917" y="0" width="359" height="579" frameX="-4" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0005" x="2276" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0006" x="2638" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0007" x="2638" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0008" x="2638" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0009" x="2638" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0010" x="2638" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0011" x="2638" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0012" x="2638" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0013" x="2638" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_idle0014" x="2638" y="0" width="362" height="579" frameX="0" frameY="0" frameWidth="379" frameHeight="579"/>
+	<SubTexture name="TURBOTIBBA_left 0000" x="3000" y="0" width="387" height="583" frameX="0" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0001" x="3000" y="0" width="387" height="583" frameX="0" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0002" x="3387" y="0" width="379" height="582" frameX="-11" frameY="-1" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0003" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0004" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0005" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0006" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0007" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0008" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0009" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0010" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0011" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0012" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0013" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_left 0014" x="0" y="583" width="376" height="583" frameX="-13" frameY="0" frameWidth="390" frameHeight="583"/>
+	<SubTexture name="TURBOTIBBA_right0000" x="376" y="583" width="442" height="570" frameX="0" frameY="-7" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0001" x="376" y="583" width="442" height="570" frameX="0" frameY="-7" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0002" x="818" y="583" width="419" height="577" frameX="-2" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0003" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0004" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0005" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0006" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0007" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0008" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0009" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0010" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0011" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0012" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0013" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_right0014" x="1237" y="583" width="416" height="577" frameX="-3" frameY="0" frameWidth="442" frameHeight="577"/>
+	<SubTexture name="TURBOTIBBA_up0000" x="1653" y="583" width="404" height="592" frameX="-12" frameY="0" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0001" x="1653" y="583" width="404" height="592" frameX="-12" frameY="0" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0002" x="2057" y="583" width="416" height="578" frameX="-1" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0003" x="2473" y="583" width="418" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0004" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0005" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0006" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0007" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0008" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0009" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0010" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0011" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0012" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0013" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBOTIBBA_up0014" x="2891" y="583" width="419" height="577" frameX="0" frameY="-14" frameWidth="419" frameHeight="592"/>
+	<SubTexture name="TURBO_transformation0000" x="3310" y="583" width="251" height="560" frameX="-66" frameY="-17" frameWidth="429" frameHeight="577"/>
+	<SubTexture name="TURBO_transformation0001" x="3561" y="583" width="255" height="563" frameX="-62" frameY="-14" frameWidth="429" frameHeight="577"/>
+	<SubTexture name="TURBO_transformation0002" x="3816" y="583" width="273" height="571" frameX="-42" frameY="-6" frameWidth="429" frameHeight="577"/>
+	<SubTexture name="TURBO_transformation0003" x="0" y="1175" width="340" height="576" frameX="-5" frameY="-1" frameWidth="429" frameHeight="577"/>
+	<SubTexture name="TURBO_transformation0004" x="340" y="1175" width="410" height="577" frameX="-6" frameY="0" frameWidth="429" frameHeight="577"/>
+	<SubTexture name="TURBO_transformation0005" x="750" y="1175" width="425" height="576" frameX="-3" frameY="-1" frameWidth="429" frameHeight="577"/>
+	<SubTexture name="TURBO_transformation0006" x="1175" y="1175" width="428" height="575" frameX="-1" frameY="-2" frameWidth="429" frameHeight="577"/>
+	<SubTexture name="TURBO_transformation0007" x="1603" y="1175" width="427" height="575" frameX="-1" frameY="-2" frameWidth="429" frameHeight="577"/>
+	<SubTexture name="TURBO_transformation0008" x="2030" y="1175" width="427" height="575" frameX="0" frameY="-2" frameWidth="429" frameHeight="577"/>
+	<SubTexture name="TURBO_transformation0009" x="2457" y="1175" width="418" height="575" frameX="-8" frameY="-2" frameWidth="429" frameHeight="577"/>
+</TextureAtlas>

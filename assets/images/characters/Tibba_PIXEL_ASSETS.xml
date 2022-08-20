@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Tibba_PIXEL_ASSETS.png">
+	<!-- Created with Adobe Animate version 19.2.1.408 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Tibba Down0000" x="0" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Down0001" x="0" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Down0002" x="0" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Down0003" x="128" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Down0004" x="128" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Down0005" x="128" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0000" x="256" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0001" x="256" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0002" x="256" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0003" x="384" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0004" x="384" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0005" x="384" y="0" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0006" x="0" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0007" x="0" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0008" x="0" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0009" x="128" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0010" x="128" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0011" x="128" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0012" x="256" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0013" x="256" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0014" x="256" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0015" x="256" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0016" x="256" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0017" x="256" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Idle0018" x="256" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Left0000" x="384" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Left0001" x="384" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Left0002" x="384" y="81" width="128" height="81"/>
+	<SubTexture name="Tibba Left0003" x="0" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Left0004" x="0" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Left0005" x="0" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Right0000" x="128" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Right0001" x="128" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Right0002" x="128" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Right0003" x="256" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Right0004" x="256" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Right0005" x="256" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Up0000" x="384" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Up0001" x="384" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Up0002" x="384" y="162" width="128" height="81"/>
+	<SubTexture name="Tibba Up0003" x="0" y="243" width="128" height="81"/>
+	<SubTexture name="Tibba Up0004" x="0" y="243" width="128" height="81"/>
+	<SubTexture name="Tibba Up0005" x="0" y="243" width="128" height="81"/>
+</TextureAtlas>

@@ -1,0 +1,6 @@
+idle -219 -117
+singRIGHT -259 -114
+singDOWN -229 -107
+singLEFT -189 -124
+singUP -169 -24
+shoot -183 -124

@@ -1,0 +1,191 @@
+{
+    "menuBG": "menus/base/menuDesat",
+    "menuBGColor": [255, 255, 255],
+    "colorTween": true,
+    
+    "data": [
+        ["FE Underscore Team"],
+        [
+            "BeastlyGhost",
+            "ghost",
+            "Main Coder", "I am definitely not a ghost, just trust me on that one.",
+            [["Twitter", "https://twitter.com/Fan_de_RPG"]],
+            [176, 206, 255],
+            380, 0, null
+        ],
+        [
+            "NxtVithor",
+            "vito",
+            "Main Artist", "I open the fucking door, and I piss on the floor.",
+            [
+                ["Twitter", "https://twitter.com/NxtVithor"],
+                ["Twitch", "https://www.twitch.tv/nxtvithor"]
+            ],
+            [245, 108, 255],
+            280, -5, 0.9
+        ],
+        [
+            "Satoru",
+            "satoru",
+            "Additional Artist", "se a vaca bebe água e come mato, pq ela dá leite e não chá?",
+            [[""]],
+            [255, 159, 212],
+            200, 0, null
+        ],
+        [""],
+        ["Former Project Members"],
+        [
+            "TahirArch",
+            "macxp",
+            "Ex-Additional Coder, Github Repository Helper", null,
+            [[""]],
+            [182, 84, 82],
+            280, -3, null
+        ],
+        [""],
+        ["Special Thanks"],
+        [
+            "ShadowMario",
+            "",
+            "Coding Help, some advices and overhaul good friend", "WikiHow: How to handle fame.",
+            [["Twitter", "https://twitter.com/Shadow_Mario_"]],
+            [68, 68, 68],
+            380, 0, null
+        ],
+        [
+            "PolybiusProxy",
+            "",
+            "Library for Loading Video Cutscenes", null,
+            [["Twitter", "https://twitter.com/polybiusproxy"]],
+            [255, 234, 166],
+            380, 0, null
+        ],
+        [""],
+        ["Shoutouts"],
+        [
+            "BoloVEVO",
+            "bolo",
+            "Made a KE fork with lots of performance improvements.", "Big Black Male Chicken",
+            [
+                ["Git (KE)", "https://github.com/BoloVEVO/Kade-Engine-Public"],
+                ["Git (User)", "https://github.com/BoloVEVO"]
+            ],
+            [255, 0, 49],
+            130, -230, 0.4
+        ],
+        [""],
+        ["Forever Engine Team"],
+		[
+            "Shubs",
+            "",
+            "Lead Programmer", null,
+            [["Twitter", "https://twitter.com/yoshubs"]],
+            [94, 153, 223],
+            380, 0, null
+        ],
+        [
+            "Pixloen",
+            "",
+            "Forever Engine's Custom Assets", null,
+            [["Git", "https://github.com/PixlJacket"]],
+            [172, 117, 244],
+            380, 0, null
+        ],
+        [
+            "Gedehari",
+            "",
+            "Programmer.", null,
+            [["Git", "https://github.com/gedehari"]],
+            [254, 219, 127],
+            380, 0, null
+        ],
+        [
+            "Scarlett",
+            "",
+            "Programmer, Wrote the Math Formula for Note Quants.", null,
+            [["Git", "https://github.com/SomeKitten"]],
+            [247, 147, 30],
+            380, 0, null
+        ],
+        [
+            "Oneilr",
+            "",
+            "Forever Engine's Custom Assets.", null,
+            [["NG", "https://oneilr.newgrounds.com"]],
+            [204, 177, 73],
+            380, 0, null
+        ],
+        [""],
+        ["Forever Contributors"],
+        [
+            "ImCodist",
+            "",
+            "Issue Fixes.", null,
+            [["Git", "https://github.com/ImCodist"]],
+            [175, 68, 65],
+            380, 0, null
+        ],
+        [
+            "HelloSammu",
+            "",
+            "Engine Misc Fixes, Scaleable Text for Dialogue.", null,
+            [["Git", "https://github.com/hellosammu"]],
+            [147, 214, 209],
+            380, 0, null
+        ],
+        [""],
+        ["Funkin' Crew"],
+        [
+            "Support the Base Game",
+            "",
+            null, null,
+            [
+                ["Donate", "https://ninja-muffin24.itch.io/funkin"],
+                ["Kickstarter", "https://www.kickstarter.com/projects/funkin/friday-night-funkin-the-full-ass-game"]
+            ],
+            [50, 52, 247],
+            380, 0, null
+        ],
+        [
+            "ninjamuffin99",
+            "",
+            "Lead Programmer of Friday Night Funkin'", "uninstall Twitter.",
+            [
+                ["NG", "https://ninjamuffin99.newgrounds.com/"],
+                ["Twitter", "https://twitter.com/ninja_muffin99"]
+            ],
+            [207, 45, 45],
+            380, 0, null
+        ],
+        [
+            "PhantomArcade",
+            "",
+            "Animator of Friday Night Funkin'", "I hope you die.",
+            [
+                ["NG", "https://phantomarcade.newgrounds.com/"],
+                ["Twitter", "https://twitter.com/PhantomArcade3K"]
+            ],
+            [250, 220, 69],
+            380, 0, null
+        ],
+        [
+            "evilsk8r",
+            "",
+            "Artist of Friday Night Funkin'", null,
+            [["NG", "https://evilsk8r.newgrounds.com/"]],
+            [90, 189, 75],
+            380, 0, null
+        ],
+        [
+            "kawaisprite",
+            "",
+            "Composer of Friday Night Funkin'", "I'm shutting down, got my feet back on the ground",
+            [
+                ["NG", "https://kawaisprite.newgrounds.com/"],
+                ["Twitter", "https://twitter.com/kawaisprite"]
+            ],
+            [25, 143, 199],
+            380, 0, null
+        ]
+    ]
+}

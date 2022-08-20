@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="cj.png">
+	<!-- Created with Adobe Animate version 20.0.3.25487 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="cj0000" x="0" y="0" width="860" height="710" frameX="0" frameY="-13" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0001" x="0" y="0" width="860" height="710" frameX="0" frameY="-13" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0002" x="860" y="0" width="860" height="710" frameX="-1" frameY="-4" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0003" x="860" y="0" width="860" height="710" frameX="-1" frameY="-4" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0004" x="1720" y="0" width="860" height="710" frameX="-1" frameY="-1" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0005" x="1720" y="0" width="860" height="710" frameX="-1" frameY="-1" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0006" x="2580" y="0" width="860" height="710" frameX="-1" frameY="0" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0007" x="2580" y="0" width="860" height="710" frameX="-1" frameY="0" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0008" x="0" y="710" width="860" height="710" frameX="-1" frameY="0" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0009" x="0" y="710" width="860" height="710" frameX="-1" frameY="0" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0010" x="0" y="710" width="860" height="710" frameX="-1" frameY="0" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0011" x="0" y="710" width="860" height="710" frameX="-1" frameY="0" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0012" x="860" y="710" width="860" height="710" frameX="-1" frameY="-4" frameWidth="861" frameHeight="723"/>
+	<SubTexture name="cj0013" x="860" y="710" width="860" height="710" frameX="-1" frameY="-4" frameWidth="861" frameHeight="723"/>
+</TextureAtlas>
