@@ -57,20 +57,47 @@ class Main extends Sprite
 		[ [songs to use], [characters in songs], [color of week], name of week ]
 	**/
 	public static var gameWeeks:Array<Dynamic> = [
-		[['Tutorial'], ['gf'], [FlxColor.fromRGB(129, 100, 223)], 'Funky Beginnings'],
+		//[['Tutorial'], ['gf'], [FlxColor.fromRGB(129, 100, 223)], 'Funky Beginnings'],
 		[
 			['Potency', 'Big-Boy', 'Killer-Tibba'],
 			['gemaplys', 'yunglixo', 'vito'],
-			[FlxColor.fromRGB(129, 100, 223)],
+			[FlxColor.fromRGB(0, 165, 186), FlxColor.fromRGB(255, 65, 4), FlxColor.fromRGB(33, 32, 40)],
 			'Yung Lixo Rework'
 		]
 	];
 
 	public static var freeplaySongs:Array<Dynamic> = [
 		[
-			['Collision', 'Keylogger', 'Polygons', 'Operational-System', 'Da-Vinci-Funkin'],
-			['mugen', 'turbo', 'trio', 'mamaco', 'gemafunkin'],
-			[FlxColor.fromRGB(129, 100, 223)],
+			[
+			'Crazy-Pizza',
+			'Collision',
+			'Jokes',
+			'Keylogger',
+			'Da-Vinci-Funkin',
+			'Back-to-Black',
+			'Operational-System',
+			'Polygons'
+			],
+			[
+			'mineirinho',
+			'mugen',
+			'chicken',
+			'turbo',
+			'gemafunkin',
+			'mc-vv',
+			'mamaco',
+			'trio'
+			],
+			[
+			FlxColor.fromRGB(242,189,74),	// mineirinho
+			FlxColor.fromRGB(44,44,44), 	// mugen
+			FlxColor.fromRGB(255,255,255),  // galinho chicken little
+			FlxColor.fromRGB(255,0,0), 		// turbo
+			FlxColor.fromRGB(129,100,223),	// gemafunkin
+			FlxColor.fromRGB(103,41,33),	// MC
+			FlxColor.fromRGB(135,106,91), 	// mamaco
+			FlxColor.fromRGB(255,0,0) 		// polygons
+			]
 		]
 	];
 

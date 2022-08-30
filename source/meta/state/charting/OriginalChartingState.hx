@@ -57,6 +57,15 @@ class OriginalChartingState extends MusicBeatState
 	var curNoteType:Int = 0;
 
 	public static var lastSection:Int = 0;
+	
+	// this doesnt actually change the code i just forget what notes do what
+	var noteTypeText:FlxText;
+	var noteTypeHelp:Array<String> = [
+		'None',
+		'Shoot',
+		'Tibba note/Third Character Note',
+		'Hey!'
+	];
 
 	var bpmTxt:FlxText;
 
@@ -184,6 +193,11 @@ class OriginalChartingState extends MusicBeatState
 
 		add(curRenderedNotes);
 		add(curRenderedSustains);
+		
+		noteTypeText = new FlxText(5, FlxG.height - 24, 0, "beepeb oebpebo");
+		noteTypeText.setFormat("VCR OSD Mono", 24, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		noteTypeText.scrollFactor.set();
+		add(noteTypeText);
 	}
 
 	function addSongUI():Void
@@ -402,7 +416,7 @@ class OriginalChartingState extends MusicBeatState
 		tab_group_note.add(stepperType);
 
 		UI_box.addGroup(tab_group_note);
-		// I'm genuinely tempted to go around and remove every instance of the word "sus" it is genuinely killing me inside
+		// I'm genuinely tempted to go around and remove every instance of the word "sus" it is genuinely killing me insides
 	}
 
 	var songMusic:FlxSound;
@@ -781,6 +795,8 @@ class OriginalChartingState extends MusicBeatState
 		super.update(elapsed);
 
 		lastSongPos = Conductor.songPosition;
+		
+		noteTypeText.text = 'current note type: ${noteTypeHelp[curNoteType]}';
 	}
 
 	function changeNoteSustain(value:Float):Void

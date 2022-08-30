@@ -32,9 +32,9 @@ class FreeplayState extends MusicBeatState
 	var songs:Array<SongMetadata> = [];
 
 	var selector:FlxText;
-	var curSelected:Int = 0;
+	static var curSelected:Int = 0;
 	var curSongPlaying:Int = -1;
-	var curDifficulty:Int = 1;
+	static var curDifficulty:Int = 1;
 
 	var scoreText:FlxText;
 	var diffText:FlxText;
@@ -242,12 +242,29 @@ class FreeplayState extends MusicBeatState
 			PlayState.storyWeek = songs[curSelected].week;
 			trace('CUR WEEK' + PlayState.storyWeek);
 
-			if (FlxG.sound.music != null)
-				FlxG.sound.music.stop();
-
 			threadActive = false;
 
-			Main.switchState(this, new PlayState());
+			// isso ta mt bagunçado mas eu não sei como que faz de outro jeito :(
+			var theSong = songs[curSelected].songName.toLowerCase();
+			switch(theSong)
+			{
+				case 'da-vinci-funkin' | 'operational-system':
+					if (FlxG.sound.music != null)
+						FlxG.sound.music.stop();
+					PlayState.changedCharacter = 0;
+					Main.switchState(this, new PlayState());
+					
+				case 'crazy-pizza':
+					CharacterMenuStateMineirinho.boyfriendModifier = '';
+					if(curDifficulty == 1) CharacterMenuStateMineirinho.boyfriendModifier = '-reshaped';
+					Main.switchState(this, new CharacterMenuStateMineirinho());
+			
+				default:
+					CharacterMenuState.boyfriendModifier = '';
+					if(curDifficulty == 1) CharacterMenuState.boyfriendModifier = '-reshaped';
+					if(theSong == 'jokes' || theSong == 'collision') CharacterMenuState.boyfriendModifier = '-pixel';
+					Main.switchState(this, new CharacterMenuState());
+			}
 		}
 
 		// Adhere the position of all the things (I'm sorry it was just so ugly before I had to fix it Shubs)

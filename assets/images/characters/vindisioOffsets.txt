@@ -3,3 +3,7 @@ singRIGHT -146 1
 singDOWN -17 -46
 singLEFT 126 28
 singUP -22 85
+singRIGHTmiss -146 1
+singDOWNmiss -17 -46
+singLEFTmiss 126 28
+singUPmiss -22 85

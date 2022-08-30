@@ -51,6 +51,7 @@ enum abstract Action(String) to String from String
 	var BACK = "back";
 	var PAUSE = "pause";
 	var RESET = "reset";
+	var DODGE = "dodge";
 	var CHEAT = "cheat";
 }
 
@@ -67,6 +68,7 @@ enum Device
  */
 enum Control
 {
+	DODGE;
 	UP;
 	LEFT;
 	RIGHT;
@@ -124,6 +126,7 @@ class Controls extends FlxActionSet
 	var _back = new FlxActionDigital(Action.BACK);
 	var _pause = new FlxActionDigital(Action.PAUSE);
 	var _reset = new FlxActionDigital(Action.RESET);
+	var _dodge = new FlxActionDigital(Action.DODGE);
 	var _cheat = new FlxActionDigital(Action.CHEAT);
 
 	#if (haxe >= "4.0.0")
@@ -274,6 +277,11 @@ class Controls extends FlxActionSet
 
 	inline function get_RESET()
 		return _reset.check();
+		
+	public var DODGE(get, never):Bool;
+
+	inline function get_DODGE()
+		return _dodge.check();
 
 	public var CHEAT(get, never):Bool;
 
@@ -312,6 +320,7 @@ class Controls extends FlxActionSet
 		add(_back);
 		add(_pause);
 		add(_reset);
+		add(_dodge);
 		add(_cheat);
 
 		for (action in digitalActions)
@@ -355,6 +364,7 @@ class Controls extends FlxActionSet
 	{
 		return switch (control)
 		{
+			case DODGE: _dodge;
 			case UP: _up;
 			case DOWN: _down;
 			case LEFT: _left;
@@ -427,6 +437,8 @@ class Controls extends FlxActionSet
 				func(_pause, JUST_PRESSED);
 			case RESET:
 				func(_reset, JUST_PRESSED);
+			case DODGE:
+				func(_dodge, JUST_PRESSED);
 			case CHEAT:
 				func(_cheat, JUST_PRESSED);
 		}
@@ -567,6 +579,7 @@ class Controls extends FlxActionSet
 		removeKeyboard();
 
 		// keyboardScheme = scheme;
+		inline bindKeys(Control.DODGE, [Init.gameControls.get('DODGE')[0][0], Init.gameControls.get('DODGE')[0][1]]);
 		inline bindKeys(Control.UP, [Init.gameControls.get('UP')[0][0], Init.gameControls.get('UP')[0][1]]);
 		inline bindKeys(Control.DOWN, [Init.gameControls.get('DOWN')[0][0], Init.gameControls.get('DOWN')[0][1]]);
 		inline bindKeys(Control.LEFT, [Init.gameControls.get('LEFT')[0][0], Init.gameControls.get('LEFT')[0][1]]);
@@ -726,7 +739,8 @@ class Controls extends FlxActionSet
 			Control.LEFT => [DPAD_LEFT, LEFT_STICK_DIGITAL_LEFT],
 			Control.RIGHT => [DPAD_RIGHT, LEFT_STICK_DIGITAL_RIGHT],
 			Control.PAUSE => [START],
-			Control.RESET => [Y]
+			Control.RESET => [Y],
+			Control.DODGE => [B]
 		]);
 		#else
 		addGamepadLiteral(id, [
@@ -740,7 +754,8 @@ class Controls extends FlxActionSet
 			Control.PAUSE => [START],
 			// Swap Y and X for switch
 			Control.RESET => [Y],
-			Control.CHEAT => [X]
+			Control.CHEAT => [X],
+			Control.DODGE => [B]
 		]);
 		#end
 	}

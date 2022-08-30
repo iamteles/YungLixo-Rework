@@ -2,8 +2,21 @@ bf
 dad
 gf
 bf-pixel
+bf-reshaped
 gemaplys
 yunglixo
 tibba
+tibba-pixel
 mugen
+vito
+mamaco
+vindisio
+turbo
+turboAngry
 gema3d
+gema64
+papaDasArmas
+gemafunkin
+gemafunkin-player
+chicken
+mc vv

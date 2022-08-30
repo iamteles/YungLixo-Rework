@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="Mc VV.png">
+<SubTexture name="Mc VV Idle0000" x="828" y="1345" width="413" height="620" frameX="-46" frameY="-87" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0001" x="1241" y="1345" width="412" height="616" frameX="-50" frameY="-92" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0002" x="1723" y="641" width="409" height="637" frameX="-36" frameY="-71" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0003" x="522" y="702" width="405" height="642" frameX="-32" frameY="-66" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0004" x="522" y="702" width="405" height="642" frameX="-32" frameY="-66" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0005" x="927" y="702" width="405" height="642" frameX="-32" frameY="-66" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0006" x="2257" y="0" width="429" height="613" frameX="-30" frameY="-94" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0007" x="1653" y="1345" width="431" height="616" frameX="-24" frameY="-92" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0008" x="0" y="1345" width="416" height="631" frameX="-26" frameY="-77" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0009" x="522" y="702" width="405" height="642" frameX="-32" frameY="-66" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0010" x="522" y="702" width="405" height="642" frameX="-32" frameY="-66" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0011" x="927" y="702" width="405" height="642" frameX="-32" frameY="-66" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Idle0012" x="927" y="702" width="405" height="642" frameX="-32" frameY="-66" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Left0000" x="2257" y="1224" width="418" height="583" frameX="-29" frameY="-123" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Left0001" x="2257" y="613" width="414" height="611" frameX="-35" frameY="-97" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Left0002" x="416" y="1345" width="412" height="625" frameX="-41" frameY="-83" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Left0003" x="416" y="1345" width="412" height="625" frameX="-41" frameY="-83" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Left0004" x="416" y="1345" width="412" height="625" frameX="-41" frameY="-83" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Up0000" x="0" y="0" width="395" height="702" frameX="-33" frameY="-7" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Up0001" x="395" y="0" width="402" height="682" frameX="-38" frameY="-24" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Up0002" x="797" y="0" width="409" height="674" frameX="-40" frameY="-32" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Up0003" x="797" y="0" width="409" height="674" frameX="-40" frameY="-32" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Up0004" x="797" y="0" width="409" height="674" frameX="-40" frameY="-32" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Down0000" x="873" y="1976" width="450" height="520" frameX="-59" frameY="-193" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Down0001" x="433" y="1976" width="440" height="541" frameX="-71" frameY="-174" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Down0002" x="0" y="1976" width="433" height="552" frameX="-60" frameY="-164" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Down0003" x="0" y="1976" width="433" height="552" frameX="-60" frameY="-164" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Down0004" x="0" y="1976" width="433" height="552" frameX="-60" frameY="-164" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Right0000" x="1206" y="0" width="517" height="648" frameX="-92" frameY="-61" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Right0001" x="1723" y="0" width="534" height="641" frameX="-80" frameY="-68" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Right0002" x="0" y="702" width="522" height="643" frameX="-68" frameY="-66" frameWidth="1280" frameHeight="720" />
+<SubTexture name="Mc VV Right0003" x="0" y="702" width="522" height="643" frameX="-68" frameY="-66" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

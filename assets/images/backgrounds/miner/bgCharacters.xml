@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bgCharacters.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="pessoal da frente0000" x="3" y="3" width="2172" height="598" frameX="0" frameY="-44" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0001" x="3" y="3" width="2172" height="598" frameX="0" frameY="-44" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0002" x="3" y="604" width="2165" height="653" frameX="-2" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0003" x="3" y="604" width="2165" height="653" frameX="-2" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0004" x="3" y="1260" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0005" x="3" y="1260" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0006" x="3" y="1916" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0007" x="3" y="1916" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0008" x="3" y="1916" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0009" x="3" y="1916" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0010" x="3" y="1916" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0011" x="3" y="1916" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0012" x="3" y="1916" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal da frente0013" x="3" y="1916" width="2154" height="653" frameX="-11" frameY="0" frameWidth="2172" frameHeight="653"/>
+	<SubTexture name="pessoal de tras0000" x="3" y="2572" width="1969" height="635" frameX="0" frameY="0" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0001" x="3" y="2572" width="1969" height="635" frameX="0" frameY="0" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0002" x="1975" y="2572" width="1988" height="612" frameX="-4" frameY="-23" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0003" x="1975" y="2572" width="1988" height="612" frameX="-4" frameY="-23" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0004" x="3" y="3210" width="2004" height="622" frameX="-1" frameY="-13" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0005" x="2010" y="3210" width="2004" height="622" frameX="-1" frameY="-13" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0006" x="3" y="3835" width="1998" height="625" frameX="-1" frameY="-10" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0007" x="3" y="3835" width="1998" height="625" frameX="-1" frameY="-10" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0008" x="2004" y="3835" width="1997" height="625" frameX="-1" frameY="-10" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0009" x="2004" y="3835" width="1997" height="625" frameX="-1" frameY="-10" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0010" x="2004" y="3835" width="1997" height="625" frameX="-1" frameY="-10" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0011" x="2004" y="3835" width="1997" height="625" frameX="-1" frameY="-10" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0012" x="2004" y="3835" width="1997" height="625" frameX="-1" frameY="-10" frameWidth="2005" frameHeight="635"/>
+	<SubTexture name="pessoal de tras0013" x="2004" y="3835" width="1997" height="625" frameX="-1" frameY="-10" frameWidth="2005" frameHeight="635"/>
+</TextureAtlas>

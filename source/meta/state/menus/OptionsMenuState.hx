@@ -83,9 +83,10 @@ class OptionsMenuState extends MusicBeatState
 			],
 			'appearance' => [
 				[
-					["UI", null],
+					["Healthbars", null],
 					['', null],
 					["Colored Healthbars", getFromOption],
+					["Gradient Healthbars", getFromOption],
 					['', null],
 					['Judgements', null],
 					['', null],
@@ -96,7 +97,7 @@ class OptionsMenuState extends MusicBeatState
 					['', null],
 					['Notes', null],
 					['', null],
-					["Note Skin", getFromOption],
+					//["Note Skin", getFromOption],
 					["Clip Style", getFromOption],
 					['No Camera Note Movement', getFromOption],
 					['Disable Note Splashes', getFromOption],
@@ -110,6 +111,7 @@ class OptionsMenuState extends MusicBeatState
 					["Stage Opacity", getFromOption],
 					["Opacity Type", getFromOption],
 					['Reduced Movements', getFromOption],
+					['Show Timer', getFromOption],
 				]
 			]
 		];
@@ -423,10 +425,11 @@ class OptionsMenuState extends MusicBeatState
 					// checkmark basics lol
 					if (controls.ACCEPT)
 					{
-						FlxG.sound.play(Paths.sound('confirmMenu'));
-						lockedMovement = true;
-						FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
-						{
+						//FlxG.sound.play(Paths.sound('confirmMenu'));
+						FlxG.sound.play(Paths.sound('scrollMenu'));
+						//lockedMovement = true;
+						//FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
+						//{
 							// LMAO THIS IS HUGE
 							Init.trueSettings.set(activeSubgroup.members[curSelection].text,
 								!Init.trueSettings.get(activeSubgroup.members[curSelection].text));
@@ -435,8 +438,8 @@ class OptionsMenuState extends MusicBeatState
 
 							// save the setting
 							Init.saveSettings();
-							lockedMovement = false;
-						});
+							//lockedMovement = false;
+						//});
 					}
 				case Init.SettingTypes.Selector:
 					#if !html5
@@ -556,12 +559,13 @@ class OptionsMenuState extends MusicBeatState
 	{
 		if (controls.ACCEPT)
 		{
-			FlxG.sound.play(Paths.sound('confirmMenu'));
-			lockedMovement = true;
-			FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
-			{
+			FlxG.sound.play(Paths.sound('scrollMenu'));
+			//FlxG.sound.play(Paths.sound('confirmMenu'));
+			//lockedMovement = true;
+			//FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
+			//{
 				loadSubgroup(activeSubgroup.members[curSelection].text);
-			});
+			//});
 		}
 	}
 
@@ -569,13 +573,14 @@ class OptionsMenuState extends MusicBeatState
 	{
 		if (controls.ACCEPT)
 		{
-			FlxG.sound.play(Paths.sound('confirmMenu'));
-			lockedMovement = true;
-			FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
-			{
+			//FlxG.sound.play(Paths.sound('confirmMenu'));
+			FlxG.sound.play(Paths.sound('scrollMenu'));
+			//lockedMovement = true;
+			//FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
+			//{
 				openSubState(new OptionsSubstate());
-				lockedMovement = false;
-			});
+				//lockedMovement = false;
+			//});
 		}
 	}
 
@@ -584,13 +589,14 @@ class OptionsMenuState extends MusicBeatState
 		//
 		if (controls.ACCEPT)
 		{
-			FlxG.sound.play(Paths.sound('confirmMenu'));
-			lockedMovement = true;
-			FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
-			{
+			//FlxG.sound.play(Paths.sound('confirmMenu'));
+			FlxG.sound.play(Paths.sound('scrollMenu'));
+			//lockedMovement = true;
+			//FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
+			//{
 				Main.switchState(this, new MainMenuState());
-				lockedMovement = false;
-			});
+				//lockedMovement = false;
+			//});
 		}
 		//
 	}

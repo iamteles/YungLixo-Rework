@@ -20,7 +20,8 @@ class PauseSubState extends MusicBeatSubState
 {
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Exit to menu'];
+	var botplayPause:FlxText;
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Botplay', 'Exit to menu'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -71,6 +72,12 @@ class PauseSubState extends MusicBeatSubState
 		levelDeaths.setFormat(Paths.font('vcr.ttf'), 32);
 		levelDeaths.updateHitbox();
 		add(levelDeaths);
+		
+		botplayPause = new FlxText(20, (FlxG.height - 15) - 32, 0, "BOTPLAY", 32);
+		botplayPause.scrollFactor.set();
+		botplayPause.setFormat(Paths.font('vcr.ttf'), 32);
+		botplayPause.updateHitbox();
+		add(botplayPause);
 
 		levelDifficulty.alpha = 0;
 		levelInfo.alpha = 0;
@@ -79,6 +86,7 @@ class PauseSubState extends MusicBeatSubState
 		levelInfo.x = FlxG.width - (levelInfo.width + 20);
 		levelDifficulty.x = FlxG.width - (levelDifficulty.width + 20);
 		levelDeaths.x = FlxG.width - (levelDeaths.width + 20);
+		botplayPause.x = FlxG.width - (botplayPause.width + 20);
 
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
@@ -148,6 +156,9 @@ class PauseSubState extends MusicBeatSubState
 					close();
 				case "Restart Song":
 					Main.switchState(this, new PlayState());
+					
+				case "Botplay":
+					PlayState.botplay = !PlayState.botplay;
 				case "Exit to menu":
 					PlayState.resetMusic();
 					PlayState.deaths = 0;
@@ -171,6 +182,8 @@ class PauseSubState extends MusicBeatSubState
 
 		if (pauseMusic.volume < 0.5)
 			pauseMusic.volume += 0.01 * elapsed;
+			
+		botplayPause.visible = PlayState.botplay;
 	}
 
 	override function destroy()

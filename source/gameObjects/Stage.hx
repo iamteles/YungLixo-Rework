@@ -6,6 +6,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.effects.FlxTrail;
 import flixel.addons.effects.chainable.FlxWaveEffect;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -29,6 +30,8 @@ using StringTools;
 **/
 class Stage extends FlxTypedGroup<FlxBasic>
 {
+	var elapsedtime:Float = 0;
+
 	var halloweenBG:FNFSprite;
 	var phillyCityLights:FlxTypedGroup<FNFSprite>;
 	var phillyTrain:FNFSprite;
@@ -45,6 +48,13 @@ class Stage extends FlxTypedGroup<FlxBasic>
 	var santa:FNFSprite;
 
 	var bgGirls:BackgroundGirls;
+
+	//yung lixo!!1!!
+	var farmNuvens:FlxSprite; // bg antigo
+	var farmFan:FNFSprite;
+	
+	var pessoalTras:FlxSprite;
+	var pessoalFrente:FlxSprite;
 
 	public var curStage:String;
 
@@ -79,6 +89,12 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					curStage = 'keylogger';
 				case 'polygons':
 					curStage = 'polygons';
+				case 'jokes':
+					curStage = 'farm';
+				case 'crazy-pizza':
+					curStage = 'miner';
+				case 'back-to-black':
+					curStage = 'btb';
 				default:
 					curStage = 'stage';
 			}
@@ -110,6 +126,56 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				bg.scrollFactor.set(1, 1);
 				bg.active = false;
 				add(bg);
+			case 'farm':
+				PlayState.defaultCamZoom = 0.9; //não importa mesmo, o playstate vai mudar ele
+				curStage = 'farm';
+				
+				var bgmultiplier:Int = 2;
+				
+				var bg:FNFSprite = new FNFSprite(130,-10).loadGraphic(Paths.image('backgrounds/${curStage}/sky'));
+				//bg.setGraphicSize(bg.width * 1.5);
+				bg.scale.set(1.65,1.65);
+				bg.scrollFactor.set(0.8,0.5);
+				bg.active = false;
+				add(bg);
+				
+				farmNuvens = new FlxBackdrop(Paths.image('backgrounds/${curStage}/nuvens'), 1, 1, true, false, 1, 1);
+				farmNuvens.alpha = 0.8;
+				farmNuvens.velocity.x = -30;
+				farmNuvens.x = 300;
+				add(farmNuvens);
+				farmNuvens.visible = false;
+				
+				// windmil
+				/*
+				var bg:FNFSprite = new FNFSprite(1200,300).loadGraphic(Paths.image('backgrounds/${curStage}/spr_windmill'));
+				bg.setGraphicSize(Std.int(bg.width * 4));
+				bg.scrollFactor.set(0.7,1);
+				bg.active = false;
+				add(bg);
+				*/
+				//400
+				
+				var bg:FNFSprite = new FNFSprite(180,90).loadGraphic(Paths.image('backgrounds/${curStage}/cerca'));
+				bg.setGraphicSize(Std.int(bg.width * bgmultiplier));
+				bg.scrollFactor.set(0.98,1);
+				bg.active = false;
+				add(bg);
+				
+				farmFan = new FNFSprite(bg.x + 450, bg.y - 100).loadGraphic(Paths.image('backgrounds/${curStage}/spr_windmillfan'));
+				farmFan.setGraphicSize(Std.int(farmFan.width * 6));
+				farmFan.scrollFactor.set(0.98,1);
+				farmFan.active = false;
+				add(farmFan);
+				// windmil
+				
+				var bg:FNFSprite = new FNFSprite(-300,600).loadGraphic(Paths.image('backgrounds/${curStage}/ground'));
+				bg.setGraphicSize(Std.int(bg.width * bgmultiplier));
+				bg.scrollFactor.set(1,1);
+				bg.active = false;
+				add(bg);
+				
+				
 			case 'keylogger':
 				PlayState.defaultCamZoom = 0.7; //0.7
 				curStage = 'keylogger';
@@ -146,7 +212,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				var bg:FNFSprite = new FNFSprite(0, 0).loadGraphic(Paths.image('backgrounds/' + curStage + '/space'));
 				bg.setGraphicSize(Std.int(bg.width * 2.3));
 				bg.antialiasing = true;
-				bg.scrollFactor.set(0.15, 0.15);
+				bg.scrollFactor.set(0.15, 0.5);
 				bg.active = false;
 				add(bg);
 
@@ -160,11 +226,11 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				var earth:FNFSprite = new FNFSprite(0, 200).loadGraphic(Paths.image('backgrounds/' + curStage + '/earth'));
 				earth.setGraphicSize(Std.int(earth.width * 2.3));
 				earth.antialiasing = true;
-				earth.scrollFactor.set(0.3, 0.3);
+				earth.scrollFactor.set(0.3, 0.6);
 				earth.active = false;
 				add(earth);
 
-				var ground:FNFSprite = new FNFSprite(0, 150).loadGraphic(Paths.image('backgrounds/' + curStage + '/ground'));
+				var ground:FNFSprite = new FNFSprite(0, 130).loadGraphic(Paths.image('backgrounds/' + curStage + '/ground'));
 				ground.setGraphicSize(Std.int(ground.width * 3));
 				ground.antialiasing = true;
 				ground.scrollFactor.set(1, 1);
@@ -178,6 +244,45 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				bg.antialiasing = true;
 				bg.active = false;
 				add(bg);
+			case 'miner':
+				PlayState.defaultCamZoom = 0.75; // depois o zoom diminui no começo da musica
+				curStage = 'miner';
+				
+				var bg:FNFSprite = new FNFSprite(100,-300).loadGraphic(Paths.image('backgrounds/' + curStage + '/fundo'));
+				//bg.setGraphicSize(Std.int(bg.width * 3));
+				bg.scale.set(3,3);
+				bg.antialiasing = true;
+				bg.active = false;
+				add(bg);
+				
+				pessoalTras = new FlxSprite(-170,150);
+				pessoalTras.frames = Paths.getSparrowAtlas('backgrounds/${curStage}/bgCharacters');
+				pessoalTras.animation.addByPrefix('idle', "pessoal de tras", 24, false);
+				//pessoalTras.setGraphicSize(Std.int(pessoalTras.width * 2));
+				pessoalTras.scale.set(1.4,1.4);
+				pessoalTras.animation.play('idle');
+				pessoalTras.scrollFactor.set(1,1);
+				add(pessoalTras);
+				
+				pessoalFrente = new FlxSprite(-250, 1060);
+				pessoalFrente.frames = Paths.getSparrowAtlas('backgrounds/${curStage}/bgCharacters');
+				pessoalFrente.animation.addByPrefix('idle', "pessoal da frente", 24, false);
+				//pessoalFrente.antialiasing = true;
+				pessoalFrente.setGraphicSize(Std.int(pessoalFrente.width * 2));
+				pessoalFrente.animation.play('idle');
+				pessoalFrente.scrollFactor.set(2.75,1.3);
+				foreground.add(pessoalFrente);
+				
+			case 'btb':
+				PlayState.defaultCamZoom = 0.6;
+				curStage = 'btb';
+				
+				var bg:FNFSprite = new FNFSprite(-200,-200).loadGraphic(Paths.image('backgrounds/gema/back-to-black'));
+				bg.setGraphicSize(Std.int(bg.width * 2));
+				bg.antialiasing = true;
+				bg.active = false;
+				add(bg);
+				
 			default:
 				PlayState.defaultCamZoom = 0.9;
 				curStage = 'stage';
@@ -225,6 +330,8 @@ class Stage extends FlxTypedGroup<FlxBasic>
 			case 'school':
 				gfVersion = 'gf-pixel';
 			case 'schoolEvil':
+				gfVersion = 'gf-pixel';
+			case 'farm':
 				gfVersion = 'gf-pixel';
 		}
 
@@ -274,6 +381,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				gf.visible = false;
 				dad.x -= 150;
 				boyfriend.x += 150;
+				boyfriend.y -= 10;
 			case 'space':
 				dad.x -= 500;
 				dad.y += 80;
@@ -285,9 +393,17 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				gf.x += 40;
 				gf.y += 890;
 				dad.x += 150;
-				dad.y += 755;
-				boyfriend.y += 670;
+				dad.y += 755 - 160;
+				boyfriend.y += 670 - 160;
 				boyfriend.x -= 50;
+			case 'miner':
+				gf.visible = false;
+				
+				dad.y += 150;
+				boyfriend.y += 150;
+				
+				dad.x -= 100;
+				boyfriend.x += 100;
 			case 'keylogger':
 				gf.visible = false;
 				dad.x -= 140;
@@ -299,6 +415,16 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				dad.x -= 150;
 				boyfriend.x += 125;
 				gf.visible = false;
+			case 'farm':
+				dad.x += 430;
+				dad.y += 8;
+				boyfriend.x += 500;
+				gf.x += 500;
+				gf.y += 160;
+			case 'btb':
+				gf.y -= 160;
+				dad.x -= 150;
+				boyfriend.x += 150;
 		}
 	}
 
@@ -316,6 +442,10 @@ class Stage extends FlxTypedGroup<FlxBasic>
 		// trace('update backgrounds');
 		switch (PlayState.curStage)
 		{
+			case 'miner':
+				if(curBeat % 2 == 0) pessoalTras.animation.play('idle');
+				if(curBeat % 2 == 1) pessoalFrente.animation.play('idle');
+		
 			case 'highway':
 				// trace('highway update');
 				grpLimoDancers.forEach(function(dancer:BackgroundDancer)
@@ -369,8 +499,14 @@ class Stage extends FlxTypedGroup<FlxBasic>
 
 	public function stageUpdateConstant(elapsed:Float, boyfriend:Boyfriend, gf:Character, dadOpponent:Character)
 	{
+		elapsedtime += (elapsed * Math.PI);
+	
 		switch (PlayState.curStage)
 		{
+			case 'farm':
+				farmFan.angle += -150 * elapsed;
+				//farmFan.angle = 360 * (Math.tan(elapsedtime)) * 50; // windstorm mode
+		
 			case 'philly':
 				if (trainMoving)
 				{

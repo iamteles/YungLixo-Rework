@@ -1,20 +1,26 @@
 package meta.subState;
 
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.FlxObject;
 import flixel.FlxSubState;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 import gameObjects.Boyfriend;
 import meta.MusicBeat.MusicBeatSubState;
 import meta.data.Conductor.BPMChangeEvent;
 import meta.data.Conductor;
 import meta.state.*;
 import meta.state.menus.*;
+import lime.app.Application;
 
 class GameOverSubstate extends MusicBeatSubState
 {
 	//
+	var pintowsDeath:Bool = false;
+	
 	var bf:Boyfriend;
 	var camFollow:FlxObject;
 
@@ -31,6 +37,8 @@ class GameOverSubstate extends MusicBeatSubState
 			case 'bf-pixel':
 				daBf = 'bf-pixel-dead';
 				stageSuffix = '-pixel';
+			case 'gemafunkin-player':
+				daBf = 'gemafunkin-player';
 			default:
 				daBf = 'bf-dead';
 		}
@@ -56,6 +64,32 @@ class GameOverSubstate extends MusicBeatSubState
 		FlxG.camera.target = null;
 
 		bf.playAnim('firstDeath');
+		
+		if(PlayState.SONG.song.toLowerCase() == 'operational-system')
+			pintowsDeath = true;
+		
+		if(!pintowsDeath)
+		{
+			FlxG.camera.flash(FlxColor.RED, 1, null, true);
+			FlxTween.tween(FlxG.camera, {zoom: 0.5}, 1.2, {ease: FlxEase.expoOut});
+		}
+		else
+		{
+			Application.current.window.alert("Skill Issue :/", "Game Over");
+			
+			bf.alpha = 0.0001; // nobody likes you
+			
+			var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('backgrounds/pintows/death'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set();
+			add(bg);
+			
+			var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('backgrounds/pintows/overlay'));
+			bg.antialiasing = true;
+			bg.scrollFactor.set();
+			bg.scale.set(0.97,0.97);
+			add(bg);
+		}
 	}
 
 	override function update(elapsed:Float)
@@ -101,6 +135,11 @@ class GameOverSubstate extends MusicBeatSubState
 	{
 		if (!isEnding)
 		{
+			if(!pintowsDeath) {
+				FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
+				FlxTween.tween(FlxG.camera, {zoom: 1}, 0.65, {ease: FlxEase.expoOut});
+			}
+		
 			isEnding = true;
 			bf.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();

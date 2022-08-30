@@ -143,7 +143,7 @@ class Init extends FlxState
 			NOT_FORCED,
 			''
 		],
-		"Note Skin" => ['default', Selector, 'Choose a note skin.', NOT_FORCED, ''],
+		//"Note Skin" => ['default', Selector, 'Choose a note skin.', NOT_FORCED, ''],
 		"Framerate Cap" => [120, Selector, 'Define your maximum FPS.', NOT_FORCED, ['']],
 		"Opaque Arrows" => [
 			false,
@@ -190,12 +190,25 @@ class Init extends FlxState
 			'Whether you want to have colored healthbars according to the icons.',
 			NOT_FORCED
 		],
+		'Gradient Healthbars' => [
+			false,
+			Checkmark,
+			'Whether you want to have healthbars with gradients.',
+			NOT_FORCED
+		],
+		'Show Timer' => [
+			true,
+			Checkmark,
+			'Shows how much time theres left of the Song',
+			NOT_FORCED
+		],
 	];
 
 	public static var trueSettings:Map<String, Dynamic> = [];
 	public static var settingsDescriptions:Map<String, String> = [];
 
 	public static var gameControls:Map<String, Dynamic> = [
+		'DODGE' => [[FlxKey.SPACE, null], 14],
 		'UP' => [[FlxKey.UP, W], 2],
 		'DOWN' => [[FlxKey.DOWN, S], 1],
 		'LEFT' => [[FlxKey.LEFT, A], 0],
@@ -308,9 +321,9 @@ class Init extends FlxState
 		gameSettings.get("UI Skin")[4] = CoolUtil.returnAssetsLibrary('UI');
 		if (!gameSettings.get("UI Skin")[4].contains(trueSettings.get("UI Skin")))
 			trueSettings.set("UI Skin", 'default');
-		gameSettings.get("Note Skin")[4] = CoolUtil.returnAssetsLibrary('noteskins/notes');
-		if (!gameSettings.get("Note Skin")[4].contains(trueSettings.get("Note Skin")))
-			trueSettings.set("Note Skin", 'default');
+		//gameSettings.get("Note Skin")[4] = CoolUtil.returnAssetsLibrary('noteskins/notes');
+		//if (!gameSettings.get("Note Skin")[4].contains(trueSettings.get("Note Skin")))
+		//	trueSettings.set("Note Skin", 'default');
 
 		saveSettings();
 

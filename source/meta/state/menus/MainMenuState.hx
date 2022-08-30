@@ -3,6 +3,7 @@ package meta.state.menus;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
@@ -22,8 +23,10 @@ using StringTools;
 **/
 class MainMenuState extends MusicBeatState
 {
+	public var elapsedtime:Float = 0;
+
 	var menuItems:FlxTypedGroup<FlxSprite>;
-	var curSelected:Float = 0;
+	static var curSelected:Float = 0;
 
 	var bg:FlxSprite; // the background has been separated for more control
 	var menuChar:FlxSprite;
@@ -53,6 +56,11 @@ class MainMenuState extends MusicBeatState
 		persistentUpdate = persistentDraw = true;
 
 		// background
+		var backdrop:FlxSprite = new FlxBackdrop(Paths.image('menus/ylr/tileLoop'), 8, 8, true, true, 1, 1);
+		backdrop.velocity.set(FlxG.random.bool(50) ? 90 : -90, FlxG.random.bool(50) ? 90 : -90);
+		backdrop.screenCenter();
+		add(backdrop);
+		
 		bg = new FlxSprite(-85);
 		bg.loadGraphic(Paths.image('menus/ylr/mainMenu'));
 		bg.scrollFactor.x = 0;
@@ -121,6 +129,12 @@ class MainMenuState extends MusicBeatState
 	{
 		// colorTest += 0.125;
 		// bg.color = FlxColor.fromHSB(colorTest, 100, 100, 0.5);
+		elapsedtime += (elapsed * Math.PI);
+		
+		//if(!selectedSomethin) {
+			menuChar.x = -50 - (Math.cos(elapsedtime / 4)) * 20;
+			menuChar.y = 50 - (Math.sin(elapsedtime / 2)) * 20;
+		//}
 
 		var up = controls.UI_UP;
 		var down = controls.UI_DOWN;
@@ -192,8 +206,8 @@ class MainMenuState extends MusicBeatState
 			{
 				if (curSelected != spr.ID)
 				{
-					FlxTween.tween(spr, {alpha: 0, x: FlxG.width * 2}, 0.4, {
-						ease: FlxEase.quadOut,
+					FlxTween.tween(spr, {alpha: 0, x: FlxG.width * 2}, 0.7, {
+						ease: FlxEase.quadIn,
 						onComplete: function(twn:FlxTween)
 						{
 							spr.kill();
@@ -208,11 +222,11 @@ class MainMenuState extends MusicBeatState
 
 						switch (daChoice)
 						{
-							case 'story':
+							case 'story': // prevent game locking
 								Main.switchState(this, new StoryMenuState());
 							//case 'credits':
-							//	Main.switchState(this, new CreditsState());
-							case 'freeplay':
+							//	Main.switchState(this, new CharacterMenuState());
+							case 'freeplay' | 'credits':
 								Main.switchState(this, new FreeplayState());
 							case 'options':
 								transIn = FlxTransitionableState.defaultTransIn;
@@ -237,14 +251,14 @@ class MainMenuState extends MusicBeatState
 		// reset all selections
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			if(spr.ID == curSelected)
-			{
-				FlxTween.tween(spr, {x: 550}, 0.2, {ease: FlxEase.quadInOut});
-			}
-			else
-			{
-				FlxTween.tween(spr, {x: 700}, 0.2, {ease: FlxEase.quadInOut});
-			}
+			var theX:Float;
+			var theColor:Int;
+			
+			theX = (spr.ID == curSelected) ? 550 : 700;
+			theColor = (spr.ID == curSelected) ? FlxColor.WHITE : FlxColor.fromRGB(45,45,45);
+			
+			FlxTween.tween(spr, {x: theX}, 0.2, {ease: FlxEase.quadOut});
+			spr.color = theColor;
 		});
 
 		// set the sprites and all of the current selection
