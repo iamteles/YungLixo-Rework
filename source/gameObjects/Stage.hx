@@ -249,29 +249,29 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				curStage = 'miner';
 				
 				var bg:FNFSprite = new FNFSprite(100,-300).loadGraphic(Paths.image('backgrounds/' + curStage + '/fundo'));
-				//bg.setGraphicSize(Std.int(bg.width * 3));
 				bg.scale.set(3,3);
 				bg.antialiasing = true;
 				bg.active = false;
 				add(bg);
 				
-				pessoalTras = new FlxSprite(-170,150);
-				pessoalTras.frames = Paths.getSparrowAtlas('backgrounds/${curStage}/bgCharacters');
-				pessoalTras.animation.addByPrefix('idle', "pessoal de tras", 24, false);
-				//pessoalTras.setGraphicSize(Std.int(pessoalTras.width * 2));
-				pessoalTras.scale.set(1.4,1.4);
-				pessoalTras.animation.play('idle');
-				pessoalTras.scrollFactor.set(1,1);
-				add(pessoalTras);
+				if(PlayState.storyDifficulty == 1)
+				{
+					pessoalTras = new FlxSprite(-170,150);
+					pessoalTras.frames = Paths.getSparrowAtlas('backgrounds/${curStage}/bgCharacters');
+					pessoalTras.animation.addByPrefix('idle', "pessoal de tras", 24, false);
+					pessoalTras.scale.set(1.4,1.4);
+					pessoalTras.animation.play('idle');
+					pessoalTras.scrollFactor.set(1,1);
+					add(pessoalTras);
 				
-				pessoalFrente = new FlxSprite(-250, 1060);
-				pessoalFrente.frames = Paths.getSparrowAtlas('backgrounds/${curStage}/bgCharacters');
-				pessoalFrente.animation.addByPrefix('idle', "pessoal da frente", 24, false);
-				//pessoalFrente.antialiasing = true;
-				pessoalFrente.setGraphicSize(Std.int(pessoalFrente.width * 2));
-				pessoalFrente.animation.play('idle');
-				pessoalFrente.scrollFactor.set(2.75,1.3);
-				foreground.add(pessoalFrente);
+					pessoalFrente = new FlxSprite(-250, 1060);
+					pessoalFrente.frames = Paths.getSparrowAtlas('backgrounds/${curStage}/bgCharacters');
+					pessoalFrente.animation.addByPrefix('idle', "pessoal da frente", 24, false);
+					pessoalFrente.setGraphicSize(Std.int(pessoalFrente.width * 2));
+					pessoalFrente.animation.play('idle');
+					pessoalFrente.scrollFactor.set(2.75,1.3);
+					foreground.add(pessoalFrente);
+				}
 				
 			case 'btb':
 				PlayState.defaultCamZoom = 0.6;
@@ -443,9 +443,11 @@ class Stage extends FlxTypedGroup<FlxBasic>
 		switch (PlayState.curStage)
 		{
 			case 'miner':
-				if(curBeat % 2 == 0) pessoalTras.animation.play('idle');
-				if(curBeat % 2 == 1) pessoalFrente.animation.play('idle');
-		
+				if(PlayState.storyDifficulty == 1)
+				{
+					if(curBeat % 2 == 0) pessoalTras.animation.play('idle');
+					if(curBeat % 2 == 1) pessoalFrente.animation.play('idle');
+				}
 			case 'highway':
 				// trace('highway update');
 				grpLimoDancers.forEach(function(dancer:BackgroundDancer)
