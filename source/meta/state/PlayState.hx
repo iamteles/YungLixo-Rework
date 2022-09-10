@@ -822,7 +822,7 @@ class PlayState extends MusicBeatState
 					switch(SONG.song.toLowerCase())
 					{
 						case 'jokes':
-							defaultCamZoom = 1.35;
+							defaultCamZoom = 1;
 					}
 				}
 				else if (!PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
