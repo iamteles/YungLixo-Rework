@@ -1,0 +1,15 @@
+{
+    "name": "yunglixo",
+    "expressions": {
+        "angry": "angry talk",
+        "dark": "evil dark",
+        "evil": "evil talk",
+        "normal": "happy talk"
+    },
+    "position": [120, 100],
+    "scale": 1.15,
+	"flipX": false,
+
+    "sounds": ["Vito_1"],
+	"soundChance": 100
+}

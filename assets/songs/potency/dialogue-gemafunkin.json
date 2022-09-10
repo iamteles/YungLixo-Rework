@@ -1,0 +1,30 @@
+{
+    "box": "speech_bubble_talking",
+    "boxState": "normal",
+    "dialogue": [
+		{
+            "portrait": "gemaplys",
+			"expression": "normal left",
+            "text": "Que porra foi essa?"
+        },
+		{
+            "portrait": "gemafunkin",
+			"expression": "normal",
+            "text": "IHHHHHH",
+			"boxState": "yell"
+        },
+		{
+            "text": "AE MLK BORA NA RIMA"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "normal right",
+            "text": "voce estranhamente se parece comigo",
+			"boxState": "normal"
+        },
+		{
+			"expression": "normal left",
+			"text": "mas tanto faz eu so quero voltar pra casa."
+		}
+	]
+}

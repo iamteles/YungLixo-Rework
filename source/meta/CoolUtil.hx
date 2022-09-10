@@ -111,4 +111,18 @@ class CoolUtil
 		FlxG.openURL(site);
 		#end
 	}
+
+	// finalmente consegui fazer funcionar B)
+	public static function randomString(theRandom:Array<String>):String
+	{
+		var actualLength:Int = theRandom.length - 1; // eu odeio haxe
+		return theRandom[FlxG.random.int(0, actualLength)];
+	}
+
+	// não desliga as luzinha :(
+	public static function flashScreen(theCam:flixel.FlxCamera, howMuchTime:Float, ?theColor:flixel.util.FlxColor = 0xFFFFFFFF)
+	{
+		if(Init.trueSettings.get('Flashing Lights'))
+			theCam.flash(theColor, howMuchTime, null, true);
+	}
 }

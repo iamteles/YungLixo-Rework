@@ -3,7 +3,7 @@ package gameObjects;
 /**
 	The character class initialises any and all characters that exist within gameplay. For now, the character class will
 	stay the same as it was in the original source of the game. I'll most likely make some changes afterwards though!
-	
+
 	i changed it
 		--diogo
 **/
@@ -42,7 +42,7 @@ class Character extends FNFSprite
 
 	public var characterData:CharacterData;
 	public var adjustPos:Bool = true;
-	
+
 	public var isNativelyPlayer:Bool = false;
 
 	public function new(?isPlayer:Bool = false)
@@ -133,9 +133,9 @@ class Character extends FNFSprite
 				flipX = true;
 
 				characterData.offsetY = 70;
-				
+
 				isNativelyPlayer = true;
-				
+
 			case 'bf-reshaped':
 				frames = Paths.getSparrowAtlas('characters/BOYFRIEND_R');
 
@@ -156,7 +156,7 @@ class Character extends FNFSprite
 
 				characterData.offsetY = 0; //70
 				characterData.camOffsetY = 35; //70
-				
+
 				//isNativelyPlayer = true;
 
 			case 'bf-psych':
@@ -181,7 +181,7 @@ class Character extends FNFSprite
 				playAnim('idle');
 
 				flipX = true;
-				
+
 				isNativelyPlayer = true;
 
 			case 'bf-dead':
@@ -194,7 +194,7 @@ class Character extends FNFSprite
 				playAnim('firstDeath');
 
 				flipX = true;
-				
+
 				isNativelyPlayer = true;
 
 			case 'bf-pixel':
@@ -221,12 +221,12 @@ class Character extends FNFSprite
 				antialiasing = false;
 
 				flipX = true;
-				
+
 				isNativelyPlayer = true;
-				
+
 				if(PlayState.SONG.song.toLowerCase() == 'jokes')
 					characterData.camOffsetX = 300;
-				
+
 			case 'bf-pixel-dead':
 				frames = Paths.getSparrowAtlas('characters/bfPixelsDEAD');
 				animation.addByPrefix('singUP', "BF Dies pixel", 24, false);
@@ -244,7 +244,7 @@ class Character extends FNFSprite
 				characterData.offsetY = 180;
 
 				isNativelyPlayer = true;
-				
+
 			case 'gemaplys':
 				tex = Paths.getSparrowAtlas('characters/gemaplys');
 				frames = tex;
@@ -289,6 +289,9 @@ class Character extends FNFSprite
 				animation.addByPrefix('singRIGHT', 'right', 24);
 				animation.addByPrefix('singDOWN', 'down', 24);
 				animation.addByPrefix('singLEFT', 'left', 24);
+				
+				setGraphicSize(Std.int(width * 1.3));
+				updateHitbox();
 
 				playAnim('idle');
 
@@ -328,13 +331,13 @@ class Character extends FNFSprite
 				animation.addByPrefix('singRIGHT', 'right', 24);
 				animation.addByPrefix('singDOWN', 'down', 24);
 				animation.addByPrefix('singLEFT', 'left', 24);
-				
+
 				animation.addByPrefix('startNORMAL', 'startN', 24);
 				animation.addByPrefix('startRESHAPED', 'startR', 24);
 				animation.addByPrefix('pimentinha', 'pimentinha', 24);
-				
+
 				characterData.camOffsetY = 150;
-				
+
 				playAnim('idle');
 			case 'mc-vv':
 				tex = Paths.getSparrowAtlas('characters/Mc_VV');
@@ -347,14 +350,14 @@ class Character extends FNFSprite
 				animation.addByPrefix('singRIGHT', 'Mc VV Right', 16);
 				animation.addByPrefix('singDOWN', 'Mc VV Down', 16);
 				animation.addByPrefix('singLEFT', 'Mc VV Left', 16);
-				
+
 				characterData.camOffsetX = -250;
 				characterData.camOffsetY = 115;
-				
+
 				characterData.quickDancer = true;
-				
+
 				playAnim('idle');
-			
+
 			case 'mamaco':
 				tex = Paths.getSparrowAtlas('characters/mamaco');
 				frames = tex;
@@ -379,11 +382,11 @@ class Character extends FNFSprite
 				animation.addByPrefix('singRIGHTmiss', 'right', false);
 				animation.addByPrefix('singDOWNmiss', 'down', false);
 				animation.addByPrefix('singLEFTmiss', 'left', false);
-				
+
 				setGraphicSize(Std.int(width * 0.6));
 
 				playAnim('idle');
-				
+
 				isNativelyPlayer = false;
 
 			case 'turbo':
@@ -437,9 +440,9 @@ class Character extends FNFSprite
 				characterData.camOffsetX = 260;
 				characterData.offsetX = 150;
 				characterData.offsetY = -30;
-				
+
 				playAnim('idle');
-				
+
 			case 'gemafunkin-player':
 				tex = Paths.getSparrowAtlas('characters/gemaFunkinPlayerAss');
 				frames = tex;
@@ -449,20 +452,20 @@ class Character extends FNFSprite
 				animation.addByPrefix('singRIGHT', 'right0', 24);
 				animation.addByPrefix('singDOWN', 'down0', 24);
 				animation.addByPrefix('singLEFT', 'left0', 24);
-				
+
 				animation.addByPrefix('singUPmiss', 'up miss', 24, false);
 				animation.addByPrefix('singRIGHTmiss', 'right miss', 24, false);
 				animation.addByPrefix('singDOWNmiss', 'down miss', 24, false);
 				animation.addByPrefix('singLEFTmiss', 'left miss', 24, false);
-				
+
 				//collision
 				animation.addByPrefix('dodge', 'up0', 24);
-				
+
 				// die!!1!
 				animation.addByPrefix('firstDeath', "death", 24, false);
 				animation.addByIndices('deathLoop', "death", [25], "", 0, false);
 				animation.addByPrefix('deathConfirm', "death", 24, false);
-				
+
 				updateHitbox();
 
 				if(PlayState.SONG.song.toLowerCase() == 'collision'
@@ -470,7 +473,7 @@ class Character extends FNFSprite
 				{
 					characterData.offsetX = -300;
 					characterData.offsetY = -75;
-					
+
 					if(PlayState.SONG.song.toLowerCase() == 'collision') characterData.camOffsetX = -200;
 					if(PlayState.SONG.song.toLowerCase() == 'jokes') {
 						characterData.camOffsetX = 200;
@@ -483,21 +486,21 @@ class Character extends FNFSprite
 					characterData.offsetY = 100;
 					characterData.camOffsetY = 125;
 				}
-				
+
 				// now i added miss animations
 				isNativelyPlayer = true;
 				flipX = true;
-				
+
 				playAnim('idle');
-				
+
 			case 'gemafunkin-select':
 				tex = Paths.getSparrowAtlas('characters/gemaFunkinAss');
 				frames = tex;
 				animation.addByPrefix('idle', 'gema idle', 24, false);
 				animation.addByPrefix('hey', 'gema hey', 24, false);
-				
+
 				playAnim('idle');
-				
+
 				flipX = true;
 
 			case 'gema64':
@@ -546,7 +549,7 @@ class Character extends FNFSprite
 				characterData.camOffsetX = 200;
 
 				playAnim('idle');
-				
+
 			case 'chicken':
 				tex = Paths.getSparrowAtlas('characters/chickenRESHAPED');
 				frames = tex;
@@ -558,9 +561,9 @@ class Character extends FNFSprite
 				setGraphicSize(Std.int(width * 6));
 				updateHitbox();
 				antialiasing = false;
-				
+
 				playAnim('idle');
-				
+
 				characterData.camOffsetX = -135;
 				characterData.camOffsetY = -30;
 
@@ -649,7 +652,7 @@ class Character extends FNFSprite
 	override function update(elapsed:Float)
 	{
 		elapsedtime += (elapsed * Math.PI);
-	
+
 		if (!isPlayer)
 		{
 			if (animation.curAnim.name.startsWith('sing'))
@@ -685,7 +688,7 @@ class Character extends FNFSprite
 		}
 
 		super.update(elapsed);
-		
+
 		switch(curCharacter.toLowerCase())
 		{
 			case 'tibba': // ta potente
@@ -752,11 +755,11 @@ class Character extends FNFSprite
 			if (AnimName == 'singUP' || AnimName == 'singDOWN')
 				danced = !danced;
 		}
-		
+
 		if(!isNativelyPlayer) {
 			this.color = (AnimName.endsWith('miss')) ? FlxColor.BLUE : FlxColor.WHITE;
 		}
-		
+
 		if(curCharacter == 'gemafunkin-player')
 			this.color = (AnimName == 'dodge') ? FlxColor.CYAN : FlxColor.WHITE;
 	}

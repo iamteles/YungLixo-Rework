@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="yunglixo.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="angry talk0000" x="3" y="3" width="291" height="422"/>
+	<SubTexture name="angry talk0001" x="3" y="3" width="291" height="422"/>
+	<SubTexture name="angry talk0002" x="297" y="3" width="291" height="422"/>
+	<SubTexture name="angry talk0003" x="297" y="3" width="291" height="422"/>
+	<SubTexture name="angry talk0004" x="591" y="3" width="291" height="422"/>
+	<SubTexture name="angry talk0005" x="591" y="3" width="291" height="422"/>
+	<SubTexture name="evil dark0000" x="3" y="428" width="291" height="422"/>
+	<SubTexture name="evil dark0001" x="3" y="428" width="291" height="422"/>
+	<SubTexture name="evil dark0002" x="297" y="428" width="291" height="422"/>
+	<SubTexture name="evil dark0003" x="297" y="428" width="291" height="422"/>
+	<SubTexture name="evil dark0004" x="591" y="428" width="291" height="422"/>
+	<SubTexture name="evil dark0005" x="591" y="428" width="291" height="422"/>
+	<SubTexture name="evil talk0000" x="3" y="853" width="291" height="422"/>
+	<SubTexture name="evil talk0001" x="3" y="853" width="291" height="422"/>
+	<SubTexture name="evil talk0002" x="297" y="853" width="291" height="422"/>
+	<SubTexture name="evil talk0003" x="297" y="853" width="291" height="422"/>
+	<SubTexture name="evil talk0004" x="591" y="853" width="291" height="422"/>
+	<SubTexture name="evil talk0005" x="591" y="853" width="291" height="422"/>
+	<SubTexture name="happy talk0000" x="3" y="1278" width="291" height="422"/>
+	<SubTexture name="happy talk0001" x="3" y="1278" width="291" height="422"/>
+	<SubTexture name="happy talk0002" x="297" y="1278" width="291" height="422"/>
+	<SubTexture name="happy talk0003" x="297" y="1278" width="291" height="422"/>
+	<SubTexture name="happy talk0004" x="591" y="1278" width="291" height="422"/>
+	<SubTexture name="happy talk0005" x="591" y="1278" width="291" height="422"/>
+</TextureAtlas>

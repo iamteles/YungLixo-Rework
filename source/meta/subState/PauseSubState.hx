@@ -21,7 +21,7 @@ class PauseSubState extends MusicBeatSubState
 	var grpMenuShit:FlxTypedGroup<Alphabet>;
 
 	var botplayPause:FlxText;
-	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Botplay', 'Exit to menu'];
+	var menuItems:Array<String> = ['Resume', 'Restart Song', 'Options', 'Botplay', 'Exit to menu'];
 	var curSelected:Int = 0;
 
 	var pauseMusic:FlxSound;
@@ -156,7 +156,9 @@ class PauseSubState extends MusicBeatSubState
 					close();
 				case "Restart Song":
 					Main.switchState(this, new PlayState());
-					
+				case "Options":
+					Main.switchState(this, new OptionsMenuState());
+					OptionsMenuState.isPlaying = true;
 				case "Botplay":
 					PlayState.botplay = !PlayState.botplay;
 				case "Exit to menu":
@@ -189,6 +191,8 @@ class PauseSubState extends MusicBeatSubState
 	override function destroy()
 	{
 		pauseMusic.destroy();
+		
+		FlxG.sound.play(Paths.sound('scrollMenu'));
 
 		super.destroy();
 	}
@@ -196,6 +200,8 @@ class PauseSubState extends MusicBeatSubState
 	function changeSelection(change:Int = 0):Void
 	{
 		curSelected += change;
+		
+		FlxG.sound.play(Paths.sound('scrollMenu'));
 
 		if (curSelected < 0)
 			curSelected = menuItems.length - 1;

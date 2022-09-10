@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="bf-reshaped.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Normal Talk0000" x="3" y="3" width="366" height="435" frameX="-2" frameY="0" frameWidth="370" frameHeight="435"/>
+	<SubTexture name="Normal Talk0001" x="3" y="3" width="366" height="435" frameX="-2" frameY="0" frameWidth="370" frameHeight="435"/>
+	<SubTexture name="Normal Talk0002" x="372" y="3" width="367" height="433" frameX="-3" frameY="-2" frameWidth="370" frameHeight="435"/>
+	<SubTexture name="Normal Talk0003" x="372" y="3" width="367" height="433" frameX="-3" frameY="-2" frameWidth="370" frameHeight="435"/>
+	<SubTexture name="Normal Talk0004" x="3" y="441" width="360" height="431" frameX="0" frameY="-4" frameWidth="370" frameHeight="435"/>
+	<SubTexture name="Normal Talk0005" x="3" y="441" width="360" height="431" frameX="0" frameY="-4" frameWidth="370" frameHeight="435"/>
+</TextureAtlas>

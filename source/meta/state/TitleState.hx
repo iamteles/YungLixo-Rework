@@ -40,6 +40,8 @@ class TitleState extends MusicBeatState
 {
 	static var initialized:Bool = false;
 
+	var elapsedtime:Float = 0;
+
 	var blackScreen:FlxSprite;
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
@@ -83,13 +85,14 @@ class TitleState extends MusicBeatState
 		bg = new FlxSprite().loadGraphic(Paths.image('menus/base/menuTitle'));
 		add(bg);
 
-		logoBl = new FlxSprite(260, 0);
+		logoBl = new FlxSprite(260, -160);
 		logoBl.frames = Paths.getSparrowAtlas('menus/base/title/logoBumpin');
 		logoBl.antialiasing = true;
 		logoBl.animation.addByPrefix('bump', 'logo bumpin', 24);
 		logoBl.animation.play('bump');
 		logoBl.setGraphicSize(Std.int(logoBl.width * 0.75));
 		logoBl.updateHitbox();
+		logoBl.x = Math.floor((FlxG.width / 2) - (logoBl.width / 2));
 		// logoBl.screenCenter();
 		// logoBl.color = FlxColor.BLACK;
 
@@ -134,10 +137,11 @@ class TitleState extends MusicBeatState
 
 		credTextShit.visible = false;
 
-		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('menus/base/title/newgrounds_logo'));
+		ngSpr = new FlxSprite(0, FlxG.height * 0.52).loadGraphic(Paths.image('menus/ylr/title/arwen'));
 		add(ngSpr);
 		ngSpr.visible = false;
-		ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+		//ngSpr.setGraphicSize(Std.int(ngSpr.width * 0.8));
+		ngSpr.scale.set(0.5,0.5);
 		ngSpr.updateHitbox();
 		ngSpr.screenCenter(X);
 		ngSpr.antialiasing = true;
@@ -171,6 +175,10 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		elapsedtime += (elapsed * Math.PI);
+		logoBl.offset.y = (Math.sin(elapsedtime)) * 8;
+		logoBl.angle = (Math.sin(elapsedtime / 3)) * 8;
+	
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
@@ -204,7 +212,7 @@ class TitleState extends MusicBeatState
 		{
 			titleText.animation.play('press');
 
-			FlxG.camera.flash(FlxColor.WHITE, 1);
+			FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
 			FlxG.sound.play(Paths.sound('confirmMenu'), 0.7);
 
 			transitioning = true;
@@ -289,11 +297,11 @@ class TitleState extends MusicBeatState
 		switch (curBeat)
 		{
 			case 1:
-				createCoolText(['ninjamuffin', 'phantomArcade', 'kawaisprite', 'evilsker']);
+				createCoolText(['Yung Lixo Rework Team']);
 
 			// credTextShit.visible = true;
 			case 3:
-				addMoreText('present');
+				addMoreText('presents');
 			// credTextShit.text += '\npresent...';
 			// credTextShit.addText();
 			case 4:
@@ -302,9 +310,9 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['In association', 'with']);
+				createCoolText(['Not associated', 'with']);
 			case 7:
-				addMoreText('newgrounds');
+				addMoreText('Arwen Team');
 				ngSpr.visible = true;
 			// credTextShit.text += '\nNewgrounds';
 
@@ -323,17 +331,18 @@ class TitleState extends MusicBeatState
 			// credTextShit.text += '\nlmao';
 			case 12:
 				deleteCoolText();
+				addMoreText('Vs');
 			// credTextShit.visible = false;
 			// credTextShit.text = "Friday";
 			// credTextShit.screenCenter();
 			case 13:
-				addMoreText('Friday');
+				addMoreText('Yung');
 			// credTextShit.visible = true;
 			case 14:
-				addMoreText('Night');
+				addMoreText('Lixo');
 			// credTextShit.text += '\nNight';
 			case 15:
-				addMoreText('Funkin'); // credTextShit.text += '\nFunkin';
+				addMoreText('Rework'); // credTextShit.text += '\nFunkin';
 
 			case 16:
 				skipIntro();
@@ -348,7 +357,7 @@ class TitleState extends MusicBeatState
 		{
 			remove(ngSpr);
 
-			FlxG.camera.flash(FlxColor.WHITE, 4);
+			FlxG.camera.flash(FlxColor.WHITE, 4, null, true);
 			remove(credGroup);
 			skippedIntro = true;
 		}

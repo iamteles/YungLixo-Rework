@@ -1,0 +1,54 @@
+{
+    "box": "speech_bubble_talking",
+    "boxState": "normal",
+    "dialogue": [
+		{
+            "portrait": "bf",
+			"expression": "smug",
+            "text": "ez"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "bored right",
+            "text": "Ta bom o anao do Rezende...."
+        },
+		{
+            "text": "Tu quer um desafio neh?"
+        },
+		{
+			"portrait": "yunglixo",
+			"expression": "dark",
+            "text": "Porque agora tu vai ter que enfrentar..."
+        },
+		{
+			"expression": "evil",
+            "text": "O FODENDO Yung Lixo."
+        },
+		{
+			"speed": 2,
+			"expression": "normal",
+            "text": "(A preguica de fazer uma animacao do\nGema se transformando em mim eh\nmaior do que voce pensa)"
+        },
+		{
+			"expression": "evil",
+            "text": "Enfim, bora segundo round?"
+        },
+		{
+            "portrait": "bf",
+			"expression": "smug",
+            "text": "Sua mae eh minha"
+        },
+		{
+            "portrait": "yunglixo",
+			"expression": "angry",
+			"boxState": "yell",
+            "text": "É OQUE?"
+        },
+		{
+            "portrait": "bf",
+			"expression": "normal",
+			"boxState": "normal",
+            "text": "skdee bep bop badoop"
+        }
+	]
+}

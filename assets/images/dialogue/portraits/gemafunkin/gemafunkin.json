@@ -1,0 +1,11 @@
+{
+    "name": "gemafunkin",
+    "expressions": {
+        "normal": "TALK"
+    },
+    "position": [700, 80],
+	"flipX": false,
+
+    "sounds": ["falandomtfoda"],
+	"soundChance": 100
+}

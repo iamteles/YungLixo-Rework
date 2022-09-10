@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="socialmedia.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="social0000" x="3" y="3" width="434" height="281"/>
+	<SubTexture name="social0001" x="440" y="3" width="434" height="281"/>
+	<SubTexture name="social0002" x="877" y="3" width="434" height="281"/>
+</TextureAtlas>

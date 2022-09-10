@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="gemaplys.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="bored talk left0000" x="3" y="3" width="330" height="438"/>
+	<SubTexture name="bored talk left0001" x="3" y="3" width="330" height="438"/>
+	<SubTexture name="bored talk left0002" x="336" y="3" width="330" height="438"/>
+	<SubTexture name="bored talk left0003" x="336" y="3" width="330" height="438"/>
+	<SubTexture name="bored talk left0004" x="669" y="3" width="330" height="438"/>
+	<SubTexture name="bored talk left0005" x="669" y="3" width="330" height="438"/>
+	<SubTexture name="bored talk right0000" x="3" y="444" width="330" height="438"/>
+	<SubTexture name="bored talk right0001" x="3" y="444" width="330" height="438"/>
+	<SubTexture name="bored talk right0002" x="336" y="444" width="330" height="438"/>
+	<SubTexture name="bored talk right0003" x="336" y="444" width="330" height="438"/>
+	<SubTexture name="bored talk right0004" x="669" y="444" width="330" height="438"/>
+	<SubTexture name="bored talk right0005" x="669" y="444" width="330" height="438"/>
+	<SubTexture name="normal talk left0000" x="3" y="885" width="330" height="438"/>
+	<SubTexture name="normal talk left0001" x="3" y="885" width="330" height="438"/>
+	<SubTexture name="normal talk left0002" x="336" y="885" width="330" height="438"/>
+	<SubTexture name="normal talk left0003" x="336" y="885" width="330" height="438"/>
+	<SubTexture name="normal talk left0004" x="669" y="885" width="330" height="438"/>
+	<SubTexture name="normal talk left0005" x="669" y="885" width="330" height="438"/>
+	<SubTexture name="normal talk right0000" x="3" y="1326" width="330" height="438"/>
+	<SubTexture name="normal talk right0001" x="3" y="1326" width="330" height="438"/>
+	<SubTexture name="normal talk right0002" x="336" y="1326" width="330" height="438"/>
+	<SubTexture name="normal talk right0003" x="336" y="1326" width="330" height="438"/>
+	<SubTexture name="normal talk right0004" x="669" y="1326" width="330" height="438"/>
+	<SubTexture name="normal talk right0005" x="669" y="1326" width="330" height="438"/>
+</TextureAtlas>

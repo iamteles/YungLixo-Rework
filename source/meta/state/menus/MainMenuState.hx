@@ -60,7 +60,7 @@ class MainMenuState extends MusicBeatState
 		backdrop.velocity.set(FlxG.random.bool(50) ? 90 : -90, FlxG.random.bool(50) ? 90 : -90);
 		backdrop.screenCenter();
 		add(backdrop);
-		
+
 		bg = new FlxSprite(-85);
 		bg.loadGraphic(Paths.image('menus/ylr/mainMenu'));
 		bg.scrollFactor.x = 0;
@@ -130,7 +130,7 @@ class MainMenuState extends MusicBeatState
 		// colorTest += 0.125;
 		// bg.color = FlxColor.fromHSB(colorTest, 100, 100, 0.5);
 		elapsedtime += (elapsed * Math.PI);
-		
+
 		//if(!selectedSomethin) {
 			menuChar.x = -50 - (Math.cos(elapsedtime / 4)) * 20;
 			menuChar.y = 50 - (Math.sin(elapsedtime / 2)) * 20;
@@ -141,6 +141,17 @@ class MainMenuState extends MusicBeatState
 		var up_p = controls.UI_UP_P;
 		var down_p = controls.UI_DOWN_P;
 		var controlArray:Array<Bool> = [up, down, up_p, down_p];
+
+		/* // go to fuckin credits >:(
+		if(!selectedSomethin)
+		{
+			if(FlxG.keys.justPressed.V)
+			{
+				selectedSomethin = true;
+				Main.switchState(this, new GoToCreditsState());
+			}
+		}
+		*/
 
 		if ((controlArray.contains(true)) && (!selectedSomethin))
 		{
@@ -161,26 +172,6 @@ class MainMenuState extends MusicBeatState
 
 						FlxG.sound.play(Paths.sound('scrollMenu'));
 					}
-					/* idk something about it isn't working yet I'll rewrite it later
-						else
-						{
-							// paaaaaaaiiiiiiiinnnn
-							var curDir:Int = 0;
-							if (i == 0)
-								curDir = -1;
-							else if (i == 1)
-								curDir = 1;
-
-							if (counterControl < 2)
-								counterControl += 0.05;
-
-							if (counterControl >= 1)
-							{
-								curSelected += (curDir * (counterControl / 24));
-								if (curSelected % 1 == 0)
-									FlxG.sound.play(Paths.sound('scrollMenu'));
-							}
-					}*/
 
 					if (curSelected < 0)
 						curSelected = optionShit.length - 1;
@@ -206,7 +197,7 @@ class MainMenuState extends MusicBeatState
 			{
 				if (curSelected != spr.ID)
 				{
-					FlxTween.tween(spr, {alpha: 0, x: FlxG.width * 2}, 0.7, {
+					FlxTween.tween(spr, {/*alpha: 0, */x: FlxG.width * 2}, (1 - (0.15 * spr.ID)), {
 						ease: FlxEase.quadIn,
 						onComplete: function(twn:FlxTween)
 						{
@@ -216,21 +207,22 @@ class MainMenuState extends MusicBeatState
 				}
 				else
 				{
-					FlxFlicker.flicker(spr, 1, 0.06, false, false, function(flick:FlxFlicker)
+					FlxFlicker.flicker(spr, 1, 0.09, false, false, function(flick:FlxFlicker)
 					{
 						var daChoice:String = optionShit[Math.floor(curSelected)];
 
 						switch (daChoice)
 						{
-							case 'story': // prevent game locking
+							case 'story':
 								Main.switchState(this, new StoryMenuState());
-							//case 'credits':
-							//	Main.switchState(this, new CharacterMenuState());
-							case 'freeplay' | 'credits':
+							case 'credits':
+								Main.switchState(this, new CreditsState());
+							case 'freeplay':
 								Main.switchState(this, new FreeplayState());
 							case 'options':
 								transIn = FlxTransitionableState.defaultTransIn;
 								transOut = FlxTransitionableState.defaultTransOut;
+								OptionsMenuState.isPlaying = false;
 								Main.switchState(this, new OptionsMenuState());
 						}
 					});
@@ -253,10 +245,10 @@ class MainMenuState extends MusicBeatState
 		{
 			var theX:Float;
 			var theColor:Int;
-			
+
 			theX = (spr.ID == curSelected) ? 550 : 700;
 			theColor = (spr.ID == curSelected) ? FlxColor.WHITE : FlxColor.fromRGB(45,45,45);
-			
+
 			FlxTween.tween(spr, {x: theX}, 0.2, {ease: FlxEase.quadOut});
 			spr.color = theColor;
 		});

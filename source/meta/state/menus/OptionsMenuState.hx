@@ -21,6 +21,8 @@ import meta.subState.OptionsSubstate;
 **/
 class OptionsMenuState extends MusicBeatState
 {
+	public static var isPlaying:Bool = false;
+
 	private var categoryMap:Map<String, Dynamic>;
 	private var activeSubgroup:FlxTypedGroup<Alphabet>;
 	private var attachments:FlxTypedGroup<FlxBasic>;
@@ -36,7 +38,7 @@ class OptionsMenuState extends MusicBeatState
 		super.create();
 
 		// define the categories
-		/* 
+		/*
 			To explain how these will work, each main category is just any group of options, the options in the category are defined
 			by the first array. The second array value defines what that option does.
 			These arrays are within other arrays for information storing purposes, don't worry about that too much.
@@ -71,6 +73,7 @@ class OptionsMenuState extends MusicBeatState
 					['', null],
 					['Display Accuracy', getFromOption],
 					['Skip Text', getFromOption],
+					['Timer', getFromOption],
 					['', null],
 					['Meta Settings', null],
 					['', null],
@@ -111,7 +114,7 @@ class OptionsMenuState extends MusicBeatState
 					["Stage Opacity", getFromOption],
 					["Opacity Type", getFromOption],
 					['Reduced Movements', getFromOption],
-					['Show Timer', getFromOption],
+					['Flashing Lights', getFromOption],
 				]
 			]
 		];
@@ -312,7 +315,12 @@ class OptionsMenuState extends MusicBeatState
 			if (curCategory != 'main')
 				loadSubgroup('main');
 			else
-				Main.switchState(this, new MainMenuState());
+			{
+				if(isPlaying)
+					Main.switchState(this, new PlayState());
+				else
+					Main.switchState(this, new MainMenuState());
+			}
 		}
 	}
 
@@ -594,7 +602,11 @@ class OptionsMenuState extends MusicBeatState
 			//lockedMovement = true;
 			//FlxFlicker.flicker(activeSubgroup.members[curSelection], 0.5, 0.06 * 2, true, false, function(flick:FlxFlicker)
 			//{
-				Main.switchState(this, new MainMenuState());
+				//Main.switchState(this, new MainMenuState());
+				if(isPlaying)
+					Main.switchState(this, new PlayState());
+				else
+					Main.switchState(this, new MainMenuState());
 				//lockedMovement = false;
 			//});
 		}

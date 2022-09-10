@@ -21,18 +21,20 @@ using StringTools;
 class StoryMenuState extends MusicBeatState
 {
 	var scoreText:FlxText;
-	var curDifficulty:Int = 1;
+	var curDifficulty:Int = 0;
 
-	public static var weekUnlocked:Array<Bool> = [true, true, true, true, true, true, true];
+	public static var weekUnlocked:Array<Bool> = [true];
 
 	var weekCharacters:Array<Dynamic> = [
-		['', 'bf', 'gf'],
+		['yunglixo', 'bf', 'gf']
+		/*
 		['dad', 'bf', 'gf'],
 		['spooky', 'bf', 'gf'],
 		['pico', 'bf', 'gf'],
 		['mom', 'bf', 'gf'],
 		['parents-christmas', 'bf', 'gf'],
 		['senpai', 'bf', 'gf']
+		*/
 	];
 
 	var txtWeekTitle:FlxText;
@@ -50,6 +52,8 @@ class StoryMenuState extends MusicBeatState
 	var sprDifficulty:FlxSprite;
 	var leftArrow:FlxSprite;
 	var rightArrow:FlxSprite;
+	
+	var elapsedtime:Float = 0;
 
 	override function create()
 	{
@@ -129,10 +133,10 @@ class StoryMenuState extends MusicBeatState
 				case 'dad':
 					weekCharacterThing.setGraphicSize(Std.int(weekCharacterThing.width * 0.5));
 					weekCharacterThing.updateHitbox();
-				case 'bf':
+				case 'bf' | 'reshaped-bf':
 					weekCharacterThing.setGraphicSize(Std.int(weekCharacterThing.width * 0.9));
 					weekCharacterThing.updateHitbox();
-					weekCharacterThing.x -= 80;
+					weekCharacterThing.x -= (weekCharacterThing.character == 'bf') ? 80 : 40;
 				case 'gf':
 					weekCharacterThing.setGraphicSize(Std.int(weekCharacterThing.width * 0.5));
 					weekCharacterThing.updateHitbox();
@@ -162,7 +166,7 @@ class StoryMenuState extends MusicBeatState
 		sprDifficulty.frames = ui_tex;
 		for (i in CoolUtil.difficultyArray)
 			sprDifficulty.animation.addByPrefix(i.toLowerCase(), i.toUpperCase());
-		sprDifficulty.animation.play('easy');
+		sprDifficulty.animation.play('normal');
 		changeDifficulty();
 
 		difficultySelectors.add(sprDifficulty);
@@ -248,6 +252,9 @@ class StoryMenuState extends MusicBeatState
 			movedBack = true;
 			Main.switchState(this, new MainMenuState());
 		}
+		
+		elapsedtime += (elapsed * Math.PI);
+		grpWeekCharacters.members[0].offset.y = (Math.sin(elapsedtime)) * 20;
 
 		super.update(elapsed);
 	}
@@ -265,7 +272,15 @@ class StoryMenuState extends MusicBeatState
 				FlxG.sound.play(Paths.sound('confirmMenu'));
 
 				grpWeekText.members[curWeek].startFlashing();
-				grpWeekCharacters.members[1].createCharacter('bfConfirm');
+				switch(curDifficulty)
+				{
+					case 1:
+						grpWeekCharacters.members[1].createCharacter('reshaped-bfConfirm');
+						grpWeekCharacters.members[1].offset.y -= 5;
+					case 0:
+						grpWeekCharacters.members[1].createCharacter('bfConfirm');
+						grpWeekCharacters.members[1].offset.y += 5;
+				}
 				stopspamming = true;
 			}
 
@@ -304,17 +319,24 @@ class StoryMenuState extends MusicBeatState
 		switch (curDifficulty)
 		{
 			case 0:
-				sprDifficulty.offset.x = 20;
-			case 1:
 				sprDifficulty.offset.x = 70;
-			case 2:
-				sprDifficulty.offset.x = 20;
+				sprDifficulty.offset.y = 0;
+				grpWeekCharacters.members[1].createCharacter('bf');
+				grpWeekCharacters.members[1].offset.y = 10;
+				
+			default:
+				sprDifficulty.scale.x = 0.9; // squish
+				sprDifficulty.updateHitbox();
+				sprDifficulty.offset.y = 8;
+				sprDifficulty.offset.x = 93; // 100 é mt pra esquerda
+				grpWeekCharacters.members[1].createCharacter('reshaped-bf');
+				grpWeekCharacters.members[1].offset.y = 26;
 		}
 
 		sprDifficulty.alpha = 0;
 
 		// USING THESE WEIRD VALUES SO THAT IT DOESNT FLOAT UP
-		sprDifficulty.y = leftArrow.y - 15;
+		sprDifficulty.y = leftArrow.y - FlxG.random.int(15,-15);
 		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
 
 		FlxTween.tween(sprDifficulty, {y: leftArrow.y + 15, alpha: 1}, 0.07);

@@ -123,6 +123,7 @@ class FreeplayState extends MusicBeatState
 			songText.isMenuItem = true;
 			songText.targetY = i;
 			grpSongs.add(songText);
+			if(songText.width > FlxG.width) songText.width = FlxG.width - 20;
 
 			var icon:HealthIcon = new HealthIcon(songs[i].songCharacter);
 			icon.sprTracker = songText;
@@ -344,6 +345,7 @@ class FreeplayState extends MusicBeatState
 			item.targetY = bullShit - curSelected;
 			bullShit++;
 
+			/*
 			item.alpha = 0.6;
 			// item.setGraphicSize(Std.int(item.width * 0.8));
 
@@ -351,6 +353,14 @@ class FreeplayState extends MusicBeatState
 			{
 				item.alpha = 1;
 				// item.setGraphicSize(Std.int(item.width));
+			}*/
+			item.alpha = 0.6;
+			item.color = FlxColor.fromRGB(155,155,155);
+
+			if (item.targetY == 0)
+			{
+				item.alpha = 1;
+				item.color = FlxColor.WHITE;
 			}
 		}
 		//

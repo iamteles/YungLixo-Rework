@@ -1,0 +1,15 @@
+{
+    "name": "gemaplys",
+    "expressions": {
+        "normal left": "normal talk left",
+        "normal right": "normal talk right",
+		"bored left": "bored talk left",
+        "bored right": "bored talk right",
+		"mad": "normal talk left"
+    },
+    "position": [120, 100],
+	"flipX": false,
+
+    "sounds": ["Vito_3"],
+	"soundChance": 100
+}

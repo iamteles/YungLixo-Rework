@@ -1,0 +1,47 @@
+{
+    "box": "speech_bubble_talking",
+    "boxState": "normal",
+    "dialogue": [
+		{
+            "portrait": "gemafunkin",
+			"expression": "normal",
+            "text": "MT NOOBKKKKKKKKK",
+			"boxState": "yell"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "bored right",
+			"boxState": "normal",
+            "text": "Ta bom o vagabundo...."
+        },
+		{
+            "text": "Tu quer um desafio neh?"
+        },
+		{
+			"portrait": "yunglixo",
+			"expression": "dark",
+            "text": "Porque agora tu vai ter que enfrentar..."
+        },
+		{
+			"expression": "evil",
+            "text": "O FODENDO Yung Lixo..."
+        },
+		{
+            "portrait": "gemafunkin",
+			"expression": "normal",
+            "text": "SUA MAE EH MINHAKKKKKKKKK",
+			"boxState": "yell"
+        },
+		{
+            "portrait": "yunglixo",
+			"expression": "angry",
+			"boxState": "yell",
+            "text": "É OQUE?"
+        },
+		{
+            "portrait": "gemafunkin",
+			"expression": "normal",
+            "text": "FOI OQ VC OUVIU"
+        }
+	]
+}

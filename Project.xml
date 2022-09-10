@@ -46,10 +46,10 @@
 	<assets path="assets" />
 	<assets path="assets/songs"/>
 	<assets path="assets/music" preload="true"/>
+	<assets path="assets/images/noteskins/mines/default/base" preload="true"/>
 	<assets path="FE-CrashDialog.exe" type="template" if="windows release" />
 
 	<!--<assets path="mods" />-->
-
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxedev set='webgl' if="html5" />

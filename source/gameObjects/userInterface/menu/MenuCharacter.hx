@@ -13,6 +13,12 @@ class MenuCharacter extends FlxSprite
 		'bf' => ["BF idle dance white", 24, true, 0.9, 100, 100],
 		'bfConfirm' => ['BF HEY!!', 24, false, 0.9, 100, 100],
 		'gf' => ["GF Dancing Beat WHITE", 24, true, 1, 100, 100],
+		
+		'yunglixo' => ["yunglixo", 24, true, 0.8, -150, 50],
+		
+		'reshaped-bf' => ["bf reshaped idle", 24, true, 0.9, 100, 75],
+		'reshaped-bfConfirm' => ['bf reshaped hey', 24, false, 0.9, 100, 75 + 10],
+		
 		'dad' => ["Dad idle dance BLACK LINE", 24, true, 1 * 0.5, 0, 0],
 		'spooky' => ["spooky dance idle BLACK LINES", 24, true, 1 * 0.5, 0, 90],
 		'pico' => ["Pico Idle Dance", 24, true, 1 * 0.5, 0, 100],

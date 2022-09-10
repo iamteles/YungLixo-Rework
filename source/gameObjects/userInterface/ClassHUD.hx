@@ -29,12 +29,12 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 	// set up variables and stuff here
 	var scoreBar:FlxText;
 	var scoreLast:Float = -1;
-	
-	var timeText:FlxText;
+
+	public static var timeText:FlxText;
 	var songPercent:Float = 0;
-	
+
 	var minerHealthText:FlxText;
-	
+
 	public static var lyricsText:FlxText;
 	public var botplayText:FlxText;
 
@@ -60,7 +60,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 	public static var songAuthor:FlxSprite;
 
 	var is3Player:Bool = false;
-	
+
 	var elapsedtime:Float = 0;
 
 	// eep
@@ -69,14 +69,14 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		// call the initializations and stuffs
 		super();
 
-		
+
 		// le healthbar setup
 		var barY = FlxG.height * 0.875;
 		if (Init.trueSettings.get('Downscroll'))
 			barY = 64;
 
 		var bfColor:Array<Int> = [49,176,209];
-		
+
 		var color:Array<Int>;
 		var colorTable = [
 			"gemaplys" => [0, 165, 186],
@@ -84,13 +84,13 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			"vito"	   => [33, 32, 40],
 			"mc-vv"	   => [103,41,33],
 			"mugen"    => [44, 44, 44], // meio inutil mas fds
-			
+
 			"vindisio" => [197, 125, 88],
 			"mamaco"   => [135, 106, 91],
-			
+
 			"chicken"   => [255, 255, 255],
 			"mineirinho"=> [242, 189, 74],
-			
+
 			"bf"	   => bfColor,
 			"bf-psych" => bfColor,
 			"bf-pixel" => bfColor,
@@ -103,11 +103,11 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			bg.antialiasing = true;
 			add(bg);
 		}
-		
+
 		color = colorTable[SONG.player1];
 		if (color != null)
 			healthBarFilledColor.setRGB(color[0], color[1], color[2], 255);
-		
+
 		color = colorTable[SONG.player2];
 		if (color != null)
 			healthBarEmptyColor.setRGB(color[0], color[1], color[2], 255);
@@ -120,12 +120,12 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			dom.y = 720 - dom.height - 10;
 			dom.visible = false;
 			add(dom);
-			
+
 			var heart:FlxSprite = new FlxSprite(20, 0).loadGraphic(Paths.image('backgrounds/miner/heart'));
 			heart.y = (Init.trueSettings.get('Downscroll')) ? heart.height + 32 + 10 : FlxG.height - heart.height - 32 - 10;
 			heart.scrollFactor.set();
 			add(heart);
-			
+
 			minerHealthText = new FlxText(100, 600, 0, "50");
 			minerHealthText.setFormat(Paths.font('miner.ttf'), 48, FlxColor.WHITE);
 			minerHealthText.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
@@ -143,7 +143,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8));
 		healthBar.scrollFactor.set();
 		//healthBar.alpha = 0.6;
-		
+
 		if(!Init.trueSettings.get('Colored Healthbars')
 		|| PlayState.SONG.song.toLowerCase() == "collision"
 		|| PlayState.SONG.song.toLowerCase() == "da-vinci-funkin")
@@ -151,29 +151,31 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			healthBarEmptyColor = 0xFFFF0000;
 			healthBarFilledColor = 0xFF66FF33;
 		}
-		
+
 		if(Init.trueSettings.get('Gradient Healthbars'))
 			healthBar.createGradientBar([healthBarFilledColor, healthBarEmptyColor, healthBarEmptyColor], [healthBarFilledColor, healthBarFilledColor, healthBarEmptyColor]);
 		else
 			healthBar.createFilledBar(healthBarEmptyColor, healthBarFilledColor);
 		// healthBar
 		add(healthBar);
-		
+
 		var healthBarOverlay:FlxSprite = new FlxSprite(0, barY).loadGraphic(Paths.image('UI/healthBarOverlay'));
 		healthBarOverlay.screenCenter(X);
 		healthBarOverlay.scrollFactor.set();
 		healthBarOverlay.blend = ADD;
 		healthBarOverlay.alpha = 0.3;
 		add(healthBarOverlay);
-		
+
 		timeText = new FlxText(0, 19, 400, "", 32);
-		timeText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeText.visible = !(cast(Init.trueSettings.get('Timer'), String) == 'None');
 		timeText.scrollFactor.set();
 		timeText.borderSize = 2;
+		timeText.alpha = 0;
 		add(timeText);
+		// downscroll 
 		timeText.y = 720 - timeText.height - 10;
 		if(Init.trueSettings.get('Downscroll')) timeText.y = timeText.height + 10;
-		timeText.visible = (Init.trueSettings.get('Show Timer'));
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -192,13 +194,13 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 				add(iconP1);
 				add(iconP2);
 				add(iconP3);
-				
+
 			case "collision":
 				var bg:FlxSprite = new FlxSprite(0, (!Init.trueSettings.get('Downscroll') ? 565 : 0)).loadGraphic(Paths.image('backgrounds/gema/vida-${PlayState.boyfriend.curCharacter}'));
 				bg.antialiasing = true;
 				add(bg);
 				is3Player = false;
-				
+
 			default:
 				add(iconP1);
 				add(iconP2);
@@ -242,14 +244,14 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			}
 		}
 		updateScoreText();
-		
+
 		lyricsText = new FlxText(FlxG.width / 2, Math.floor(healthBar.y + (Init.trueSettings.get('Downscroll') ? 100 : -100)), 0, "");
 		lyricsText.setFormat(Paths.font('vcr.ttf'), 36, FlxColor.WHITE);
 		lyricsText.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
 		lyricsText.antialiasing = true;
 		add(lyricsText);
-		
-		botplayText = new FlxText(0, Math.floor(healthBar.y + (Init.trueSettings.get('Downscroll') ? -35 : 35)), 0, "BOTPLAY");
+
+		botplayText = new FlxText(0, Math.floor(healthBar.y + 35), 0, "BOTPLAY");
 		botplayText.setFormat(Paths.font('splatter.otf'), 36, FlxColor.WHITE);
 		botplayText.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
 		botplayText.antialiasing = true;
@@ -267,13 +269,16 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 	override public function update(elapsed:Float)
 	{
 		elapsedtime += (elapsed * Math.PI);
-	
+
 		// pain, this is like the 7th attempt
 		healthBar.percent = (PlayState.health * 50);
 
 		var iconLerp = 0.85;
 		iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.initialWidth, iconP1.width, iconLerp)));
 		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.initialWidth, iconP2.width, iconLerp)));
+
+		iconP1.angle = Std.int(FlxMath.lerp(iconP1.initialAngle, iconP1.angle, iconLerp));
+		iconP2.angle = Std.int(FlxMath.lerp(iconP2.initialAngle, iconP2.angle, iconLerp));
 
 		iconP1.updateHitbox();
 		iconP2.updateHitbox();
@@ -292,12 +297,18 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			iconP3.scale.set(iconP2.scale.x, iconP2.scale.y);
 			iconP3.updateHitbox();
 
+			if(PlayState.SONG.song.toLowerCase() == 'killer-tibba') {
+				iconP3.offset.x = (Math.cos(elapsedtime / 2)) * 30;
+				iconP3.offset.y = (Math.sin(elapsedtime    )) * 10;
+			} else { // keylogger
+				iconP3.angle = iconP1.angle;
+			}
+
 			if (healthBar.percent > 80)
 				iconP3.animation.curAnim.curFrame = 1;
 			else
 				iconP3.animation.curAnim.curFrame = 0;
-			
-		} 
+		}
 
 		if (healthBar.percent < 20)
 			iconP1.animation.curAnim.curFrame = 1;
@@ -308,25 +319,24 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			iconP2.animation.curAnim.curFrame = 1;
 		else
 			iconP2.animation.curAnim.curFrame = 0;
-			
+
 		// funny red score bar
 		scoreBar.color = (healthBar.percent < 20) ? FlxColor.fromRGB(255,35,35) : FlxColor.WHITE;
-		
+
 		//botplay text
 		scoreBar.visible = !PlayState.botplay;
 		botplayText.visible = PlayState.botplay;
 		if(botplayText.visible) {
 			botplayText.alpha = 0.7 - Math.sin((elapsedtime * 180) / 90);
 		}
-		
+
 		if(minerHealthText != null && (PlayState.health * 50) <= 100)
 			minerHealthText.text = Std.string(Math.floor(PlayState.health * 50));
-			
+
 		updateTimeText();
 	}
 
 	private final divider:String = " • ";
-
 	public function updateScoreText()
 	{
 		var importSongScore = PlayState.songScore;
@@ -337,7 +347,11 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		var displayAccuracy:Bool = Init.trueSettings.get('Display Accuracy');
 		if (displayAccuracy)
 		{
-			scoreBar.text += divider + 'Accuracy: ' + Std.string(Math.floor(Timings.getAccuracy() * 100) / 100) + '%';
+			var accuracy:Float = Math.floor(Timings.getAccuracy() * 100) / 100;
+			if(accuracy <= 100)
+				scoreBar.text += divider + 'Accuracy: ' + Std.string(accuracy) + '%';
+			else
+				scoreBar.text += divider + 'Accuracy: ' + '100%';
 			scoreBar.text += divider + 'Combo Breaks: ' + Std.string(PlayState.misses);
 			//scoreBar.text += divider + 'Combos: ' + Std.string(PlayState.combo);
 			//scoreBar.text += divider + 'Rank: ' + Std.string(Timings.returnScoreRating().toUpperCase());
@@ -359,32 +373,50 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		PlayState.detailsSub = scoreBar.text;
 		PlayState.updateRPC(false);
 	}
-	
+
+	var isElapsed:Bool = false;
 	public function updateTimeText()
 	{
 		if(timeText.visible)
 		{
-			//timeText.x = Math.floor((FlxG.width / 2) - (timeText.width / 2));
-			//timeText.x = timeText.width + 20;
-			timeText.x = 20;
-		
+			//timeText.x = 20;
+			timeText.x = (FlxG.width - timeText.width) - 20;
+
 			var curTime:Float = Conductor.songPosition;
 			if(curTime < 0) curTime = 0;
 			songPercent = (curTime / PlayState.songLength);
 
 			var songCalc:Float = (PlayState.songLength - curTime);
+			if(cast(Init.trueSettings.get('Timer'), String) == 'Time Elapsed') {
+				songCalc = curTime;
+				isElapsed = true;
+			}
 
 			var secondsTotal:Int = Math.floor(songCalc / 1000);
 			if(secondsTotal < 0) secondsTotal = 0;
 
-			timeText.text = FlxStringUtil.formatTime(secondsTotal, false);
+			if(isElapsed)
+			{
+				var secondsTotal2:Int = Math.floor(PlayState.songLength / 1000);
+				if(secondsTotal2 < 0) secondsTotal2 = 0;
+
+				timeText.text = FlxStringUtil.formatTime(secondsTotal, false) + divider + FlxStringUtil.formatTime(secondsTotal2, false);
+			}
+			else
+				timeText.text = FlxStringUtil.formatTime(secondsTotal, false);
 		}
 	}
 
+	var daSpin:Float = 25;
 	public function beatHit()
 	{
 		if (!Init.trueSettings.get('Reduced Movements'))
 		{
+			// funny spin
+			daSpin = -daSpin;
+			iconP1.angle = -daSpin;
+			iconP2.angle = daSpin;
+
 			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
 			iconP2.setGraphicSize(Std.int(iconP2.width + 30));
 

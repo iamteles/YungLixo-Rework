@@ -51,7 +51,7 @@ class Main extends Sprite
 
 	/**
 		Small bit of documentation here, gameweeks are what control everything in my engine
-		this system will eventually be overhauled in favor of using actual week folders within the 
+		this system will eventually be overhauled in favor of using actual week folders within the
 		assets.
 		Enough of that, here's how it works
 		[ [songs to use], [characters in songs], [color of week], name of week ]

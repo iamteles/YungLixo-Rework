@@ -11,10 +11,12 @@ import meta.state.*;
 import meta.state.charting.*;
 import openfl.filters.BitmapFilter;
 import openfl.filters.ColorMatrixFilter;
+import lime.app.Application;
+import flixel.system.debug.Window;
 
 using StringTools;
 
-/** 
+/**
 	Enumerator for settingtypes
 **/
 enum SettingTypes
@@ -153,7 +155,7 @@ class Init extends FlxState
 		],
 		"Opaque Holds" => [false, Checkmark, "Huh, why isnt the trail cut off?", NOT_FORCED],
 		'Ghost Tapping' => [
-			false,
+			true,
 			Checkmark,
 			"Enables Ghost Tapping, allowing you to press inputs without missing.",
 			NOT_FORCED
@@ -166,7 +168,7 @@ class Init extends FlxState
 			FORCED
 		],
 		'Skip Text' => [
-			'freeplay only',
+			'never',
 			Selector,
 			'Decides whether to skip cutscenes and dialogue in gameplay. May be always, only in freeplay, or never.',
 			NOT_FORCED,
@@ -196,10 +198,17 @@ class Init extends FlxState
 			'Whether you want to have healthbars with gradients.',
 			NOT_FORCED
 		],
-		'Show Timer' => [
+		'Timer' => [
+			'Time Elapsed',
+			Selector,
+			'Shows how much time theres left of the Song.',
+			NOT_FORCED,
+			['None', 'Time Left', 'Time Elapsed']
+		],
+		'Flashing Lights' => [
 			true,
 			Checkmark,
-			'Shows how much time theres left of the Song',
+			'Enables flashing Lights, disable this if you are sensible to them',
 			NOT_FORCED
 		],
 	];
@@ -281,10 +290,13 @@ class Init extends FlxState
 
 	private function gotoTitleScreen()
 	{
+		/*
 		if (trueSettings.get("Custom Titlescreen"))
 			Main.switchState(this, new CustomTitlescreen());
 		else
 			Main.switchState(this, new TitleState());
+		*/
+		Main.switchState(this, new FlashingState());
 	}
 
 	public static function loadSettings():Void

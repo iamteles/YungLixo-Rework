@@ -36,12 +36,16 @@ class GameOverSubstate extends MusicBeatSubState
 				daBf = daBoyfriendType;
 			case 'bf-pixel':
 				daBf = 'bf-pixel-dead';
-				stageSuffix = '-pixel';
+				//stageSuffix = '-pixel';
 			case 'gemafunkin-player':
 				daBf = 'gemafunkin-player';
 			default:
 				daBf = 'bf-dead';
 		}
+		if(daBoyfriendType == 'bf-pixel')
+			stageSuffix = '-pixel';
+		else
+			stageSuffix = '';
 
 		super();
 
@@ -56,7 +60,7 @@ class GameOverSubstate extends MusicBeatSubState
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x + 20, bf.getGraphicMidpoint().y - 40, 1, 1);
 		add(camFollow);
 
-		Conductor.changeBPM(100);
+		Conductor.changeBPM(120); //100
 
 		// FlxG.camera.followLerp = 1;
 		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
@@ -75,7 +79,12 @@ class GameOverSubstate extends MusicBeatSubState
 		}
 		else
 		{
-			Application.current.window.alert("Skill Issue :/", "Game Over");
+			var daWindow = Application.current.window;
+			//Application.current.window.fullscreen = false;
+			//Application.current.window.alert("Skill Issue :/", "Game Over");
+			daWindow.fullscreen = false;
+			daWindow.alert("Skill Issue :/", "Game Over");
+			
 			
 			bf.alpha = 0.0001; // nobody likes you
 			
@@ -115,8 +124,9 @@ class GameOverSubstate extends MusicBeatSubState
 		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
 			FlxG.camera.follow(camFollow, LOCKON, 0.01);
 
-		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
-			FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
+		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished && !pintowsDeath)
+			FlxG.sound.playMusic(Paths.music('gameOver'));
+			//FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
 
 		// if (FlxG.sound.music.playing)
 		//	Conductor.songPosition = FlxG.sound.music.time;
@@ -136,17 +146,18 @@ class GameOverSubstate extends MusicBeatSubState
 		if (!isEnding)
 		{
 			if(!pintowsDeath) {
-				FlxG.camera.flash(FlxColor.WHITE, 1, null, true);
-				FlxTween.tween(FlxG.camera, {zoom: 1}, 0.65, {ease: FlxEase.expoOut});
+				FlxG.camera.flash(FlxColor.WHITE, 1.2, null, true);
+				FlxTween.tween(FlxG.camera, {zoom: 1}, 1, {ease: FlxEase.expoOut});
 			}
 		
 			isEnding = true;
 			bf.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
-			FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix));
-			new FlxTimer().start(0.7, function(tmr:FlxTimer)
+			//FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix));
+			FlxG.sound.play(Paths.music('gameOverEnd'));
+			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{
-				FlxG.camera.fade(FlxColor.BLACK, 1, false, function()
+				FlxG.camera.fade(FlxColor.BLACK, 1.42, false, function()
 				{
 					Main.switchState(this, new PlayState());
 				});

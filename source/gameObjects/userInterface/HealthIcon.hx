@@ -13,6 +13,7 @@ class HealthIcon extends FlxSprite
 	public var sprTracker:FlxSprite;
 	public var initialWidth:Float = 0;
 	public var initialHeight:Float = 0;
+	public var initialAngle:Float = 0;
 
 	public function new(char:String = 'bf', isPlayer:Bool = false)
 	{

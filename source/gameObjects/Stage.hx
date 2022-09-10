@@ -264,7 +264,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					pessoalTras.scrollFactor.set(1,1);
 					add(pessoalTras);
 				
-					pessoalFrente = new FlxSprite(-250, 1060);
+					pessoalFrente = new FlxSprite(-320, 1060);
 					pessoalFrente.frames = Paths.getSparrowAtlas('backgrounds/${curStage}/bgCharacters');
 					pessoalFrente.animation.addByPrefix('idle', "pessoal da frente", 24, false);
 					pessoalFrente.setGraphicSize(Std.int(pessoalFrente.width * 2));

@@ -1,0 +1,10 @@
+{
+    "name": "bf-reshaped",
+    "expressions": {
+        "normal": "Normal Talk"
+    },
+    "position": "right",
+
+    "sounds": ["BF_1"],
+	"soundChance": 100
+}
