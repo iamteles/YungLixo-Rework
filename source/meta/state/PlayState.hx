@@ -51,6 +51,7 @@ import meta.data.dependency.Discord;
 
 class PlayState extends MusicBeatState
 {
+
 	public static var startTimer:FlxTimer;
 
 	public static var curStage:String = '';
@@ -180,6 +181,7 @@ class PlayState extends MusicBeatState
 
 	var cameraTibba:Bool = false;
 	var thirdExists:Bool = false;
+	var telefono:FlxSprite;
 
 	// at the beginning of the playstate
 	override public function create()
@@ -306,6 +308,7 @@ class PlayState extends MusicBeatState
 			thirdExists = true;
 		}
 
+
 		// add characters
 		switch(SONG.song.toLowerCase())
 		{
@@ -313,11 +316,30 @@ class PlayState extends MusicBeatState
 				add(gf);
 				add(boyfriend);
 				add(dadOpponent);
-
+		
 			default:
 				add(gf);
 				add(dadOpponent);
 				add(boyfriend);
+		}
+
+		if(SONG.song.toLowerCase() == "jokes" && storyDifficulty == 1)
+		{
+			tibba = new Character().setCharacter(266, 464, "presidente");
+			tibba.alpha = 0.0001;
+			add(tibba);
+			tibba.dance();
+			thirdExists = true;
+
+			telefono = new FlxSprite(-230, 500); //425
+			telefono.frames = Paths.getSparrowAtlas('backgrounds/farm/telefono');
+			telefono.animation.addByPrefix('idle', "ringing 9", 24, false);
+			telefono.animation.addByPrefix('ringing', "ringing", 24, false);
+			telefono.animation.play('idle');
+			telefono.scale.set(2,2);
+			add(telefono);
+
+			FlxTween.tween(telefono, {y: 530}, 1, {ease: FlxEase.linear, type:FlxTweenType.PINGPONG});
 		}
 
 		add(stageBuild.foreground);
@@ -329,6 +351,9 @@ class PlayState extends MusicBeatState
 
 		// set song position before beginning
 		Conductor.songPosition = -(Conductor.crochet * 4);
+
+
+
 
 		// EVERYTHING SHOULD GO UNDER THIS, IF YOU PLAN ON SPAWNING SOMETHING LATER ADD IT TO STAGEBUILD OR FOREGROUND
 		// darken everything but the arrows and ui via a flxsprite
@@ -821,7 +846,7 @@ class PlayState extends MusicBeatState
 
 					switch(SONG.song.toLowerCase())
 					{
-						case 'jokes':
+						case "jokes":
 							defaultCamZoom = 1;
 					}
 				}
@@ -832,8 +857,17 @@ class PlayState extends MusicBeatState
 					var getCenterX = char.getMidpoint().x - 200;
 					var getCenterY = char.getMidpoint().y - 250;
 
+					switch(SONG.song.toLowerCase())
+					{
+						case "jokes":
+							defaultCamZoom = 1;
+							getCenterY -= 150;
+					}
+
 					camFollow.setPosition(getCenterX + camDisplaceX + char.characterData.camOffsetX,
 						getCenterY + camDisplaceY + char.characterData.camOffsetY);
+
+
 				}
 				else
 				{
@@ -860,7 +894,7 @@ class PlayState extends MusicBeatState
 
 					switch(SONG.song.toLowerCase())
 					{
-						case 'jokes':
+						case "jokes":
 							defaultCamZoom = 0.6; // 0.8
 					}
 				}
@@ -1816,7 +1850,34 @@ class PlayState extends MusicBeatState
 			resyncVocals();
 		//*/
 
-		if(SONG.song.toLowerCase() == "killer-tibba")
+		if(SONG.song.toLowerCase() == "jokes" && storyDifficulty == 1)
+		{
+			switch(curStep)
+			{
+				case 992: // ring 1
+					FlxTween.tween(telefono, {x: 425}, 1, {ease: FlxEase.expoOut, type:FlxTweenType.ONESHOT});
+					telefono.animation.play('ringing');
+				case 1000: //ring 2
+					telefono.animation.play('ringing');
+				case 1008: //ring 3
+					telefono.animation.play('ringing');
+				case 1016: //ring 4
+					telefono.animation.play('ringing');
+				case 1040:
+					FlxG.camera.flash(FlxColor.WHITE, 0.5);
+					tibba.alpha = 1;
+					Stage.presidenteCoisa.alpha = 1;
+					cameraTibba = true;
+				case 2336: // gone
+					FlxTween.tween(tibba, {alpha: 0}, 1, {ease: FlxEase.linear});
+					FlxTween.tween(telefono, {alpha: 0}, 1, {ease: FlxEase.linear});
+					FlxTween.tween(Stage.presidenteCoisa, {alpha: 0}, 1, {ease: FlxEase.linear});
+				case 2352:
+					FlxG.camera.flash(FlxColor.WHITE, 1.4);
+					cameraTibba = false;
+			}
+		}
+		else if(SONG.song.toLowerCase() == "killer-tibba")
 		{
 			if(storyDifficulty == 0) // normal
 			{
@@ -2209,6 +2270,9 @@ class PlayState extends MusicBeatState
 		{
 			if(SONG.song.toLowerCase() == 'polygons')
 				Main.switchState(this, new GoToCreditsState());
+			else if(SONG.song.toLowerCase() == 'kkkri')
+				FlxG.save.data.daiane = true;
+				Main.switchState(this, new FreeplayState());
 			else
 				Main.switchState(this, new FreeplayState());
 		}

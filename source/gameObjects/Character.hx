@@ -566,7 +566,35 @@ class Character extends FNFSprite
 
 				characterData.camOffsetX = -135;
 				characterData.camOffsetY = -30;
+			case 'presidente':
+				tex = Paths.getSparrowAtlas('characters/presidente');
+				frames = tex;
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up', 24);
+				animation.addByPrefix('singRIGHT', 'right', 24);
+				animation.addByPrefix('singDOWN', 'down', 24);
+				animation.addByPrefix('singLEFT', 'left', 24);
+				
+				setGraphicSize(Std.int(width * 2.2));
+				updateHitbox();
+				antialiasing = false;
 
+				playAnim('idle');
+
+			case 'daianedossantos':
+				tex = Paths.getSparrowAtlas('characters/daianedosmantos');
+				frames = tex;
+				animation.addByPrefix('idle', 'idle dos santos', 24, false);
+				animation.addByPrefix('singUP', 'up dos santos', 24);
+				animation.addByPrefix('singRIGHT', 'left', 24);
+				animation.addByPrefix('singDOWN', 'down dos santos', 24);
+				animation.addByPrefix('singLEFT', 'right dos santos', 24);
+				updateHitbox();
+
+				//characterData.offsetY = 930;
+				//characterData.offsetX = -90;
+
+				playAnim('idle');
 			default:
 				// set up animations if they aren't already
 

@@ -5,4 +5,5 @@
 	<SubTexture name="social0000" x="3" y="3" width="434" height="281"/>
 	<SubTexture name="social0001" x="440" y="3" width="434" height="281"/>
 	<SubTexture name="social0002" x="877" y="3" width="434" height="281"/>
+	<SubTexture name="social0003" x="0" y="0" width="0" height="0"/>
 </TextureAtlas>

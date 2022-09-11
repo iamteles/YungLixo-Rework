@@ -101,6 +101,16 @@ class Main extends Sprite
 		]
 	];
 
+	public static var daianeDosSantos:Array<Dynamic> = [
+		//[['Tutorial'], ['gf'], [FlxColor.fromRGB(129, 100, 223)], 'Funky Beginnings'],
+		[
+			['kkkri'],
+			['daianedossantos'],
+			[FlxColor.fromRGB(255, 255, 255)],
+			'daian'
+		]
+	];
+
 	// most of these variables are just from the base game!
 	// be sure to mess around with these if you'd like.
 

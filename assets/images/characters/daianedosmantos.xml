@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="daianedosmantos.png">
+	<!-- Created with Adobe Animate version 21.0.0.35450 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="down dos santos0000" x="0" y="0" width="630" height="418" frameX="0" frameY="-87" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0001" x="0" y="0" width="630" height="418" frameX="0" frameY="-87" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0002" x="630" y="0" width="562" height="483" frameX="-34" frameY="-22" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0003" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0004" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0005" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0006" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0007" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0008" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0009" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0010" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0011" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0012" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0013" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="down dos santos0014" x="1192" y="0" width="512" height="505" frameX="-59" frameY="0" frameWidth="630" frameHeight="505"/>
+	<SubTexture name="idle dos santos0000" x="1704" y="0" width="429" height="433" frameX="0" frameY="-16" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0001" x="1704" y="0" width="429" height="433" frameX="0" frameY="-16" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0002" x="2133" y="0" width="462" height="460" frameX="0" frameY="-16" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0003" x="2133" y="0" width="462" height="460" frameX="0" frameY="-16" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0004" x="2595" y="0" width="511" height="466" frameX="-7" frameY="-8" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0005" x="2595" y="0" width="511" height="466" frameX="-7" frameY="-8" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0006" x="3106" y="0" width="453" height="475" frameX="-56" frameY="0" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0007" x="3106" y="0" width="453" height="475" frameX="-56" frameY="0" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0008" x="3559" y="0" width="472" height="442" frameX="-49" frameY="-37" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0009" x="3559" y="0" width="472" height="442" frameX="-49" frameY="-37" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0010" x="1704" y="0" width="429" height="433" frameX="0" frameY="-16" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0011" x="1704" y="0" width="429" height="433" frameX="0" frameY="-16" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0012" x="2133" y="0" width="462" height="460" frameX="0" frameY="-16" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0013" x="2133" y="0" width="462" height="460" frameX="0" frameY="-16" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0014" x="2595" y="0" width="511" height="466" frameX="-7" frameY="-8" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0015" x="2595" y="0" width="511" height="466" frameX="-7" frameY="-8" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0016" x="3106" y="0" width="453" height="475" frameX="-56" frameY="0" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0017" x="3106" y="0" width="453" height="475" frameX="-56" frameY="0" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0018" x="3559" y="0" width="472" height="442" frameX="-49" frameY="-37" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="idle dos santos0019" x="3559" y="0" width="472" height="442" frameX="-49" frameY="-37" frameWidth="521" frameHeight="479"/>
+	<SubTexture name="left dos santos0000" x="0" y="505" width="538" height="457" frameX="0" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0001" x="0" y="505" width="538" height="457" frameX="0" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0002" x="538" y="505" width="479" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0003" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0004" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0005" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0006" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0007" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0008" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0009" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0010" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0011" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0012" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0013" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="left dos santos0014" x="1017" y="505" width="489" height="457" frameX="-59" frameY="0" frameWidth="548" frameHeight="457"/>
+	<SubTexture name="right dos santos0000" x="1506" y="505" width="613" height="511"/>
+	<SubTexture name="right dos santos0001" x="1506" y="505" width="613" height="511"/>
+	<SubTexture name="right dos santos0002" x="2119" y="505" width="541" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0003" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0004" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0005" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0006" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0007" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0008" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0009" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0010" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0011" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0012" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0013" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="right dos santos0014" x="2660" y="505" width="526" height="511" frameX="0" frameY="0" frameWidth="613" frameHeight="511"/>
+	<SubTexture name="up dos santos0000" x="3186" y="505" width="469" height="521" frameX="-34" frameY="0" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0001" x="3186" y="505" width="469" height="521" frameX="-34" frameY="0" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0002" x="0" y="1026" width="509" height="485" frameX="-14" frameY="-36" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0003" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0004" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0005" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0006" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0007" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0008" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0009" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0010" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0011" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0012" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0013" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+	<SubTexture name="up dos santos0014" x="509" y="1026" width="536" height="475" frameX="0" frameY="-46" frameWidth="536" frameHeight="521"/>
+</TextureAtlas>

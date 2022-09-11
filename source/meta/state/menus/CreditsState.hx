@@ -64,21 +64,21 @@ class CreditsState extends MusicBeatState
 		daTeam = [ // name, icon, color, description, link, 0 = twitter  1 = youtube  2 = discord (sla)
 		["Antony",		 'antony', 		FlxColor.fromRGB(233,0,0), 		'Diretor, Artista de Background, Escritor dos diálogos\n"Sim um furry fez esse mod, tenha medo"',	"https://twitter.com/Rizzatti321", 0],
 		["JulianoBeta",	 'juliano', 	FlxColor.fromRGB(13,33,70), 	'Diretor, Compositor e Charter\n"${julianoFrase}"', 												"https://www.youtube.com/channel/UCRDeljMur0lEz1nXhrFKE9A", 1],
-		//["Baicon",		 'baicon', 		FlxColor.fromRGB(64,128,255), 	'Co-Diretor e Artista/Animador\n(Fez o Tibba e o Macaco do Roblox)\n"ZAPEEEE, ZAPEEEEEE"',			"https://twitter.com/Baiconzito_", 0],
-		["Yupam Uzuink", 'yupam', 		FlxColor.fromRGB(0,208,255), 	'Co-Diretor, Compositor, Artista de Card\n"AGOOOBAGOOBAGOOOOBAGOBAGOOOOOOOOBAAAAAA"', 				"https://twitter.com/yupfoda", 0],
 		["teles",		 'teles', 		FlxColor.fromRGB(255,129,60), 	'Co-Diretora, Coder, Artista/Animadora e Compositora\n"IT KEEPS HAPPENING"',						"https://twitter.com/itzteles_aa", 0],
+		["Yupam Uzuink", 'yupam', 		FlxColor.fromRGB(0,208,255), 	'Co-Diretor, Compositor, Artista de Card\n"AGOOOBAGOOBAGOOOOBAGOBAGOOOOOOOOBAAAAAA"', 				"https://twitter.com/yupfoda", 0],
 		// coders
 		["DiogoTV",		 'diogo', 		FlxColor.fromRGB(225,228,240), 	'Coder e Artista/Animador\n(Sprites do Gemafunkin, Icon do Tibba e Portraits dos diálogos)\n"Daiane dos Santos"',"https://twitter.com/DiogoTVV", 0],
 		// artistas
 		["Amanda Burra", 'amanda', 		FlxColor.fromRGB(144,67,238), 	'Artista/Animadora\n"${amandaImage}"',																"https://twitter.com/Burra_Amanda", 0],
-		["Aqua",		 'aqua', 		FlxColor.fromRGB(221,223,245), 	'Artista/Animador\n(Fez o Aviso na Collision)\n"danilo"',											"https://twitter.com/AquaStrikr_", 0],
+		["Aqua",		 'aqua', 		FlxColor.fromRGB(221,223,245), 	'Artista/Animador\n(Aviso na Collision)\n"danilo"',											"https://twitter.com/AquaStrikr_", 0],
+		["Baicon",		 'baicon', 		FlxColor.fromRGB(64,128,255), 	'Artista/Animador\n(Macaco do Roblox)\n"ZAPEEEE, ZAPEEEEEE"',			"https://twitter.com/Baiconzito_", 0],
 		["Jacc",		 'Jacc', 		FlxColor.fromRGB(145,9,210), 	'Artista/Animador\n"não acredito que ele fez cover do gemamugen da coliseu kkkkkkkkkk"',			"https://twitter.com/JackGD9", 0],
-		["Johnatan o Animado",'john',	FlxColor.fromRGB(111,164,254), 	'Artista/Animador\n(Fez o sprite do MC VV e do Mineirinho)\n"O mineirinho fnf foi a melhor coisa que eu já fiz na minha vida inteira"',"https://www.youtube.com/channel/UC18MTVMygNjI2mJ2yRCDXAg", 1],
-		["Julitolito",	 'julitolito', 	FlxColor.fromRGB(0,204,153), 	'Artista/Animador\n"olha o garoto aranha"',															"https://twitter.com/oJulitolito", 0],
-		["Lukii",		 'lukii', 		FlxColor.fromRGB(148,46,33), 	'Artista/Animador\n(Cards, Macaco do Roblox)\n"insert the funny here"', 														"https://www.youtube.com/channel/UCp9IuIceEjvYoP7_i8xOZCg", 1],
+		["Johnatan o Animado",'john',	FlxColor.fromRGB(111,164,254), 	'Artista/Animador\n(MC VV, Mineirinho)\n"O mineirinho fnf foi a melhor coisa que eu já fiz na minha vida inteira"',"https://www.youtube.com/channel/UC18MTVMygNjI2mJ2yRCDXAg", 1],
+		["Julitolito",	 'julitolito', 	FlxColor.fromRGB(0,204,153), 	'Artista/Animador\n"até os perfeitos podem errar"',															"https://twitter.com/oJulitolito", 0],
+		["Lukii",		 'lukii', 		FlxColor.fromRGB(148,46,33), 	'Artista/Animador\n(Cards)\n"insert the funny here"', 														"https://www.youtube.com/channel/UCp9IuIceEjvYoP7_i8xOZCg", 1],
 		["Leozito",		 'leozito', 	FlxColor.fromRGB(74,167,96), 	'Artista de Icone\n"EU NÃO AGUENTO MAIS FAZER ICON, ALGUÉM ME AJUDA"',  							"https://twitter.com/Leozitoplays1", 0],
 		["Memoria",		 'memoria', 	FlxColor.fromRGB(132,75,28), 	'Artista de Background\n"Hey book remember that time I appeared in the credits of a fnf mod?"', 	"https://twitter.com/Toad00253255", 0],
-		["Sunny",		 'sunny', 		FlxColor.fromRGB(208,208,208), 	'Artista/Animador\n"swag"',																			"https://twitter.com/sunnyIDontKnow", 0],
+		["Sunno",		 'sunny', 		FlxColor.fromRGB(208,208,208), 	'Artista/Animador\n"swag"',																			"https://twitter.com/sunnyIDontKnow", 0],
 		["Tanuki",		 'tanuki', 		FlxColor.fromRGB(36,249,146), 	'Artista/Animador\n"eu odeio a furry fand"', 														"https://twitter.com/TanukiMiugraarg", 0],
 		// composers
 		["AnakimPlay",	 'anakim', 		FlxColor.fromRGB(70,101,201), 	'Compositor\n"como é que faz musica"', 																"https://twitter.com/AnakimPlay", 0],
@@ -96,6 +96,11 @@ class CreditsState extends MusicBeatState
 		// gemaplys
 		["Gemaplys",	 'gemaplys', 	FlxColor.fromRGB(184,69,69), 	'é o gemaplys',  "https://www.youtube.com/c/GEMAPLYS", 1],
 		];
+
+		if(!FlxG.save.data.daiane)
+			daTeam.push(["???", 'ue', FlxColor.fromRGB(255,255,255), 'não clica', "", 3]);
+		else
+			daTeam.push(["Daiane dos Santos", 'daiane', FlxColor.fromRGB(255,255,255), 'Daiane dos Santos', "https://youtu.be/95Yh-zqwzVU?t=925", 1]);
 
 		#if DISCORD_RPC
 		Discord.changePresence('CREDITS SCREEN', 'Main Menu');
@@ -152,7 +157,7 @@ class CreditsState extends MusicBeatState
 
 		socialmedia = new FlxSprite(0,0);
 		socialmedia.frames = Paths.getSparrowAtlas('credits/socialmedia');
-		socialmedia.animation.addByIndices('meme', 'social', [0, 1, 2], "", 0, false);
+		socialmedia.animation.addByIndices('meme', 'social', [0, 1, 2, 3], "", 0, false);
 		socialmedia.animation.play('meme');
 		socialmedia.scale.set(0.8,0.8);
 		socialmedia.updateHitbox();
@@ -188,7 +193,10 @@ class CreditsState extends MusicBeatState
 
 			if (accepted)
 			{
-				CoolUtil.browserLoad(daTeam[curSelected][4]);
+				if(curSelected == 27 && !FlxG.save.data.daiane)
+					loadSong();
+				else
+					CoolUtil.browserLoad(daTeam[curSelected][4]);
 			}
 		}
 
@@ -213,6 +221,16 @@ class CreditsState extends MusicBeatState
 				}
 			}
 		}
+	}
+
+	function loadSong()
+	{
+		var poop:String = Highscore.formatSong("kkkri", 0);
+
+		PlayState.SONG = Song.loadFromJson(poop, "kkkri");
+		PlayState.isStoryMode = false;
+		PlayState.storyDifficulty = 0;
+		Main.switchState(this, new PlayState());
 	}
 
 	function changeSelection(change:Int = 0)
@@ -264,7 +282,8 @@ class CreditsState extends MusicBeatState
 			theGroup.text = "Yung Lixo V1 Team";
 		if(curSelected == 26)
 			theGroup.text = "Agradecimentos Especiais";
-
+		if(curSelected == 27)
+			theGroup.text = "???";
 		theGroup.x = Math.floor((FlxG.width / 2) - (theGroup.width / 2));
 		theGroup.y = desc.y - theGroup.height - 10;
 
@@ -275,4 +294,5 @@ class CreditsState extends MusicBeatState
 
 		socialmedia.animation.curAnim.curFrame = daTeam[curSelected][5];
 	}
+
 }

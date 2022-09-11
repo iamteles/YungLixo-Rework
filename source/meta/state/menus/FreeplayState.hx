@@ -70,7 +70,7 @@ class FreeplayState extends MusicBeatState
 			control over what you can display about the song (color, icon, etc) since it will be pregenerated for you instead.
 		**/
 		// load in all songs that exist in folder
-		var folderSongs:Array<String> = CoolUtil.returnAssetsLibrary('songs', 'assets');
+		//var folderSongs:Array<String> = CoolUtil.returnAssetsLibrary('songs', 'assets');
 
 		///*
 		for (i in 0...Main.gameWeeks.length)
@@ -87,7 +87,18 @@ class FreeplayState extends MusicBeatState
 				existingSongs.push(j.toLowerCase());
 		}
 
+		if(FlxG.save.data.daiane)
+		{
+			for (i in 0...Main.daianeDosSantos.length)
+			{
+				addWeek(Main.freeplaySongs[i][0], i, Main.freeplaySongs[i][1], Main.freeplaySongs[i][2]);
+				for (j in cast(Main.freeplaySongs[i][0], Array<Dynamic>))
+					existingSongs.push(j.toLowerCase());
+			}
+		}
+
 	
+		/*
 		for (i in folderSongs)
 		{
 			if (!existingSongs.contains(i.toLowerCase()))
@@ -102,6 +113,7 @@ class FreeplayState extends MusicBeatState
 				}
 			}
 		}
+		*/
 
 		// LOAD MUSIC
 		// ForeverTools.resetMenuMusic();

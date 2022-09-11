@@ -52,6 +52,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 	//yung lixo!!1!!
 	var farmNuvens:FlxSprite; // bg antigo
 	var farmFan:FNFSprite;
+	public static var presidenteCoisa:FNFSprite;
 	
 	var pessoalTras:FlxSprite;
 	var pessoalFrente:FlxSprite;
@@ -95,6 +96,8 @@ class Stage extends FlxTypedGroup<FlxBasic>
 					curStage = 'miner';
 				case 'back-to-black':
 					curStage = 'btb';
+				case 'kkkri':
+					curStage = "daiane";
 				default:
 					curStage = 'stage';
 			}
@@ -174,6 +177,15 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				bg.scrollFactor.set(1,1);
 				bg.active = false;
 				add(bg);
+
+				if(PlayState.storyDifficulty == 1)
+				{
+					presidenteCoisa = new FNFSprite(50,-50).loadGraphic(Paths.image('backgrounds/${curStage}/presidente'));
+					presidenteCoisa.scrollFactor.set(1,1);
+					presidenteCoisa.active = false;
+					presidenteCoisa.alpha = 0.00001;
+					add(presidenteCoisa);
+				}
 				
 				
 			case 'keylogger':
@@ -181,6 +193,16 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				curStage = 'keylogger';
 				var bg:FNFSprite = new FNFSprite(-700, -200).loadGraphic(Paths.image('backgrounds/gema/keylogged'));
 				bg.antialiasing = true;
+				bg.scrollFactor.set(1, 1);
+				bg.active = false;
+				add(bg);
+			case 'daiane':
+				PlayState.defaultCamZoom = 0.65; //0.7
+				curStage = 'daiane';
+
+				var bg:FNFSprite = new FNFSprite(0, 200).loadGraphic(Paths.image('backgrounds/polygons/castleNEW'));
+				bg.antialiasing = true;
+				bg.setGraphicSize(Std.int(bg.width * 2));
 				bg.scrollFactor.set(1, 1);
 				bg.active = false;
 				add(bg);
