@@ -46,6 +46,12 @@ class Init extends FlxState
 	public static var NOT_FORCED = 'not forced';
 
 	public static var gameSettings:Map<String, Dynamic> = [
+		'Screen Borders' => [
+			true,
+			Checkmark,
+			'Wether to have your game window with or without borders (Requires reset)',
+			NOT_FORCED
+		],
 		'Downscroll' => [
 			false,
 			Checkmark,

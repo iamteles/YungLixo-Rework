@@ -273,6 +273,16 @@ class PlayState extends MusicBeatState
 			gf.visible = false;
 			SONG.player1 = 'gemafunkin-player';
 		}
+		else if(changedCharacter == 2)
+		{
+			gf.visible = false;
+			SONG.player1 = 'chicken-player';
+		}
+		else if(changedCharacter == 3)
+		{
+			gf.visible = false;
+			SONG.player1 = 'chicken-player-pixel';
+		}
 		boyfriend.setCharacter(750, 850, SONG.player1);
 		// if you want to change characters later use setCharacter() instead of new or it will break
 
@@ -1864,6 +1874,7 @@ class PlayState extends MusicBeatState
 				case 1016: //ring 4
 					telefono.animation.play('ringing');
 				case 1040:
+					ClassHUD.iconP3.alpha = 1;
 					FlxG.camera.flash(FlxColor.WHITE, 0.5);
 					tibba.alpha = 1;
 					Stage.presidenteCoisa.alpha = 1;
@@ -1874,6 +1885,7 @@ class PlayState extends MusicBeatState
 					FlxTween.tween(Stage.presidenteCoisa, {alpha: 0}, 1, {ease: FlxEase.linear});
 				case 2352:
 					FlxG.camera.flash(FlxColor.WHITE, 1.4);
+					ClassHUD.iconP3.alpha = 0.0000000001;
 					cameraTibba = false;
 			}
 		}
@@ -2271,8 +2283,10 @@ class PlayState extends MusicBeatState
 			if(SONG.song.toLowerCase() == 'polygons')
 				Main.switchState(this, new GoToCreditsState());
 			else if(SONG.song.toLowerCase() == 'kkkri')
+			{
 				FlxG.save.data.daiane = true;
 				Main.switchState(this, new FreeplayState());
+			}
 			else
 				Main.switchState(this, new FreeplayState());
 		}

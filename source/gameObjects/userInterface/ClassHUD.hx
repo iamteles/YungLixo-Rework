@@ -89,6 +89,8 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			"mamaco"   => [135, 106, 91],
 
 			"chicken"   => [255, 255, 255],
+			"chicken-player"   => [255, 255, 255],
+			"chicken-player-pixel"   => [255, 255, 255],
 			"mineirinho"=> [242, 189, 74],
 
 			"bf"	   => bfColor,
@@ -186,7 +188,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		// desculpa teles mas eu gosto de switch :(
 		switch(CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()))
 		{
-			case "killer-tibba" | "keylogger":
+			case "killer-tibba" | "keylogger" | "jokes":
 				iconP3 = new HealthIcon(PlayState.tibba.curCharacter, false);
 				iconP3.y = healthBar.y - (iconP2.height / 2);
 				iconP3.alpha = 0.00001;

@@ -501,7 +501,7 @@ class Character extends FNFSprite
 
 				playAnim('idle');
 
-				flipX = true;
+				//flipX = true;
 
 			case 'gema64':
 				tex = Paths.getSparrowAtlas('characters/Gema64');
@@ -566,6 +566,24 @@ class Character extends FNFSprite
 
 				characterData.camOffsetX = -135;
 				characterData.camOffsetY = -30;
+
+			case 'chicken-player-pixel':
+				tex = Paths.getSparrowAtlas('characters/chickenRESHAPED');
+				frames = tex;
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up', 24);
+				animation.addByPrefix('singRIGHT', 'right', 24);
+				animation.addByPrefix('singDOWN', 'down', 24);
+				animation.addByPrefix('singLEFT', 'left', 24);
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+				antialiasing = false;
+
+				playAnim('idle');
+
+				characterData.camOffsetX = -135;
+				characterData.camOffsetY = -230;
+
 			case 'presidente':
 				tex = Paths.getSparrowAtlas('characters/presidente');
 				frames = tex;
@@ -593,6 +611,20 @@ class Character extends FNFSprite
 
 				//characterData.offsetY = 930;
 				//characterData.offsetX = -90;
+
+				playAnim('idle');
+			case 'chicken-player':
+				tex = Paths.getSparrowAtlas('characters/chicken2');
+				frames = tex;
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up', 24);
+				animation.addByPrefix('singRIGHT', 'right', 24);
+				animation.addByPrefix('singDOWN', 'down', 24);
+				animation.addByPrefix('singLEFT', 'left', 24);
+
+				characterData.offsetY = -435;
+				characterData.offsetX = -80;
+				characterData.camOffsetY = 300;
 
 				playAnim('idle');
 			default:

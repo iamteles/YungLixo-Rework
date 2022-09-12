@@ -36,8 +36,7 @@ class CharacterMenuState extends MusicBeatState
 	var theArrow:FlxText;
 
 	public static var boyfriendModifier:String = '';
-	var chickenModifier:String = '';
-	var boyfriendPos:Array<Dynamic> = [-380,120];
+	var boyfriendPos:Array<Dynamic> = [-180,120];
 	var boyfriendScale:Float = 0.6;
 	var boyfriend:Character;
 	var gemafunkin:Character;
@@ -73,18 +72,16 @@ class CharacterMenuState extends MusicBeatState
 
 		// i hate you pixel boyfriend
 		if(boyfriendModifier == '-pixel') {
-			boyfriendPos = [-320,165];
+			boyfriendPos = [-120,165];
 			boyfriendScale = 3.6;
-			chickenModifier = boyfriendModifier;
 		}
-
 		boyfriend = new Character();
 		boyfriend.setCharacter(0, 0, 'bf' + boyfriendModifier);
 		boyfriend.scale.set(boyfriendScale, boyfriendScale);
 		boyfriend.screenCenter();
 		boyfriend.x += boyfriendPos[0];
 		boyfriend.y += boyfriendPos[1];
-		//boyfriend.flipX = true;
+		boyfriend.flipX = true;
 		add(boyfriend);
 		if(boyfriendModifier == '-reshaped') boyfriend.y += -25;
 
@@ -93,20 +90,11 @@ class CharacterMenuState extends MusicBeatState
 		gemafunkin.setCharacter(0, 0, 'gemafunkin-select');
 		gemafunkin.scale.set(0.6,0.6);
 		gemafunkin.screenCenter();
-		//gemafunkin.x += 200;
+		gemafunkin.x += 200;
 		add(gemafunkin);
-
-		chicken = new Character();
-		chicken.setCharacter(0, 0, 'chicken-player');
-		chicken.scale.set(0.8,0.8);
-		chicken.screenCenter();
-		chicken.x += 360;
-		chicken.y -= 300;
-		add(chicken);
 
 		boyfriend.playAnim('idle', true);
 		gemafunkin.playAnim('idle', true);
-		chicken.playAnim('idle', true);
 
 		//updateSelection();
 
@@ -162,16 +150,12 @@ class CharacterMenuState extends MusicBeatState
 
 					case 'gemafunkin':
 						selectChar(gemafunkin);
-					
-					case 'chicken':
-						selectChar(chicken);
 				}
 			}
 		}
 
 		boyfriend.color  = (characters[curSelected] == 'boyfriend') ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
 		gemafunkin.color = (characters[curSelected] == 'gemafunkin') ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
-		chicken.color = (characters[curSelected] == 'chicken') ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
 
 		if(FlxG.keys.justPressed.CONTROL)
 			trace('the arrow X is: ${Std.int(theArrow.x)}');
@@ -185,7 +169,6 @@ class CharacterMenuState extends MusicBeatState
 		{
 			boyfriend.playAnim('idle', true);
 			gemafunkin.playAnim('idle', true);
-			chicken.playAnim('idle', true);
 		}
 	}
 
@@ -199,35 +182,18 @@ class CharacterMenuState extends MusicBeatState
 		if (curSelected >= characters.length)
 			curSelected = 0;
 
-		switch (curSelected)
-		{
-			case 0:
-				FlxTween.tween(theArrow, {x: 235}, 0.1, {ease: FlxEase.expoOut});
-			case 1:
-				FlxTween.tween(theArrow, {x: 635}, 0.1, {ease: FlxEase.expoOut});
-			case 2:
-				FlxTween.tween(theArrow, {x: 970}, 0.1, {ease: FlxEase.expoOut});
-		}
+		FlxTween.tween(theArrow, {x: (curSelected == 0) ? 435 : 810}, 0.1, {ease: FlxEase.expoOut});
 	}
 
 	private function selectChar(who:Character)
 	{
-
-		if(who == chicken && chickenModifier != "-pixel")
-			who.playAnim((who.animation.getByName('hey') == null) ? 'singDOWN' : 'hey', true);
-		else
-			who.playAnim((who.animation.getByName('hey') == null) ? 'singUP' : 'hey', true);
-
+		who.playAnim((who.animation.getByName('hey') == null) ? 'singUP' : 'hey', true);
 		selectedSomethin = true;
 
 		if(who == boyfriend)
 			PlayState.changedCharacter = 0;
-		else if(who == gemafunkin)
-			PlayState.changedCharacter = 1;
-		else if(who == chicken && chickenModifier != "-pixel")
-			PlayState.changedCharacter = 2;
 		else
-			PlayState.changedCharacter = 3;
+			PlayState.changedCharacter = 1;
 
 		FlxG.sound.play(Paths.sound('confirmMenu'));
 		var idleTimer:FlxTimer = new FlxTimer().start(1, function(timer:FlxTimer) {

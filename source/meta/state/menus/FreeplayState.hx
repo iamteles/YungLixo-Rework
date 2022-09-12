@@ -91,8 +91,8 @@ class FreeplayState extends MusicBeatState
 		{
 			for (i in 0...Main.daianeDosSantos.length)
 			{
-				addWeek(Main.freeplaySongs[i][0], i, Main.freeplaySongs[i][1], Main.freeplaySongs[i][2]);
-				for (j in cast(Main.freeplaySongs[i][0], Array<Dynamic>))
+				addWeek(Main.daianeDosSantos[i][0], i, Main.daianeDosSantos[i][1], Main.daianeDosSantos[i][2]);
+				for (j in cast(Main.daianeDosSantos[i][0], Array<Dynamic>))
 					existingSongs.push(j.toLowerCase());
 			}
 		}
@@ -261,7 +261,7 @@ class FreeplayState extends MusicBeatState
 			var theSong = songs[curSelected].songName.toLowerCase();
 			switch(theSong)
 			{
-				case 'da-vinci-funkin' | 'operational-system':
+				case 'da-vinci-funkin' | 'operational-system' | 'jokes':
 					if (FlxG.sound.music != null)
 						FlxG.sound.music.stop();
 					PlayState.changedCharacter = 0;

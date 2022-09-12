@@ -174,6 +174,7 @@ class Main extends Sprite
 		// test initialising the player settings
 		PlayerSettings.init();
 
+
 		infoCounter = new Overlay(0, 0);
 		addChild(infoCounter);
 	}
