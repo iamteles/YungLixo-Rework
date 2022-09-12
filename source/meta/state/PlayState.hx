@@ -47,6 +47,7 @@ using StringTools;
 
 #if desktop
 import meta.data.dependency.Discord;
+import vlc.MP4Handler;
 #end
 
 class PlayState extends MusicBeatState
@@ -501,7 +502,10 @@ class PlayState extends MusicBeatState
 		Paths.clearUnusedMemory();
 
 		// call the funny intro cutscene depending on the song
-		if (!skipCutscenes())
+
+		if(SONG.song.toLowerCase() == 'kkkri')
+			playCutscene('daiane');
+		else if (!skipCutscenes())
 			songIntroCutscene();
 		else
 			startCountdown();
@@ -2455,6 +2459,12 @@ class PlayState extends MusicBeatState
 					callTextbox((storyDifficulty == 0) ? '' : '-reshaped');
 			case 'collision':
 				collisionCutscene();
+			/*
+			case 'musica com video':
+				playCutscene('nome do video', fimdamusica) // esse fim da musica aq seria false, se for no fim bota no endSong com true
+				//outra nota aq, esse codigo so vai quando tem cutscene ligada (story mode, se tu ligar nos options)
+				//quando tu quiser botar obrigatoriamente sempre q tu abrir a musica bota la em cima no fim do create onde decide entre startCountdown e songIntroCutscene
+			*/
 			default:
 				callTextbox();
 		}
@@ -2476,6 +2486,30 @@ class PlayState extends MusicBeatState
 		}
 		else
 			startCountdown();
+	}
+
+	function playCutscene(name:String, atEndOfSong:Bool = false)
+	{
+		inCutscene = true;
+		FlxG.sound.music.stop();
+	
+		var video:MP4Handler = new MP4Handler();
+		video.finishCallback = function()
+		{
+			if (atEndOfSong)
+			{
+				if (storyPlaylist.length <= 0)
+					FlxG.switchState(new StoryMenuState());
+				else
+				{
+					SONG = Song.loadFromJson(storyPlaylist[0].toLowerCase());
+					FlxG.switchState(new PlayState());
+				}
+			}
+			else
+				callTextbox();
+		}
+		video.playVideo(Paths.video(name));
 	}
 
 	function bfDodge()
