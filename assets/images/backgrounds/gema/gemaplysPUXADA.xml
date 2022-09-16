@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="gemaplysPUXADA.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="puxada0000" x="3" y="3" width="1409" height="564" frameX="-72" frameY="-7" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0001" x="3" y="3" width="1409" height="564" frameX="-72" frameY="-7" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0002" x="1415" y="3" width="1370" height="565" frameX="-109" frameY="-6" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0003" x="1415" y="3" width="1370" height="565" frameX="-109" frameY="-6" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0004" x="3" y="571" width="1313" height="569" frameX="-164" frameY="-2" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0005" x="3" y="571" width="1313" height="569" frameX="-164" frameY="-2" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0006" x="1319" y="571" width="1129" height="571" frameX="-349" frameY="0" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0007" x="1319" y="571" width="1129" height="571" frameX="-349" frameY="0" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0008" x="2451" y="571" width="906" height="571" frameX="-590" frameY="0" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0009" x="2451" y="571" width="906" height="571" frameX="-590" frameY="0" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0010" x="3" y="1145" width="906" height="571" frameX="-701" frameY="0" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0011" x="912" y="1145" width="906" height="571" frameX="-701" frameY="0" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0012" x="1821" y="1145" width="905" height="571" frameX="-714" frameY="0" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0013" x="2729" y="1145" width="905" height="569" frameX="-714" frameY="-2" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0014" x="3" y="1719" width="905" height="567" frameX="-718" frameY="-4" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0015" x="911" y="1719" width="905" height="564" frameX="-718" frameY="-7" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0016" x="1819" y="1719" width="905" height="564" frameX="-714" frameY="-7" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0017" x="2727" y="1719" width="905" height="565" frameX="-714" frameY="-6" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0018" x="3" y="2289" width="906" height="565" frameX="-695" frameY="-6" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0019" x="912" y="2289" width="906" height="569" frameX="-695" frameY="-2" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0020" x="1821" y="2289" width="906" height="566" frameX="-571" frameY="-5" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0021" x="1821" y="2289" width="906" height="566" frameX="-571" frameY="-5" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0022" x="2730" y="2289" width="998" height="572" frameX="-430" frameY="-5" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0023" x="2730" y="2289" width="998" height="572" frameX="-430" frameY="-5" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0024" x="3" y="2864" width="1209" height="527" frameX="0" frameY="-28" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0025" x="3" y="2864" width="1209" height="527" frameX="0" frameY="-28" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0026" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0027" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0028" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0029" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0030" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0031" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0032" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0033" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0034" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0035" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0036" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0037" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0038" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0039" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0040" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0041" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+	<SubTexture name="puxada0042" x="1215" y="2864" width="0" height="0" frameX="-1232" frameY="-1" frameWidth="1623" frameHeight="577"/>
+</TextureAtlas>

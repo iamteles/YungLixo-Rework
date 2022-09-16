@@ -110,11 +110,12 @@ class OptionsMenuState extends MusicBeatState
 					['Accessibility Settings', null],
 					['', null],
 					['Filter', getFromOption],
+					['Reduced Movements', getFromOption],
 					['Disable Antialiasing', getFromOption],
+					['Flashing Lights', getFromOption],
 					["Stage Opacity", getFromOption],
 					["Opacity Type", getFromOption],
-					['Reduced Movements', getFromOption],
-					['Flashing Lights', getFromOption],
+					['Borderless Window', getFromOption],
 				]
 			]
 		];
@@ -256,7 +257,7 @@ class OptionsMenuState extends MusicBeatState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
+		
 		// just uses my outdated code for the main menu state where I wanted to implement
 		// hold scrolling but I couldnt because I'm dumb and lazy
 		if (!lockedMovement)
@@ -448,6 +449,7 @@ class OptionsMenuState extends MusicBeatState
 							Init.saveSettings();
 							//lockedMovement = false;
 						//});
+						FlxG.stage.window.borderless = Init.trueSettings.get('Borderless Window');
 					}
 				case Init.SettingTypes.Selector:
 					#if !html5

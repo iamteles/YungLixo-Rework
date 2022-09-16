@@ -101,6 +101,16 @@ class Main extends Sprite
 		]
 	];
 
+	public static var daianeDosSantos:Array<Dynamic> = [
+		//[['Tutorial'], ['gf'], [FlxColor.fromRGB(129, 100, 223)], 'Funky Beginnings'],
+		[
+			['kkkri'],
+			['daianedossantos'],
+			[FlxColor.fromRGB(44,44,44)],
+			'daian'
+		]
+	];
+
 	// most of these variables are just from the base game!
 	// be sure to mess around with these if you'd like.
 
@@ -163,6 +173,7 @@ class Main extends Sprite
 
 		// test initialising the player settings
 		PlayerSettings.init();
+
 
 		infoCounter = new Overlay(0, 0);
 		addChild(infoCounter);

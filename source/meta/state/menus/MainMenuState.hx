@@ -8,6 +8,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
@@ -232,6 +233,14 @@ class MainMenuState extends MusicBeatState
 
 		if (Math.floor(curSelected) != lastCurSelected)
 			updateSelection();
+			
+		if(!selectedSomethin)
+		{
+			menuItems.forEach(function(spr:FlxSprite)
+			{
+				spr.x = FlxMath.lerp(spr.x, ((spr.ID == curSelected) ? 550 : 700), 0.075);
+			});
+		}
 
 		super.update(elapsed);
 	}
@@ -243,20 +252,15 @@ class MainMenuState extends MusicBeatState
 		// reset all selections
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			var theX:Float;
+			//var theX:Float;
 			var theColor:Int;
 
-			theX = (spr.ID == curSelected) ? 550 : 700;
+			//theX = (spr.ID == curSelected) ? 550 : 700;
 			theColor = (spr.ID == curSelected) ? FlxColor.WHITE : FlxColor.fromRGB(45,45,45);
 
-			FlxTween.tween(spr, {x: theX}, 0.2, {ease: FlxEase.quadOut});
+			//FlxTween.tween(spr, {x: theX}, 0.2, {ease: FlxEase.quadOut});
 			spr.color = theColor;
 		});
-
-		// set the sprites and all of the current selection
-
-		//if (menuItems.members[Math.floor(curSelected)].animation.curAnim.name == 'idle')
-		//	menuItems.members[Math.floor(curSelected)].animation.play('selected');
 
 		menuItems.members[Math.floor(curSelected)].updateHitbox();
 

@@ -1,0 +1,10 @@
+idle -50 -400
+singDOWN 36 -407
+singRIGHT 64 -402
+singLEFT 125 -402
+singUP 664 -209
+singDOWNmiss 36 -407
+singRIGHTmiss 64 -402
+singLEFTmiss 125 -402
+singUPmiss 664 -209
+death -50 -800

@@ -46,6 +46,12 @@ class Init extends FlxState
 	public static var NOT_FORCED = 'not forced';
 
 	public static var gameSettings:Map<String, Dynamic> = [
+		'Borderless Window' => [
+			false, // im sorry teles :(
+			Checkmark,
+			'Wether to have your game window with or without borders',
+			NOT_FORCED
+		],
 		'Downscroll' => [
 			false,
 			Checkmark,
@@ -271,6 +277,8 @@ class Init extends FlxState
 
 		loadSettings();
 		loadControls();
+		
+		FlxG.stage.window.borderless = trueSettings.get('Borderless Window');
 
 		#if !html5
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));

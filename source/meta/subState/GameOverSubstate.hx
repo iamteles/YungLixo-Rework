@@ -16,13 +16,16 @@ import meta.state.*;
 import meta.state.menus.*;
 import lime.app.Application;
 
+using StringTools;
+
 class GameOverSubstate extends MusicBeatSubState
 {
 	//
-	var pintowsDeath:Bool = false;
+	var customDeath:String = 'none';
 	
 	var bf:Boyfriend;
 	var camFollow:FlxObject;
+	var chickenFallSpeed:Float = -30;
 
 	public static var stageSuffix:String = "";
 
@@ -39,6 +42,8 @@ class GameOverSubstate extends MusicBeatSubState
 				//stageSuffix = '-pixel';
 			case 'gemafunkin-player':
 				daBf = 'gemafunkin-player';
+			case 'chicken-player' | 'chicken-player-pixel':
+				daBf = daBoyfriendType;
 			default:
 				daBf = 'bf-dead';
 		}
@@ -54,51 +59,58 @@ class GameOverSubstate extends MusicBeatSubState
 		bf = new Boyfriend();
 		bf.setCharacter(x, y + PlayState.boyfriend.height, daBf);
 		add(bf);
-
-		PlayState.boyfriend.destroy();
-
+		
+		// COLOCA AS MORTES CUSTOM AQUI
+		switch(PlayState.SONG.song.toLowerCase())
+		{
+			case 'operational-system':
+				customDeath = 'pintows';
+			default:
+				customDeath = 'none';
+				
+				if(daBf.startsWith('chicken'))
+					customDeath = 'chicken';
+		}
+		switch(customDeath)
+		{
+			default:
+				FlxG.camera.flash(FlxColor.RED, 1, null, true);
+				FlxTween.tween(FlxG.camera, {zoom: 0.5}, 1.2, {ease: FlxEase.expoOut});
+				bf.playAnim('firstDeath');
+			
+			case 'pintows': // die!!!!
+				var daWindow = Application.current.window;
+				daWindow.fullscreen = false;
+				daWindow.alert("Skill Issue :/", "Game Over");
+			
+				bf.alpha = 0.0001; // nobody likes you
+			
+				var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('backgrounds/pintows/death'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set();
+				add(bg);
+			
+				var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('backgrounds/pintows/overlay'));
+				bg.antialiasing = true;
+				bg.scrollFactor.set();
+				bg.scale.set(0.97,0.97);
+				add(bg);
+				
+			case 'chicken':
+				bf.playAnim('death');
+		}
+		
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x + 20, bf.getGraphicMidpoint().y - 40, 1, 1);
 		add(camFollow);
 
+		PlayState.boyfriend.destroy();
+		
 		Conductor.changeBPM(120); //100
-
-		// FlxG.camera.followLerp = 1;
-		// FlxG.camera.focusOn(FlxPoint.get(FlxG.width / 2, FlxG.height / 2));
+		
 		FlxG.camera.scroll.set();
 		FlxG.camera.target = null;
-
-		bf.playAnim('firstDeath');
 		
-		if(PlayState.SONG.song.toLowerCase() == 'operational-system')
-			pintowsDeath = true;
-		
-		if(!pintowsDeath)
-		{
-			FlxG.camera.flash(FlxColor.RED, 1, null, true);
-			FlxTween.tween(FlxG.camera, {zoom: 0.5}, 1.2, {ease: FlxEase.expoOut});
-		}
-		else
-		{
-			var daWindow = Application.current.window;
-			//Application.current.window.fullscreen = false;
-			//Application.current.window.alert("Skill Issue :/", "Game Over");
-			daWindow.fullscreen = false;
-			daWindow.alert("Skill Issue :/", "Game Over");
-			
-			
-			bf.alpha = 0.0001; // nobody likes you
-			
-			var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('backgrounds/pintows/death'));
-			bg.antialiasing = true;
-			bg.scrollFactor.set();
-			add(bg);
-			
-			var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('backgrounds/pintows/overlay'));
-			bg.antialiasing = true;
-			bg.scrollFactor.set();
-			bg.scale.set(0.97,0.97);
-			add(bg);
-		}
+		FlxG.camera.follow(camFollow, LOCKON, 0.01);
 	}
 
 	override function update(elapsed:Float)
@@ -121,15 +133,27 @@ class GameOverSubstate extends MusicBeatSubState
 				Main.switchState(this, new FreeplayState());
 		}
 
-		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
-			FlxG.camera.follow(camFollow, LOCKON, 0.01);
+		switch(customDeath)
+		{
+			default:
+				//if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
+					FlxG.camera.follow(camFollow, LOCKON, 0.01);
 
-		if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished && !pintowsDeath)
-			FlxG.sound.playMusic(Paths.music('gameOver'));
-			//FlxG.sound.playMusic(Paths.music('gameOver' + stageSuffix));
-
-		// if (FlxG.sound.music.playing)
-		//	Conductor.songPosition = FlxG.sound.music.time;
+				if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
+					FlxG.sound.playMusic(Paths.music('gameOver'));
+					
+			case 'pintows':
+				// nada
+					
+			case 'chicken':
+				// tem que deixar ele mais pesado quando ele é pixel se não ele VOA PRA KRL
+				chickenFallSpeed += ((bf.curCharacter == 'chicken-player-pixel') ? 100 : 50) * elapsed;
+				
+				bf.x += 450 * elapsed;
+				bf.y += chickenFallSpeed;
+				
+				bf.angle += 600 * elapsed;
+		}
 	}
 
 	override function beatHit()
@@ -145,15 +169,21 @@ class GameOverSubstate extends MusicBeatSubState
 	{
 		if (!isEnding)
 		{
-			if(!pintowsDeath) {
-				FlxG.camera.flash(FlxColor.WHITE, 1.2, null, true);
-				FlxTween.tween(FlxG.camera, {zoom: 1}, 1, {ease: FlxEase.expoOut});
+			// é pra não tocar 
+			switch(customDeath)
+			{
+				case 'pintows':
+					// nada
+				case 'chicken':
+					// nada
+				default:
+					FlxG.camera.flash(FlxColor.WHITE, 1.2, null, true);
+					FlxTween.tween(FlxG.camera, {zoom: 1}, 1, {ease: FlxEase.expoOut});
+					bf.playAnim('deathConfirm', true);
 			}
 		
 			isEnding = true;
-			bf.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
-			//FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix));
 			FlxG.sound.play(Paths.music('gameOverEnd'));
 			new FlxTimer().start(1, function(tmr:FlxTimer)
 			{

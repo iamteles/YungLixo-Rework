@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="telefono.png">
+  <!-- Generated using Aseprite .json to FNF .xml: https://github.com/Lethrial/Aseprite-.json-to-FNF-.xml -->
+  <SubTexture name="ringing 0" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="ringing 1" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="ringing 2" x="65" y="0" width="60" height="80"/>
+  <SubTexture name="ringing 3" x="65" y="0" width="60" height="80"/>
+  <SubTexture name="ringing 4" x="130" y="0" width="60" height="80"/>
+  <SubTexture name="ringing 5" x="130" y="0" width="60" height="80"/>
+  <SubTexture name="ringing 6" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="ringing 7" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="ringing 8" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="ringing 9" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="idle 0" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="idle 1" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="idle 2" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="idle 3" x="0" y="0" width="60" height="80"/>
+  <SubTexture name="idle 4" x="0" y="0" width="60" height="80"/>
+</TextureAtlas>

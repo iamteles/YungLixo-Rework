@@ -5,7 +5,7 @@ package gameObjects;
 	stay the same as it was in the original source of the game. I'll most likely make some changes afterwards though!
 
 	i changed it
-		--diogo
+	  --diogo
 **/
 import flixel.FlxG;
 import flixel.util.FlxColor;
@@ -32,8 +32,9 @@ typedef CharacterData =
 
 class Character extends FNFSprite
 {
-	public var debugMode:Bool = false;
+	//public var debugMode:Bool = false;
 
+	public var startX:Float = 0;
 	public var isPlayer:Bool = false;
 	public var curCharacter:String = 'bf';
 	public var specialAnim:Bool = false;
@@ -501,7 +502,7 @@ class Character extends FNFSprite
 
 				playAnim('idle');
 
-				flipX = true;
+				//flipX = true;
 
 			case 'gema64':
 				tex = Paths.getSparrowAtlas('characters/Gema64');
@@ -554,10 +555,10 @@ class Character extends FNFSprite
 				tex = Paths.getSparrowAtlas('characters/chickenRESHAPED');
 				frames = tex;
 				animation.addByPrefix('idle', 'idle', 24, false);
-				animation.addByPrefix('singUP', 'up', 24);
-				animation.addByPrefix('singRIGHT', 'right', 24);
-				animation.addByPrefix('singDOWN', 'down', 24);
-				animation.addByPrefix('singLEFT', 'left', 24);
+				animation.addByPrefix('singUP', 'up', 24, false);
+				animation.addByPrefix('singRIGHT', 'right', 24, false);
+				animation.addByPrefix('singDOWN', 'down', 24, false);
+				animation.addByPrefix('singLEFT', 'left', 24, false);
 				setGraphicSize(Std.int(width * 6));
 				updateHitbox();
 				antialiasing = false;
@@ -566,7 +567,82 @@ class Character extends FNFSprite
 
 				characterData.camOffsetX = -135;
 				characterData.camOffsetY = -30;
+				
+			case 'chicken-player':
+				tex = Paths.getSparrowAtlas('characters/chicken2');
+				frames = tex;
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up', 24, false);
+				animation.addByPrefix('singRIGHT', 'right', 24, false);
+				animation.addByPrefix('singDOWN', 'down', 24, false);
+				animation.addByPrefix('singLEFT', 'left', 24, false);
+				animation.addByPrefix('singUPmiss', 'up', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'right', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'down', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'left', 24, false);
+				// die >:]
+				animation.addByIndices('death', 'idle', [10], "", 0, false);
+				
 
+				characterData.offsetY = -435;
+				characterData.offsetX = -80;
+				characterData.camOffsetY = 300;
+
+				playAnim('idle');
+
+			case 'chicken-player-pixel':
+				tex = Paths.getSparrowAtlas('characters/chickenRESHAPED');
+				frames = tex;
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up', 24, false);
+				animation.addByPrefix('singRIGHT', 'right', 24, false);
+				animation.addByPrefix('singDOWN', 'down', 24, false);
+				animation.addByPrefix('singLEFT', 'left', 24, false);
+				animation.addByPrefix('singUPmiss', 'up', 24, false);
+				animation.addByPrefix('singRIGHTmiss', 'right', 24, false);
+				animation.addByPrefix('singDOWNmiss', 'down', 24, false);
+				animation.addByPrefix('singLEFTmiss', 'left', 24, false);
+				// die >:]
+				animation.addByIndices('death', 'idle', [10], "", 0, false);
+				
+				setGraphicSize(Std.int(width * 6));
+				updateHitbox();
+				antialiasing = false;
+
+				playAnim('idle');
+
+				characterData.camOffsetX = -135;
+				characterData.camOffsetY = -230;
+
+			case 'presidente':
+				tex = Paths.getSparrowAtlas('characters/presidente');
+				frames = tex;
+				animation.addByPrefix('idle', 'idle', 24, false);
+				animation.addByPrefix('singUP', 'up', 24, false);
+				animation.addByPrefix('singRIGHT', 'right', 24, false);
+				animation.addByPrefix('singDOWN', 'down', 24, false);
+				animation.addByPrefix('singLEFT', 'left', 24, false);
+				
+				setGraphicSize(Std.int(width * 2.2));
+				updateHitbox();
+				antialiasing = false;
+
+				playAnim('idle');
+
+			case 'daianedossantos':
+				tex = Paths.getSparrowAtlas('characters/daianedosmantos');
+				frames = tex;
+				animation.addByPrefix('idle', 'idle dos santos', 24, true);
+				animation.addByPrefix('singUP', 'up dos santos', 24);
+				animation.addByPrefix('singRIGHT', 'left', 24);
+				animation.addByPrefix('singDOWN', 'down dos santos', 24);
+				animation.addByPrefix('singLEFT', 'right dos santos', 24);
+				updateHitbox();
+
+				//characterData.offsetY = 930;
+				//characterData.offsetX = -90;
+
+				playAnim('idle');
 			default:
 				// set up animations if they aren't already
 
@@ -623,7 +699,9 @@ class Character extends FNFSprite
 
 		this.x = x;
 		this.y = y;
-
+		
+		this.startX = x;
+		
 		return this;
 	}
 
@@ -692,8 +770,10 @@ class Character extends FNFSprite
 		switch(curCharacter.toLowerCase())
 		{
 			case 'tibba': // ta potente
-				this.x = -1025 - (Math.cos(elapsedtime / 2)) * 350;
-				this.y = 100 - (Math.sin(elapsedtime)) * 50;
+				x = -1025 - (Math.cos(elapsedtime / 2)) * 350;
+				y = 100 - (Math.sin(elapsedtime)) * 50;
+			case 'presidente':
+				y = 120 - Math.sin(elapsedtime) * 50;
 		}
 	}
 
@@ -704,7 +784,8 @@ class Character extends FNFSprite
 	 */
 	public function dance(?forced:Bool = false)
 	{
-		if (!debugMode && !specialAnim)
+		//if (!debugMode && !specialAnim)
+		if (!specialAnim)
 		{
 			var curCharSimplified:String = simplifyCharacter();
 			switch (curCharSimplified)
@@ -724,7 +805,8 @@ class Character extends FNFSprite
 						playAnim('hey', forced);
 					else
 						playAnim('idle', forced);
-				default:
+						
+				case 'mc-vv':
 					// Left/right dancing, think Skid & Pump
 					if (animation.getByName('danceLeft') != null && animation.getByName('danceRight') != null)
 					{
@@ -734,8 +816,8 @@ class Character extends FNFSprite
 						else
 							playAnim('danceLeft', forced);
 					}
-					else
-						playAnim('idle', forced);
+				default:
+					playAnim('idle', forced);
 			}
 		}
 	}
@@ -755,13 +837,13 @@ class Character extends FNFSprite
 			if (AnimName == 'singUP' || AnimName == 'singDOWN')
 				danced = !danced;
 		}
-
-		if(!isNativelyPlayer) {
+		
+		if(!isNativelyPlayer && isPlayer) {
 			this.color = (AnimName.endsWith('miss')) ? FlxColor.BLUE : FlxColor.WHITE;
 		}
 
-		if(curCharacter == 'gemafunkin-player')
-			this.color = (AnimName == 'dodge') ? FlxColor.CYAN : FlxColor.WHITE;
+		//if(curCharacter == 'gemafunkin-player')
+		//	this.color = (AnimName == 'dodge') ? FlxColor.CYAN : FlxColor.WHITE;
 	}
 
 	public function simplifyCharacter():String

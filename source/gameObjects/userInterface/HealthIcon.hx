@@ -14,11 +14,13 @@ class HealthIcon extends FlxSprite
 	public var initialWidth:Float = 0;
 	public var initialHeight:Float = 0;
 	public var initialAngle:Float = 0;
+	public var isPlayer = false;
 
 	public function new(char:String = 'bf', isPlayer:Bool = false)
 	{
 		super();
 		updateIcon(char, isPlayer);
+		this.isPlayer = isPlayer;
 	}
 
 	public function updateIcon(char:String = 'bf', isPlayer:Bool = false)
@@ -55,5 +57,13 @@ class HealthIcon extends FlxSprite
 
 		if (sprTracker != null)
 			setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y - 30);
+	}
+	
+	public function frameCheck(life:Float) {
+		if(!isPlayer) {
+			animation.curAnim.curFrame = ((life > 0.8) ? 1 : 0);
+		} else {
+			animation.curAnim.curFrame = ((life < 0.2) ? 1 : 0);
+		}
 	}
 }

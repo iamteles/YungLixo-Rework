@@ -22,6 +22,7 @@ class Paths
 	// Here we set up the paths class. This will be used to
 	// Return the paths of assets and call on those assets as well.
 	inline public static var SOUND_EXT = "ogg";
+	inline public static var VIDEO_EXT = "mp4";
 
 	// level we're loading
 	static var currentLevel:String;
@@ -261,6 +262,11 @@ class Paths
 	inline static public function json(key:String, ?library:String)
 	{
 		return getPath('songs/$key.json', TEXT, library);
+	}
+
+	inline static public function video(key:String)
+	{
+		return 'assets/videos/$key.$VIDEO_EXT';
 	}
 
 	inline static public function songJson(song:String, secondSong:String, ?library:String)

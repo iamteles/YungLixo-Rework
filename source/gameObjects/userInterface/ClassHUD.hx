@@ -30,13 +30,14 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 	var scoreBar:FlxText;
 	var scoreLast:Float = -1;
 
-	public static var timeText:FlxText;
+	public static var timeTxt:FlxText;
 	var songPercent:Float = 0;
 
 	var minerHealthText:FlxText;
 
+	public static var curTimingTxt:FlxText = null;
 	public static var lyricsText:FlxText;
-	public var botplayText:FlxText;
+	public static var botplayText:FlxText;
 
 	// fnf mods
 	var scoreDisplay:String = 'beep bop bo skdkdkdbebedeoop brrapadop';
@@ -56,8 +57,6 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 
 	var healthBarEmptyColor:FlxColor = 0xFFFF0000;
 	var healthBarFilledColor:FlxColor = 0xFF66FF33;
-
-	public static var songAuthor:FlxSprite;
 
 	var is3Player:Bool = false;
 
@@ -84,11 +83,14 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			"vito"	   => [33, 32, 40],
 			"mc-vv"	   => [103,41,33],
 			"mugen"    => [44, 44, 44], // meio inutil mas fds
+			"daian"    => [44, 44, 44],
 
 			"vindisio" => [197, 125, 88],
 			"mamaco"   => [135, 106, 91],
 
 			"chicken"   => [255, 255, 255],
+			"chicken-player"   => [255, 255, 255],
+			"chicken-player-pixel"   => [255, 255, 255],
 			"mineirinho"=> [242, 189, 74],
 
 			"bf"	   => bfColor,
@@ -115,21 +117,23 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		// dom zellitus
 		if(SONG.song.toLowerCase() == 'crazy-pizza')
 		{
+			/* // mt feio desculpa dom zellitus :(
 			var dom:FlxSprite = new FlxSprite().loadGraphic(Paths.image('backgrounds/miner/dom'));
 			dom.x = 1280 - dom.width - 20;
 			dom.y = 720 - dom.height - 10;
 			dom.visible = false;
 			add(dom);
+			*/
 
 			var heart:FlxSprite = new FlxSprite(20, 0).loadGraphic(Paths.image('backgrounds/miner/heart'));
-			heart.y = (Init.trueSettings.get('Downscroll')) ? heart.height + 32 + 10 : FlxG.height - heart.height - 32 - 10;
+			heart.y = (Init.trueSettings.get('Downscroll')) ? heart.height + 10 : FlxG.height - heart.height - 10;
 			heart.scrollFactor.set();
 			add(heart);
 
 			minerHealthText = new FlxText(100, 600, 0, "50");
 			minerHealthText.setFormat(Paths.font('miner.ttf'), 48, FlxColor.WHITE);
 			minerHealthText.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
-			minerHealthText.y = (Init.trueSettings.get('Downscroll')) ? minerHealthText.height + 32 + 15 : 720 - minerHealthText.height - 32 - 15;
+			minerHealthText.y = (Init.trueSettings.get('Downscroll')) ? minerHealthText.height + 15 : 720 - minerHealthText.height - 15;
 			minerHealthText.scrollFactor.set();
 			add(minerHealthText);
 		}
@@ -166,16 +170,16 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		healthBarOverlay.alpha = 0.3;
 		add(healthBarOverlay);
 
-		timeText = new FlxText(0, 19, 400, "", 32);
-		timeText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		timeText.visible = !(cast(Init.trueSettings.get('Timer'), String) == 'None');
-		timeText.scrollFactor.set();
-		timeText.borderSize = 2;
-		timeText.alpha = 0;
-		add(timeText);
+		timeTxt = new FlxText(0, 19, 400, "", 32);
+		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		timeTxt.visible = !(cast(Init.trueSettings.get('Timer'), String) == 'None');
+		timeTxt.scrollFactor.set();
+		timeTxt.borderSize = 2;
+		timeTxt.alpha = 0;
+		add(timeTxt);
 		// downscroll 
-		timeText.y = 720 - timeText.height - 10;
-		if(Init.trueSettings.get('Downscroll')) timeText.y = timeText.height + 10;
+		timeTxt.y = 720 - timeTxt.height - 10;
+		if(Init.trueSettings.get('Downscroll')) timeTxt.y = timeTxt.height + 10;
 
 		iconP1 = new HealthIcon(SONG.player1, true);
 		iconP1.y = healthBar.y - (iconP1.height / 2);
@@ -186,7 +190,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		// desculpa teles mas eu gosto de switch :(
 		switch(CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()))
 		{
-			case "killer-tibba" | "keylogger":
+			case "killer-tibba" | "keylogger" | "jokes":
 				iconP3 = new HealthIcon(PlayState.tibba.curCharacter, false);
 				iconP3.y = healthBar.y - (iconP2.height / 2);
 				iconP3.alpha = 0.00001;
@@ -194,7 +198,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 				add(iconP1);
 				add(iconP2);
 				add(iconP3);
-
+			
 			case "collision":
 				var bg:FlxSprite = new FlxSprite(0, (!Init.trueSettings.get('Downscroll') ? 565 : 0)).loadGraphic(Paths.image('backgrounds/gema/vida-${PlayState.boyfriend.curCharacter}'));
 				bg.antialiasing = true;
@@ -206,13 +210,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 				add(iconP2);
 				is3Player = false;
 		}
-
-		// thanks teles :handshake:
-		songAuthor = new FlxSprite(-700, (Init.trueSettings.get('Downscroll') ? -130 : 130)).loadGraphic(Paths.image('cards/' + CoolUtil.spaceToDash(PlayState.SONG.song.toLowerCase()) + '-' + CoolUtil.difficultyFromNumber(PlayState.storyDifficulty).toLowerCase()));
-		songAuthor.setGraphicSize(Std.int(songAuthor.width * 0.5));
-		songAuthor.scrollFactor.set();
-		add(songAuthor);
-
+		
 		scoreBar = new FlxText(FlxG.width / 2, Math.floor(healthBarBG.y + 40), 0, scoreDisplay);
 		scoreBar.setFormat(Paths.font('vcr.ttf'), 18, FlxColor.WHITE);
 		scoreBar.setBorderStyle(OUTLINE, FlxColor.BLACK, 1.5);
@@ -220,7 +218,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		// scoreBar.scrollFactor.set();
 		scoreBar.antialiasing = true;
 		add(scoreBar);
-
+		
 		// counter
 		if (Init.trueSettings.get('Counter') != 'None')
 		{
@@ -257,6 +255,15 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		botplayText.antialiasing = true;
 		add(botplayText);
 		botplayText.x = Math.floor((FlxG.width / 2) - (botplayText.width / 2));
+		
+		curTimingTxt = new FlxText(0,0,0,"");
+		curTimingTxt.color = FlxColor.WHITE;
+		curTimingTxt.borderStyle = OUTLINE;
+		curTimingTxt.borderSize = 1;
+		curTimingTxt.borderColor = FlxColor.BLACK;
+		curTimingTxt.size = 20;
+		curTimingTxt.alpha = 0;
+		add(curTimingTxt);
 	}
 
 	var counterTextSize:Int = 18;
@@ -273,52 +280,45 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		// pain, this is like the 7th attempt
 		healthBar.percent = (PlayState.health * 50);
 
-		var iconLerp = 0.85;
-		iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.initialWidth, iconP1.width, iconLerp)));
-		iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.initialWidth, iconP2.width, iconLerp)));
+		var iconLerp = 0.07; // 0.85
+		//iconP1.setGraphicSize(Std.int(FlxMath.lerp(iconP1.width, iconP1.initialWidth, iconLerp)));
+		//iconP2.setGraphicSize(Std.int(FlxMath.lerp(iconP2.width, iconP2.initialWidth, iconLerp)));
+		iconP1.scale.set(FlxMath.lerp(iconP1.scale.x, 1, iconLerp), FlxMath.lerp(iconP1.scale.y, 1, iconLerp));
+		iconP2.scale.set(FlxMath.lerp(iconP2.scale.x, 1, iconLerp), FlxMath.lerp(iconP2.scale.y, 1, iconLerp));
 
-		iconP1.angle = Std.int(FlxMath.lerp(iconP1.initialAngle, iconP1.angle, iconLerp));
-		iconP2.angle = Std.int(FlxMath.lerp(iconP2.initialAngle, iconP2.angle, iconLerp));
+		iconP1.angle = FlxMath.lerp(iconP1.angle, iconP1.initialAngle, iconLerp);
+		iconP2.angle = FlxMath.lerp(iconP2.angle, iconP2.initialAngle, iconLerp);
 
-		iconP1.updateHitbox();
-		iconP2.updateHitbox();
+		//iconP1.updateHitbox();
+		//iconP2.updateHitbox();
 
 		var iconOffset:Int = 26;
 
 		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
 		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
 
-		if(is3Player && iconP3.alpha > 0.5)
+		if(is3Player)
 		{
-			iconP2.y = iconP1.y + 23;
+			iconP2.y = iconP1.y + ((iconP3.alpha > 0.5) ? 23 : 0);
+			
 			iconP3.x = iconP2.x - 45;
 			iconP3.y = iconP2.y - 45;
 
-			iconP3.scale.set(iconP2.scale.x, iconP2.scale.y);
-			iconP3.updateHitbox();
+			iconP3.scale.set(iconP1.scale.x, iconP1.scale.y);
+			//iconP3.updateHitbox();
 
 			if(PlayState.SONG.song.toLowerCase() == 'killer-tibba') {
 				iconP3.offset.x = (Math.cos(elapsedtime / 2)) * 30;
 				iconP3.offset.y = (Math.sin(elapsedtime    )) * 10;
-			} else { // keylogger
+			} else { // keylogger e jokes
 				iconP3.angle = iconP1.angle;
 			}
 
-			if (healthBar.percent > 80)
-				iconP3.animation.curAnim.curFrame = 1;
-			else
-				iconP3.animation.curAnim.curFrame = 0;
+			iconP3.frameCheck(PlayState.health);
 		}
 
-		if (healthBar.percent < 20)
-			iconP1.animation.curAnim.curFrame = 1;
-		else
-			iconP1.animation.curAnim.curFrame = 0;
-
-		if (healthBar.percent > 80)
-			iconP2.animation.curAnim.curFrame = 1;
-		else
-			iconP2.animation.curAnim.curFrame = 0;
+		iconP1.frameCheck(PlayState.health);
+		iconP2.frameCheck(PlayState.health);
 
 		// funny red score bar
 		scoreBar.color = (healthBar.percent < 20) ? FlxColor.fromRGB(255,35,35) : FlxColor.WHITE;
@@ -327,13 +327,21 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		scoreBar.visible = !PlayState.botplay;
 		botplayText.visible = PlayState.botplay;
 		if(botplayText.visible) {
-			botplayText.alpha = 0.7 - Math.sin((elapsedtime * 180) / 90);
+			botplayText.alpha = 0.7 - Math.sin((elapsedtime * 180) / 90); // 180
 		}
 
 		if(minerHealthText != null && (PlayState.health * 50) <= 100)
 			minerHealthText.text = Std.string(Math.floor(PlayState.health * 50));
 
-		updateTimeText();
+		updatetimeTxt();
+		
+		var stopGoingDown:Float = PlayState.boyfriendArrowY;
+		if (curTimingTxt != null && curTimingTxt.alpha > 0)
+			curTimingTxt.alpha -= 0.01;
+		if(curTimingTxt.y < stopGoingDown)
+			curTimingTxt.y += 1;
+		else
+			curTimingTxt.y = stopGoingDown;
 	}
 
 	private final divider:String = " • ";
@@ -375,12 +383,11 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 	}
 
 	var isElapsed:Bool = false;
-	public function updateTimeText()
+	public function updatetimeTxt()
 	{
-		if(timeText.visible)
+		if(timeTxt.visible)
 		{
-			//timeText.x = 20;
-			timeText.x = (FlxG.width - timeText.width) - 20;
+			timeTxt.x = (FlxG.width - timeTxt.width) - 20;
 
 			var curTime:Float = Conductor.songPosition;
 			if(curTime < 0) curTime = 0;
@@ -399,11 +406,13 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			{
 				var secondsTotal2:Int = Math.floor(PlayState.songLength / 1000);
 				if(secondsTotal2 < 0) secondsTotal2 = 0;
-
-				timeText.text = FlxStringUtil.formatTime(secondsTotal, false) + divider + FlxStringUtil.formatTime(secondsTotal2, false);
+				var totalTime:Dynamic = FlxStringUtil.formatTime(secondsTotal2, false);
+				
+				if(PlayState.SONG.song.toLowerCase() == 'kkkri' && PlayState.kkkriStep < 1168) totalTime = '1:18';
+				timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false) + divider + totalTime;
 			}
 			else
-				timeText.text = FlxStringUtil.formatTime(secondsTotal, false);
+				timeTxt.text = FlxStringUtil.formatTime(secondsTotal, false);
 		}
 	}
 
@@ -417,11 +426,14 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			iconP1.angle = -daSpin;
 			iconP2.angle = daSpin;
 
-			iconP1.setGraphicSize(Std.int(iconP1.width + 30));
-			iconP2.setGraphicSize(Std.int(iconP2.width + 30));
-
-			iconP1.updateHitbox();
-			iconP2.updateHitbox();
+			// 1.3
+			if(daSpin > 0) { // is positive
+				iconP1.scale.set(0.7, 1.15);
+				iconP2.scale.set(1.15, 0.7);
+			} else {
+				iconP2.scale.set(0.7, 1.15);
+				iconP1.scale.set(1.15, 0.7);
+			}
 		}
 		//
 	}

@@ -51,7 +51,8 @@ class FreeplayState extends MusicBeatState
 
 	private var iconArray:Array<HealthIcon> = [];
 
-	private var mainColor = FlxColor.WHITE;
+	//private var mainColor = FlxColor.WHITE;
+	private var bgTween:FlxTween;
 	private var bg:FlxSprite;
 	private var scoreBG:FlxSprite;
 
@@ -70,7 +71,7 @@ class FreeplayState extends MusicBeatState
 			control over what you can display about the song (color, icon, etc) since it will be pregenerated for you instead.
 		**/
 		// load in all songs that exist in folder
-		var folderSongs:Array<String> = CoolUtil.returnAssetsLibrary('songs', 'assets');
+		//var folderSongs:Array<String> = CoolUtil.returnAssetsLibrary('songs', 'assets');
 
 		///*
 		for (i in 0...Main.gameWeeks.length)
@@ -87,7 +88,18 @@ class FreeplayState extends MusicBeatState
 				existingSongs.push(j.toLowerCase());
 		}
 
+		if(FlxG.save.data.daiane)
+		{
+			for (i in 0...Main.daianeDosSantos.length)
+			{
+				addWeek(Main.daianeDosSantos[i][0], i, Main.daianeDosSantos[i][1], Main.daianeDosSantos[i][2]);
+				for (j in cast(Main.daianeDosSantos[i][0], Array<Dynamic>))
+					existingSongs.push(j.toLowerCase());
+			}
+		}
+
 	
+		/*
 		for (i in folderSongs)
 		{
 			if (!existingSongs.contains(i.toLowerCase()))
@@ -102,6 +114,7 @@ class FreeplayState extends MusicBeatState
 				}
 			}
 		}
+		*/
 
 		// LOAD MUSIC
 		// ForeverTools.resetMenuMusic();
@@ -203,8 +216,6 @@ class FreeplayState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		FlxTween.color(bg, 0.35, bg.color, mainColor);
-
 		var lerpVal = Main.framerateAdjust(0.1);
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, lerpVal));
 
@@ -249,21 +260,21 @@ class FreeplayState extends MusicBeatState
 			var theSong = songs[curSelected].songName.toLowerCase();
 			switch(theSong)
 			{
-				case 'da-vinci-funkin' | 'operational-system':
+				case 'da-vinci-funkin' | 'operational-system' | 'jokes':
 					if (FlxG.sound.music != null)
 						FlxG.sound.music.stop();
 					PlayState.changedCharacter = 0;
 					Main.switchState(this, new PlayState());
 					
-				case 'crazy-pizza':
-					CharacterMenuStateMineirinho.boyfriendModifier = '';
-					if(curDifficulty == 1) CharacterMenuStateMineirinho.boyfriendModifier = '-reshaped';
-					Main.switchState(this, new CharacterMenuStateMineirinho());
+				//case 'crazy-pizza':
+					//CharacterMenuStateMineirinho.boyfriendModifier = '';
+					//if(curDifficulty == 1) CharacterMenuStateMineirinho.boyfriendModifier = '-reshaped';
+					//Main.switchState(this, new CharacterMenuStateMineirinho());
 			
 				default:
 					CharacterMenuState.boyfriendModifier = '';
 					if(curDifficulty == 1) CharacterMenuState.boyfriendModifier = '-reshaped';
-					if(theSong == 'jokes' || theSong == 'collision') CharacterMenuState.boyfriendModifier = '-pixel';
+					if(theSong == 'collision') CharacterMenuState.boyfriendModifier = '-pixel';
 					Main.switchState(this, new CharacterMenuState());
 			}
 		}
@@ -325,9 +336,10 @@ class FreeplayState extends MusicBeatState
 		// selector.y = (70 * curSelected) + 30;
 
 		intendedScore = Highscore.getScore(songs[curSelected].songName, curDifficulty);
-
+		
 		// set up color stuffs
-		mainColor = songs[curSelected].songColor;
+		if(bgTween != null) bgTween.cancel();
+		bgTween = FlxTween.color(bg, 0.35, bg.color, songs[curSelected].songColor);
 
 		// song switching stuffs
 
