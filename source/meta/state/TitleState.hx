@@ -54,12 +54,6 @@ class TitleState extends MusicBeatState
 
 	override public function create():Void
 	{
-		if (FlxG.save.data.daiane == null)
-			FlxG.save.data.daiane = false;
-
-		if (!Init.trueSettings.get('Screen Borders'))
-			FlxG.stage.window.borderless = true;
-		
 		controls.setKeyboardScheme(None, false);
 		curWacky = FlxG.random.getObject(getIntroTextShit());
 		super.create();
