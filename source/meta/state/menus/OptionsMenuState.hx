@@ -109,6 +109,7 @@ class OptionsMenuState extends MusicBeatState
 					['', null],
 					['Accessibility Settings', null],
 					['', null],
+					['Screen Borders', getFromOption],
 					['Filter', getFromOption],
 					['Reduced Movements', getFromOption],
 					['Disable Antialiasing', getFromOption],
