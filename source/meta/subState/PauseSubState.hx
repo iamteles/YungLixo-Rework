@@ -3,6 +3,7 @@ package meta.subState;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
@@ -47,6 +48,13 @@ class PauseSubState extends MusicBeatSubState
 		bg.alpha = 0;
 		bg.scrollFactor.set();
 		add(bg);
+		
+		var backdrop:FlxSprite = new FlxBackdrop(Paths.image('menus/ylr/tileLoopWhite'), 8, 8, true, true, 1, 1);
+		backdrop.screenCenter();
+		backdrop.scrollFactor.set();
+		backdrop.velocity.x = 12;
+		backdrop.alpha = 0;
+		add(backdrop);
 
 		var levelInfo:FlxText = new FlxText(20, 15, 0, "", 32);
 		levelInfo.text += CoolUtil.dashToSpace(PlayState.SONG.song);
@@ -88,7 +96,9 @@ class PauseSubState extends MusicBeatSubState
 		levelDeaths.x = FlxG.width - (levelDeaths.width + 20);
 		botplayPause.x = FlxG.width - (botplayPause.width + 20);
 
+		// 0.6
 		FlxTween.tween(bg, {alpha: 0.6}, 0.4, {ease: FlxEase.quartInOut});
+		FlxTween.tween(backdrop, {alpha: 0.03}, 0.4, {ease: FlxEase.quartInOut});
 		FlxTween.tween(levelInfo, {alpha: 1, y: 20}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.3});
 		FlxTween.tween(levelDifficulty, {alpha: 1, y: levelDifficulty.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.5});
 		FlxTween.tween(levelDeaths, {alpha: 1, y: levelDeaths.y + 5}, 0.4, {ease: FlxEase.quartInOut, startDelay: 0.7});

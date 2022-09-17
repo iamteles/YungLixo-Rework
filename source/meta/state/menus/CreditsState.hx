@@ -62,31 +62,31 @@ class CreditsState extends MusicBeatState
 		super.create();
 
 		daTeam = [ // name, icon, color, description, link, 0 = twitter  1 = youtube  2 = discord (sla)
-		["Antony",		 'antony', 		FlxColor.fromRGB(233,0,0), 		'Diretor, Artista de Background, Escritor dos diálogos\n"Sim um furry fez esse mod, tenha medo"',	"https://twitter.com/Rizzatti321", 0],
-		["JulianoBeta",	 'juliano', 	FlxColor.fromRGB(13,33,70), 	'Diretor, Compositor e Charter\n"${julianoFrase}"', 												"https://www.youtube.com/channel/UCRDeljMur0lEz1nXhrFKE9A", 1],
-		["teles",		 'teles', 		FlxColor.fromRGB(255,129,60), 	'Co-Diretora, Coder, Artista/Animadora e Compositora\n"IT KEEPS HAPPENING"',						"https://twitter.com/itzteles_aa", 0],
-		["Yupam Uzuink", 'yupam', 		FlxColor.fromRGB(0,208,255), 	'Co-Diretor, Compositor, Artista de Card\n"AGOOOBAGOOBAGOOOOBAGOBAGOOOOOOOOBAAAAAA"', 				"https://twitter.com/yupfoda", 0],
+		["Antony",		 'antony', 		FlxColor.fromRGB(233,0,0), 		'Diretor, Artista de Background, Escritor dos diálogos\n"Sim um furry fez esse mod, tenha medo"',			"https://twitter.com/Rizzatti321", 0],
+		["JulianoBeta",	 'juliano', 	FlxColor.fromRGB(13,33,70), 	'Diretor, Compositor e Charter\n"${julianoFrase}"', 														"https://www.youtube.com/channel/UCRDeljMur0lEz1nXhrFKE9A", 1],
+		["teles",		 'teles', 		FlxColor.fromRGB(255,129,60), 	'Co-Diretora, Coder, Artista/Animadora e Compositora\n(Sprites do Chicken/Presidente e Cutscene da Big-Boy)\n"IT KEEPS HAPPENING"',	"https://twitter.com/itzteles_aa", 0],
+		["Yupam Uzuink", 'yupam', 		FlxColor.fromRGB(0,208,255), 	'Co-Diretor, Compositor, Artista de Card\n"AGOOOBAGOOBAGOOOOBAGOBAGOOOOOOOOBAAAAAA"', 						"https://twitter.com/yupfoda", 0],
 		// coders
-		["DiogoTV",		 'diogo', 		FlxColor.fromRGB(225,228,240), 	'Coder e Artista/Animador\n(Sprites do Gemafunkin, Icon do Tibba e Portraits dos diálogos)\n"Feliz Aniversário Ellysson"',"https://twitter.com/DiogoTVV", 0],
+		["DiogoTV",		 'diogo', 		FlxColor.fromRGB(225,228,240), 	'Coder e Artista/Animador\n(Sprites do Gemafunkin, Icon do Tibba, Portraits dos diálogos e Cutscene da Killer-Tibba)\n"Feliz Aniversário Ellysson"',"https://twitter.com/DiogoTVV", 0],
 		// artistas
-		["Amanda Burra", 'amanda', 		FlxColor.fromRGB(144,67,238), 	'Artista/Animadora\n"${amandaImage}"',																"https://twitter.com/Burra_Amanda", 0],
-		["Aqua",		 'aqua', 		FlxColor.fromRGB(221,223,245), 	'Artista/Animador\n(Aviso na Collision)\n"danilo"',													"https://twitter.com/AquaStrikr_", 0],
-		["Baicon",		 'baicon', 		FlxColor.fromRGB(64,128,255), 	'Artista/Animador\n(Macaco do Roblox)\n"ZAPEEEE, ZAPEEEEEE"',										"https://twitter.com/Baiconzito_", 0],
-		["Jacc",		 'Jacc', 		FlxColor.fromRGB(145,9,210), 	'Artista/Animador\n"não acredito que ele fez cover do gemamugen da coliseu kkkkkkkkkk"',			"https://twitter.com/JackGD9", 0],
+		["Amanda Burra", 'amanda', 		FlxColor.fromRGB(144,67,238), 	'Artista/Animadora\n"${amandaImage}"',																		"https://twitter.com/Burra_Amanda", 0],
+		["Aqua",		 'aqua', 		FlxColor.fromRGB(221,223,245), 	'Artista/Animador\n(Aviso na Collision)\n"danilo"',															"https://twitter.com/AquaStrikr_", 0],
+		["Baicon",		 'baicon', 		FlxColor.fromRGB(64,128,255), 	'Artista/Animador\n(Macaco do Roblox)\n"ZAPEEEE, ZAPEEEEEE"',												"https://twitter.com/Baiconzito_", 0],
+		["Jacc",		 'Jacc', 		FlxColor.fromRGB(145,9,210), 	'Artista/Animador\n"não acredito que ele fez cover do gemamugen da coliseu kkkkkkkkkk"',					"https://twitter.com/JackGD9", 0],
 		["Johnatan o Animado",'john',	FlxColor.fromRGB(111,164,254), 	'Artista/Animador\n(MC VV, Mineirinho)\n"O mineirinho fnf foi a melhor coisa que eu já fiz na minha vida inteira"',"https://www.youtube.com/channel/UC18MTVMygNjI2mJ2yRCDXAg", 1],
-		["Julitolito",	 'julitolito', 	FlxColor.fromRGB(0,204,153), 	'Artista/Animador\n"até os perfeitos podem errar"',															"https://twitter.com/oJulitolito", 0],
+		["Julitolito",	 'julitolito', 	FlxColor.fromRGB(0,204,153), 	'Artista/Animador\n(Sprites do Gemaplys/Yunglixo, e Cutscene da Potency)\n"até os perfeitos podem errar"',	"https://twitter.com/oJulitolito", 0],
 		["Lukii",		 'lukii', 		FlxColor.fromRGB(148,46,33), 	'Artista/Animador\n(Cards)\n"insert the funny here"', 														"https://www.youtube.com/channel/UCp9IuIceEjvYoP7_i8xOZCg", 1],
-		["Leozito",		 'leozito', 	FlxColor.fromRGB(74,167,96), 	'Artista de Icone\n"EU NÃO AGUENTO MAIS FAZER ICON, ALGUÉM ME AJUDA"',  							"https://twitter.com/Leozitoplays1", 0],
-		["Memoria",		 'memoria', 	FlxColor.fromRGB(132,75,28), 	'Artista de Background\n"Hey book remember that time I appeared in the credits of a fnf mod?"', 	"https://twitter.com/Toad00253255", 0],
-		["Sunno",		 'sunny', 		FlxColor.fromRGB(208,208,208), 	'Artista/Animador\n"swag"',																			"https://twitter.com/sunnyIDontKnow", 0],
-		["Tanuki",		 'tanuki', 		FlxColor.fromRGB(36,249,146), 	'Artista/Animador\n"eu odeio a furry fand"', 														"https://twitter.com/TanukiMiugraarg", 0],
+		["Leozito",		 'leozito', 	FlxColor.fromRGB(74,167,96), 	'Artista de Icone\n"EU NÃO AGUENTO MAIS FAZER ICON, ALGUÉM ME AJUDA"',  									"https://twitter.com/Leozitoplays1", 0],
+		["Memoria",		 'memoria', 	FlxColor.fromRGB(132,75,28), 	'Artista de Background\n"Hey book remember that time I appeared in the credits of a fnf mod?"', 			"https://twitter.com/Toad00253255", 0],
+		["Sunno",		 'sunny', 		FlxColor.fromRGB(208,208,208), 	'Artista/Animador\n"swag"',																					"https://twitter.com/sunnyIDontKnow", 0],
+		["Tanuki",		 'tanuki', 		FlxColor.fromRGB(36,249,146), 	'Artista/Animador\n"eu odeio a furry fand"', 																"https://twitter.com/TanukiMiugraarg", 0],
 		// composers
-		["AnakimPlay",	 'anakim', 		FlxColor.fromRGB(70,101,201), 	'Compositor\n"como é que faz musica"', 																"https://twitter.com/AnakimPlay", 0],
-		["Silly",		 'silly', 		FlxColor.fromRGB(139,127,222), 	'Compositora\n"toma essa anakim"',																	"https://twitter.com/YungCorno", 0],
-		["Nerdin",		 'nerdin', 		FlxColor.fromRGB(30,27,172), 	'Compositor da Música de Pause\n"Leon é gay"', 														"https://twitter.com/nerdimensional", 0],
+		["AnakimPlay",	 'anakim', 		FlxColor.fromRGB(70,101,201), 	'Compositor\n"como é que faz musica"', 																		"https://twitter.com/AnakimPlay", 0],
+		["Silly",		 'silly', 		FlxColor.fromRGB(139,127,222), 	'Compositora\n"toma essa anakim"',																			"https://twitter.com/YungCorno", 0],
+		["Nerdin",		 'nerdin', 		FlxColor.fromRGB(30,27,172), 	'Compositor da Música de Pause\n"Leon é gay"', 																"https://twitter.com/nerdimensional", 0],
 		// charters
-		["Leon",		 leonIcon,		FlxColor.fromRGB(238,39,102),	'Charter\n"sou bonito sou gostoso jogo bola e danço"',												"https://twitter.com/leonzapzap", 0],
-		["Pietro",		 'pi3tr0', 		FlxColor.fromRGB(255,255,255), 	'Charter\n"nota dupla supremacy"',  																"https://twitter.com/Pi3tr03", 0],
+		["Leon",		 leonIcon,		FlxColor.fromRGB(238,39,102),	'Charter\n"sou bonito sou gostoso jogo bola e danço"',														"https://twitter.com/leonzapzap", 0],
+		["Pietro",		 'pi3tr0', 		FlxColor.fromRGB(255,255,255), 	'Charter\n"nota dupla supremacy"',  																		"https://twitter.com/Pi3tr03", 0],
 		// yung lixo v1 team
 		["Lone",		 'lon', 		FlxColor.fromRGB(253,18,57), 	'Diretor, Artista/Animador e Coder do Vs YL v1', 														"https://twitter.com/Lonius_", 0],
 		["BeastlyChip",	 'chip', 		FlxColor.fromRGB(226,149,255), 	'Compositor, Charter e Cutscene SFX do Vs YL v1\n"quero chuva, quero chuva, chuva venha, venha chuva"', "https://twitter.com/BeastlyChip", 0],
@@ -221,13 +221,14 @@ class CreditsState extends MusicBeatState
 		}
 	}
 
-	function loadSong()
+	private function loadSong()
 	{
 		var poop:String = Highscore.formatSong("kkkri", 0);
 
 		PlayState.SONG = Song.loadFromJson(poop, "kkkri");
 		PlayState.isStoryMode = false;
 		PlayState.storyDifficulty = 0;
+		PlayState.changedCharacter = 0;
 		Main.switchState(this, new PlayState());
 	}
 

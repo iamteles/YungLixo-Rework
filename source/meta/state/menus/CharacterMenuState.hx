@@ -27,6 +27,7 @@ using StringTools;
 class CharacterMenuState extends MusicBeatState
 {
 	public var elapsedtime:Float = 0;
+	public static var isMiner:Bool = false;
 
 	var characters:Array<String> = ['boyfriend', 'gemafunkin', 'chicken'];
 	static var curSelected:Int = 0;
@@ -35,6 +36,9 @@ class CharacterMenuState extends MusicBeatState
 	var bg:FlxSprite; // the background has been separated for more control
 	var menuChar:FlxSprite;
 	var theArrow:FlxText;
+	
+	var minerArrow:FlxSprite;
+	static var minerPos:Float = 612;
 	
 	// we just need one public static var for this
 	public static var boyfriendModifier:String = '';
@@ -126,16 +130,26 @@ class CharacterMenuState extends MusicBeatState
 
 		var versionShit:FlxText = new FlxText(10, 48, 0, "CHOOSE YOUR CHARACTER", 48);
 		versionShit.scrollFactor.set();
-		versionShit.setFormat("splatter.otf", 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionShit.setFormat(isMiner ? "comicBOLD.ttf" : "splatter.otf", 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 		versionShit.x = Math.floor((FlxG.width / 2) - (versionShit.width / 2));
 
-		theArrow = new FlxText(500, 600, 0, ">", 48);
-		theArrow.angle = -90;
-		theArrow.scrollFactor.set();
-		theArrow.setFormat("VCR OSD Mono", 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		//theArrow.x = Math.floor((FlxG.width / 2) - (theArrow.width / 2));
-		add(theArrow);
+		if(!isMiner)
+		{
+			theArrow = new FlxText(500, 600, 0, ">", 48);
+			theArrow.angle = -90;
+			theArrow.scrollFactor.set();
+			theArrow.setFormat("VCR OSD Mono", 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			add(theArrow);
+		}
+		else
+		{
+			minerArrow = new FlxSprite(minerPos,600).loadGraphic(Paths.image('menus/ylr/mineirinho arrow'));
+			minerArrow.angle = -90;
+			minerArrow.scale.set(1.2,1.2);
+			minerArrow.scrollFactor.set();
+			add(minerArrow);
+		}
 
 		var idleTimer:FlxTimer = new FlxTimer().start(1, function(timer:FlxTimer) {
 			playIdle();
@@ -146,59 +160,105 @@ class CharacterMenuState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		if(isMiner)
+			minerArrow.x = minerPos;
+	
 		if(!selectedSomethin)
 		{
-			if(controls.UI_LEFT_P)
-				updateSelection(-1);
-			if(controls.UI_RIGHT_P)
-				updateSelection(1);
+			// left and right
+			if(!isMiner)
+			{
+				if(controls.UI_LEFT_P)
+					updateSelection(-1);
+				if(controls.UI_RIGHT_P)
+					updateSelection(1);
+			}
+			else
+			{
+				if(controls.UI_LEFT && minerPos >= 250)
+					minerPos -= 300 * elapsed;
+				if(controls.UI_RIGHT && minerPos <= 1050)
+					minerPos += 300 * elapsed;
+			}
 
-
+			// bye
 			if (controls.BACK)
 			{
 				selectedSomethin = true;
 				Main.switchState(this, new FreeplayState());
 			}
 
+			// select
 			if(controls.ACCEPT)
 			{
-				switch(characters[curSelected])
+				if(!isMiner)
 				{
-					case 'boyfriend':
-						selectChar(boyfriend);
+					switch(characters[curSelected])
+					{
+						case 'boyfriend':
+							selectChar(boyfriend);
 
-					case 'gemafunkin':
-						selectChar(gemafunkin);
+						case 'gemafunkin':
+							selectChar(gemafunkin);
 					
-					case 'chicken':
+						case 'chicken':
+							selectChar(chicken);
+					}
+				}
+				else
+				{
+					// the worst menu ive ever recreated, why dennis??
+					if(minerPos <= 456)
+						selectChar(boyfriend);
+					if(minerPos >= 550 && minerPos <= 680)
+						selectChar(gemafunkin);
+					if(minerPos >= 814)
 						selectChar(chicken);
 				}
 			}
 		}
 
-		boyfriend.color  = (characters[curSelected] == 'boyfriend') ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
-		gemafunkin.color = (characters[curSelected] == 'gemafunkin') ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
-		chicken.color = (characters[curSelected] == 'chicken') ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
+		// fazer o personagem brilhar quando tu ta com ele selecionado
+		if(!isMiner)
+		{
+			boyfriend.color  = (characters[curSelected] == 'boyfriend') ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
+			gemafunkin.color = (characters[curSelected] == 'gemafunkin') ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
+			chicken.color = (characters[curSelected] == 'chicken') ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
+		}
+		else
+		{
+			boyfriend.color = (minerPos <= 456) ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
+			gemafunkin.color = (minerPos >= 550 && minerPos <= 680) ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
+			chicken.color = (minerPos >= 814) ? FlxColor.WHITE : FlxColor.fromRGB(120,120,120);
+		}
 
 		if(FlxG.keys.justPressed.CONTROL)
-			trace('the arrow X is: ${Std.int(theArrow.x)}');
+			trace('the arrow X is: ${Std.int(minerPos)}');
 
 		super.update(elapsed);
 		
-		// posição da seta
 		elapsedtime += (elapsed * Math.PI);
-		theArrow.y = 600 - (Math.sin(elapsedtime * 3)) * 20;
-		var raphalitos:Float = 0;
-		switch(characters[curSelected])
+		// posição da seta
+		if(!isMiner)
 		{
-			case 'boyfriend':
-				raphalitos = 350;
-			case 'gemafunkin':
-				raphalitos = ((FlxG.width / 2) - (theArrow.width / 2));
-			case 'chicken':
-				raphalitos = FlxG.width - theArrow.width - 350;
+			theArrow.y = 600 - (Math.sin(elapsedtime * 3)) * 20;
+		
+			var raphalitos:Float = 0;
+			switch(characters[curSelected])
+			{
+				case 'boyfriend':
+					raphalitos = 350;
+				case 'gemafunkin':
+					raphalitos = ((FlxG.width / 2) - (theArrow.width / 2));
+				case 'chicken':
+					raphalitos = FlxG.width - theArrow.width - 350;
+			}
+			theArrow.x = FlxMath.lerp(theArrow.x, raphalitos, 0.2);
 		}
-		theArrow.x = FlxMath.lerp(theArrow.x, raphalitos, 0.2);
+		else
+		{
+			minerArrow.y = 620 - (Math.sin(elapsedtime * 3)) * 20;
+		}
 	}
 
 	private function playIdle()
@@ -220,17 +280,6 @@ class CharacterMenuState extends MusicBeatState
 			curSelected = characters.length - 1;
 		if (curSelected >= characters.length)
 			curSelected = 0;
-
-		
-		/* switch (curSelected)
-		{
-			case 0:
-				FlxTween.tween(theArrow, {x: 235}, 0.1, {ease: FlxEase.expoOut});
-			case 1:
-				FlxTween.tween(theArrow, {x: 635}, 0.1, {ease: FlxEase.expoOut});
-			case 2:
-				FlxTween.tween(theArrow, {x: 970}, 0.1, {ease: FlxEase.expoOut});
-		} */
 	}
 
 	private function selectChar(who:Character)

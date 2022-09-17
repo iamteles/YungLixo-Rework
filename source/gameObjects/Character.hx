@@ -805,19 +805,26 @@ class Character extends FNFSprite
 						playAnim('hey', forced);
 					else
 						playAnim('idle', forced);
-						
-				case 'mc-vv':
-					// Left/right dancing, think Skid & Pump
-					if (animation.getByName('danceLeft') != null && animation.getByName('danceRight') != null)
-					{
-						danced = !danced;
-						if (danced)
-							playAnim('danceRight', forced);
-						else
-							playAnim('danceLeft', forced);
-					}
+				
 				default:
-					playAnim('idle', forced);
+					if(isPlayer)
+					{
+						playAnim('idle', forced);
+					}
+					else
+					{
+						// Left/right dancing, think Skid & Pump
+						if (animation.getByName('danceLeft') != null && animation.getByName('danceRight') != null)
+						{
+							danced = !danced;
+							if (danced)
+								playAnim('danceRight', forced);
+							else
+								playAnim('danceLeft', forced);
+						}
+						else
+							playAnim('idle', forced);
+					}
 			}
 		}
 	}

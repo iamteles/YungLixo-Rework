@@ -265,16 +265,14 @@ class FreeplayState extends MusicBeatState
 						FlxG.sound.music.stop();
 					PlayState.changedCharacter = 0;
 					Main.switchState(this, new PlayState());
-					
-				//case 'crazy-pizza':
-					//CharacterMenuStateMineirinho.boyfriendModifier = '';
-					//if(curDifficulty == 1) CharacterMenuStateMineirinho.boyfriendModifier = '-reshaped';
-					//Main.switchState(this, new CharacterMenuStateMineirinho());
 			
 				default:
 					CharacterMenuState.boyfriendModifier = '';
 					if(curDifficulty == 1) CharacterMenuState.boyfriendModifier = '-reshaped';
 					if(theSong == 'collision') CharacterMenuState.boyfriendModifier = '-pixel';
+					
+					CharacterMenuState.isMiner = (theSong == 'crazy-pizza');
+					
 					Main.switchState(this, new CharacterMenuState());
 			}
 		}
