@@ -62,6 +62,7 @@ class PlayState extends MusicBeatState
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
 	public static var storyDifficulty:Int = 0; //troquei aq pro remix uau
+	public static var reshapedString:String = ""; //cu
 
 	public static var songMusic:FlxSound;
 	public static var vocals:FlxSound;
@@ -549,6 +550,11 @@ class PlayState extends MusicBeatState
 				hud.alpha = 0.0001;
 		}
 
+		if(storyDifficulty == 1)
+			reshapedString = "-reshaped";
+		else
+			reshapedString = "";
+
 		Paths.clearUnusedMemory();
 
 		// call the funny intro cutscene depending on the song
@@ -1019,7 +1025,8 @@ class PlayState extends MusicBeatState
 				#end
 			}
 
-			//if (FlxG.keys.justPressed.ONE) endSong
+			if (FlxG.keys.justPressed.ONE) 
+				endSong();
 
 			/* // tava crashando o jogo se vc apertasse fora da polygons
 			if (FlxG.keys.justPressed.TWO)
@@ -2754,7 +2761,8 @@ class PlayState extends MusicBeatState
 						});
 					}
 				});
-			case 'potency' | 'big-boy' | 'killer-tibba': // meio confuso mas da pra entender
+			/*
+			case 'potency' | 'big-boy' | 'killer-tibba': // meio confuso mas da pra entender -- removido pq cutscenes
 				if(changedCharacter > 0)
 				{
 					if(changedCharacter == 1)
@@ -2764,14 +2772,12 @@ class PlayState extends MusicBeatState
 				}
 				else
 				callTextbox((storyDifficulty == 0) ? '' : '-reshaped');
+			*/ 
 			case 'collision':
 				collisionCutscene();
-			/*
-			case 'musica com video':
-				playCutscene('nome do video', fimdamusica) // esse fim da musica aq seria false, se for no fim bota no endSong com true
-				//outra nota aq, esse codigo so vai quando tem cutscene ligada (story mode, se tu ligar nos options)
-				//quando tu quiser botar obrigatoriamente sempre q tu abrir a musica bota la em cima no fim do create onde decide entre startCountdown e songIntroCutscene
-			*/
+			
+			case 'big-boy' | "killer-tibba":
+				playCutscene(curSong.toLowerCase() + reshapedString, false);
 			default:
 				callTextbox();
 		}
