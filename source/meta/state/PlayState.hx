@@ -2772,8 +2772,7 @@ class PlayState extends MusicBeatState
 						});
 					}
 				});
-			/*
-			case 'potency' | 'big-boy' | 'killer-tibba': // meio confuso mas da pra entender -- removido pq cutscenes
+			case 'potency': // meio confuso mas da pra entender
 				if(changedCharacter > 0)
 				{
 					if(changedCharacter == 1)
@@ -2782,8 +2781,7 @@ class PlayState extends MusicBeatState
 						callTextbox('-chicken');
 				}
 				else
-				callTextbox((storyDifficulty == 0) ? '' : '-reshaped');
-			*/ 
+					callTextbox((storyDifficulty == 0) ? '' : '-reshaped');
 			case 'collision':
 				collisionCutscene();
 			
