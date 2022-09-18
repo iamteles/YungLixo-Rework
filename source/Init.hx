@@ -52,6 +52,12 @@ class Init extends FlxState
 			'Wether to have your game window with or without borders',
 			NOT_FORCED
 		],
+		'Cinematic Mode' => [
+			false, // bunda
+			Checkmark,
+			'Wether to hide the HUD',
+			NOT_FORCED
+		],
 		'Downscroll' => [
 			false,
 			Checkmark,

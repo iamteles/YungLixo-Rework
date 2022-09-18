@@ -116,6 +116,7 @@ class OptionsMenuState extends MusicBeatState
 					["Stage Opacity", getFromOption],
 					["Opacity Type", getFromOption],
 					['Borderless Window', getFromOption],
+					['Cinematic Mode', getFromOption],
 				]
 			]
 		];

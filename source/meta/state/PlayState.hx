@@ -555,6 +555,13 @@ class PlayState extends MusicBeatState
 		else
 			reshapedString = "";
 
+		if(!Init.trueSettings.get('Cinematic Mode'))
+			camHUD.visible = true;
+		else
+			camHUD.visible = false;
+			for (hud in strumHUD)
+				hud.visible = false;
+
 		Paths.clearUnusedMemory();
 
 		// call the funny intro cutscene depending on the song
@@ -2283,34 +2290,38 @@ class PlayState extends MusicBeatState
 						barra.isOffscreen = true;
 			}
 			
-			// fazer o hud sumir/aparecer
-			var hoohoo:Float = 0;
-			if(curStep < 992)
+			if (!Init.trueSettings.get('Cinematic Mode'))
 			{
-				hoohoo = 0.005;
-				for (hud in strumHUD)
-					if(hud.alpha < 1) hud.alpha += hoohoo;
-			}
-			if(curStep >= 992 && curStep < 1152)
-			{
-				hoohoo = 0.05;
-				if(camHUD.alpha > 0)
+				// fazer o hud sumir/aparecer
+				var hoohoo:Float = 0;
+				if(curStep < 992)
 				{
-					camHUD.alpha -= hoohoo;
+					hoohoo = 0.005;
 					for (hud in strumHUD)
-						hud.alpha -= hoohoo;
+						if(hud.alpha < 1) hud.alpha += hoohoo;
+				}
+				if(curStep >= 992 && curStep < 1152)
+				{
+					hoohoo = 0.05;
+					if(camHUD.alpha > 0)
+					{
+						camHUD.alpha -= hoohoo;
+						for (hud in strumHUD)
+							hud.alpha -= hoohoo;
+					}
+				}
+				if(curStep >= 1152)
+				{
+					hoohoo = 0.08;
+					if(camHUD.alpha < 1)
+					{
+						camHUD.alpha += hoohoo;
+						for (hud in strumHUD)
+							hud.alpha += hoohoo;
+					}
 				}
 			}
-			if(curStep >= 1152)
-			{
-				hoohoo = 0.08;
-				if(camHUD.alpha < 1)
-				{
-					camHUD.alpha += hoohoo;
-					for (hud in strumHUD)
-						hud.alpha += hoohoo;
-				}
-			}
+
 		}
 		if(SONG.song.toLowerCase() == "keylogger")
 		{
@@ -2932,7 +2943,13 @@ class PlayState extends MusicBeatState
 		Conductor.songPosition = -(Conductor.crochet * 5);
 		swagCounter = 0;
 
-		camHUD.visible = true;
+		if(!Init.trueSettings.get('Cinematic Mode'))
+			camHUD.visible = true;
+		else
+			camHUD.visible = false;
+			for (hud in strumHUD)
+				hud.visible = false;
+
 
 		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer)
 		{

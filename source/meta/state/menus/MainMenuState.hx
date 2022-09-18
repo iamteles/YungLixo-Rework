@@ -119,6 +119,11 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
+		var engineVersionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "VS Yung Lixo Rework v1", 12);
+		engineVersionShit.scrollFactor.set();
+		engineVersionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(engineVersionShit);
+
 		//
 	}
 
