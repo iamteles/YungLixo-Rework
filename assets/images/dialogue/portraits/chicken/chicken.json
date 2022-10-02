@@ -1,0 +1,16 @@
+{
+    "name": "chicken",
+    "expressions": {
+        "normal": "normal",
+        "gun": "gun"
+    },
+    "position": [940, 350],
+    "scale": 6,
+    "flipX": false,
+    "loop": false,
+	"antialiasing": false,
+
+    "sounds": ["pixelText"],
+    "soundChance": 100,
+    "soundPath": "sounds/"
+}

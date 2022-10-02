@@ -62,9 +62,6 @@ class CharacterMenuState extends MusicBeatState
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
 
-		// make sure the music is playing
-		ForeverTools.resetMenuMusic();
-
 		// uh
 		persistentUpdate = persistentDraw = true;
 
@@ -155,13 +152,29 @@ class CharacterMenuState extends MusicBeatState
 			playIdle();
 		}, 0);
 
+		// saving position
+		FlxG.save.bind('ylr-character-menu');
+		if(FlxG.save.data.arrowPositions == null)
+			FlxG.save.data.arrowPositions = [curSelected, minerPos];
+		curSelected = FlxG.save.data.arrowPositions[0];
+		minerPos = FlxG.save.data.arrowPositions[1];
+		FlxG.save.flush();
+		
 		updateSelection();
 	}
 
 	override function update(elapsed:Float)
 	{
 		if(isMiner)
+		{
 			minerArrow.x = minerPos;
+			// only saves when you release the key
+			if(controls.UI_LEFT_R || controls.UI_RIGHT_R)
+			{
+				FlxG.save.data.arrowPositions[1] = minerPos;
+				FlxG.save.flush();
+			}
+		}
 	
 		if(!selectedSomethin)
 		{
@@ -280,6 +293,9 @@ class CharacterMenuState extends MusicBeatState
 			curSelected = characters.length - 1;
 		if (curSelected >= characters.length)
 			curSelected = 0;
+			
+		FlxG.save.data.arrowPositions[0] = curSelected;
+		FlxG.save.flush();
 	}
 
 	private function selectChar(who:Character)

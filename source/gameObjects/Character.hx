@@ -101,6 +101,18 @@ class Character extends FNFSprite
 				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 				updateHitbox();
 				antialiasing = false;
+				
+			case 'gf-miner':
+				// GIRLFRIEND CODE
+				tex = Paths.getSparrowAtlas('characters/GF_MINERINHO');
+				frames = tex;
+				animation.addByIndices('sad', 'gf sad', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "", 24, false);
+				animation.addByIndices('danceLeft', 'GF Dancing Beat', [30, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], "", 24, false);
+				animation.addByIndices('danceRight', 'GF Dancing Beat', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
+
+				playAnim('danceRight');
+				
+				characterData.offsetY = -10;
 
 			case 'dad':
 				// DAD ANIMATION LOADING CODE
@@ -637,10 +649,10 @@ class Character extends FNFSprite
 				animation.addByPrefix('singRIGHT', 'left', 24);
 				animation.addByPrefix('singDOWN', 'down dos santos', 24);
 				animation.addByPrefix('singLEFT', 'right dos santos', 24);
+				
+				// dont ask why
+				scale.set(1, 1);
 				updateHitbox();
-
-				//characterData.offsetY = 930;
-				//characterData.offsetX = -90;
 
 				playAnim('idle');
 			default:

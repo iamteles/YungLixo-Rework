@@ -61,9 +61,9 @@ class HealthIcon extends FlxSprite
 	
 	public function frameCheck(life:Float) {
 		if(!isPlayer) {
-			animation.curAnim.curFrame = ((life > 0.8) ? 1 : 0);
+			animation.curAnim.curFrame = ((life > 80) ? 1 : 0);
 		} else {
-			animation.curAnim.curFrame = ((life < 0.2) ? 1 : 0);
+			animation.curAnim.curFrame = ((life < 20) ? 1 : 0);
 		}
 	}
 }

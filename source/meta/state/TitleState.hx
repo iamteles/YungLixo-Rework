@@ -59,9 +59,6 @@ class TitleState extends MusicBeatState
 		super.create();
 
 		startIntro();
-		
-		if (FlxG.save.data.daiane == null)
-			FlxG.save.data.daiane = false;
 	}
 
 	var logoBl:FlxSprite;

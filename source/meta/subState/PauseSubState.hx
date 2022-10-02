@@ -110,9 +110,14 @@ class PauseSubState extends MusicBeatSubState
 		{
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, menuItems[i], true, false);
 			songText.isMenuItem = true;
+			songText.disableX = true;
 			songText.targetY = i;
 			grpMenuShit.add(songText);
 		}
+		
+		for(i in grpMenuShit.members)
+			i.x = ((FlxG.width / 2) - (i.width / 2));
+			//i.screenCenter(X);
 
 		#if debug
 		// trace('change selection');
@@ -196,6 +201,9 @@ class PauseSubState extends MusicBeatSubState
 			pauseMusic.volume += 0.01 * elapsed;
 			
 		botplayPause.visible = PlayState.botplay;
+		
+		for(i in grpMenuShit.members)
+			i.x = ((FlxG.width / 2) - (i.width / 2));
 	}
 
 	override function destroy()

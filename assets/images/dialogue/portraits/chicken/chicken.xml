@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="chicken.png">
+	<!-- Created with Adobe Animate version 18.0.2.126 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="gun0000" x="3" y="3" width="41" height="41"/>
+	<SubTexture name="gun0001" x="3" y="3" width="41" height="41"/>
+	<SubTexture name="gun0002" x="3" y="3" width="41" height="41"/>
+	<SubTexture name="normal0000" x="3" y="47" width="41" height="41"/>
+	<SubTexture name="normal0001" x="3" y="47" width="41" height="41"/>
+	<SubTexture name="normal0002" x="3" y="47" width="41" height="41"/>
+</TextureAtlas>

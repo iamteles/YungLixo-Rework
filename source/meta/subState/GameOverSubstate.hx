@@ -13,15 +13,19 @@ import meta.MusicBeat.MusicBeatSubState;
 import meta.data.Conductor.BPMChangeEvent;
 import meta.data.Conductor;
 import meta.state.*;
+import meta.data.font.Alphabet;
 import meta.state.menus.*;
 import lime.app.Application;
+import openfl.Assets;
 
 using StringTools;
 
 class GameOverSubstate extends MusicBeatSubState
 {
 	//
+	var elapsedtime:Float = 0;
 	var customDeath:String = 'none';
+	var chickenDeathText:Alphabet;
 	
 	var bf:Boyfriend;
 	var camFollow:FlxObject;
@@ -98,6 +102,49 @@ class GameOverSubstate extends MusicBeatSubState
 				
 			case 'chicken':
 				bf.playAnim('death');
+				
+				/*
+				var randomText:Array<String> = [
+					"Coitadinho",
+					"KKKKKKK",
+					"Lol",
+					"Voce Morreu",
+					"Liga o Botplay",
+					"Perdeu Playboy",
+					"Doeu?",
+					"Cuidado ai",
+					"Olha pras notas",
+					"Acontece bro",
+					"morreu kk",
+					"daiane dos santos"
+				];
+				*/
+				
+				// not hardcoded anymore yeah 8)
+				var randomText:Array<String> = getArrayFromTxt(Assets.getText(Paths.txt('chickenDeath')));
+				
+				chickenDeathText = new Alphabet(0, 0, randomText[FlxG.random.int(0, randomText.length - 1)], true, false, 1.9);
+				chickenDeathText.screenCenter();
+				chickenDeathText.scrollFactor.set();
+				add(chickenDeathText);
+				
+				chickenDeathText.offset.x = 600;
+				chickenDeathText.offset.y = 200;
+				
+				FlxTween.tween(chickenDeathText.offset, {x: 0, y: -200}, 1, {ease: FlxEase.quadOut});
+				
+				FlxG.camera.zoom = 0.7;
+				bf.x = ((FlxG.width / 2) - (bf.width / 2));
+				
+				if(bf.curCharacter.toLowerCase() == 'chicken-player-pixel')
+				{
+					bf.x += 100;
+					bf.y = 460;
+				}
+				else
+					bf.y = -400;
+				
+				bf.scrollFactor.set();
 		}
 		
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x + 20, bf.getGraphicMidpoint().y - 40, 1, 1);
@@ -112,11 +159,27 @@ class GameOverSubstate extends MusicBeatSubState
 		
 		FlxG.camera.follow(camFollow, LOCKON, 0.01);
 	}
+	
+	private function getArrayFromTxt(text:String):Array<String>
+    {
+		var choices:Array<String> = new Array();
+		var lines = text.split("\n");// split in all lines
+		var line:String;
+		while (lines.length > 0) 
+		{
+			line = lines.shift().replace("\r", "");
+			if (line.length != 0)
+				choices.push(line);
+		}
+		
+		return choices;
+	}
 
+	var playedMusic:Bool = false;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
+		
 		if (controls.ACCEPT)
 			endBullshit();
 
@@ -137,22 +200,35 @@ class GameOverSubstate extends MusicBeatSubState
 		{
 			default:
 				//if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.curFrame == 12)
-					FlxG.camera.follow(camFollow, LOCKON, 0.01);
+				FlxG.camera.follow(camFollow, LOCKON, 0.01);
 
 				if (bf.animation.curAnim.name == 'firstDeath' && bf.animation.curAnim.finished)
 					FlxG.sound.playMusic(Paths.music('gameOver'));
 					
 			case 'pintows':
 				// nada
-					
+				
 			case 'chicken':
 				// tem que deixar ele mais pesado quando ele é pixel se não ele VOA PRA KRL
-				chickenFallSpeed += ((bf.curCharacter == 'chicken-player-pixel') ? 100 : 50) * elapsed;
+				var isPixel:Bool = (bf.curCharacter == 'chicken-player-pixel');
+				chickenFallSpeed += (isPixel ? 98 : 68) * elapsed;
 				
-				bf.x += 450 * elapsed;
+				bf.x += (isPixel ? 675 : 500) * elapsed;
 				bf.y += chickenFallSpeed;
 				
 				bf.angle += 600 * elapsed;
+				
+				elapsedtime += elapsed * Math.PI;
+				//chickenDeathText.x = (chickenDeathText.startX) - Math.sin(elapsedtime) * 30;
+				chickenDeathText.x = ((FlxG.width / 2) - (chickenDeathText.width / 2)) - Math.cos(elapsedtime) * 30;
+				chickenDeathText.y = chickenDeathText.startY - Math.cos(elapsedtime) * 30;
+				chickenDeathText.angle = Math.cos(elapsedtime) * 15;
+				
+				if(bf.y >= 1350 && !playedMusic)
+				{
+					playedMusic = true;
+					FlxG.sound.playMusic(Paths.music('gameOver'));
+				}
 		}
 	}
 

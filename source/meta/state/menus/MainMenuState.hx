@@ -119,6 +119,11 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
+		var engineVersionShit:FlxText = new FlxText(5, FlxG.height - 18 - 16, 0, "VS Yung Lixo Rework v1.1", 12);
+		engineVersionShit.scrollFactor.set();
+		engineVersionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		add(engineVersionShit);
+
 		//
 	}
 
@@ -142,17 +147,6 @@ class MainMenuState extends MusicBeatState
 		var up_p = controls.UI_UP_P;
 		var down_p = controls.UI_DOWN_P;
 		var controlArray:Array<Bool> = [up, down, up_p, down_p];
-
-		/* // go to fuckin credits >:(
-		if(!selectedSomethin)
-		{
-			if(FlxG.keys.justPressed.V)
-			{
-				selectedSomethin = true;
-				Main.switchState(this, new GoToCreditsState());
-			}
-		}
-		*/
 
 		if ((controlArray.contains(true)) && (!selectedSomethin))
 		{
@@ -240,6 +234,13 @@ class MainMenuState extends MusicBeatState
 			{
 				spr.x = FlxMath.lerp(spr.x, ((spr.ID == curSelected) ? 550 : 700), 0.075);
 			});
+			
+			// go to fuckin credits >:(
+			/* if(FlxG.keys.justPressed.NUMPADONE)
+			{
+				selectedSomethin = true;
+				Main.switchState(this, new GoToCreditsState());
+			} */
 		}
 
 		super.update(elapsed);

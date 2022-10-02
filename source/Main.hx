@@ -14,6 +14,7 @@ import lime.app.Application;
 import meta.*;
 import meta.data.PlayerSettings;
 import meta.data.dependency.Discord;
+import meta.data.dependency.YLRTransition;
 import meta.data.dependency.FNFTransition;
 import meta.data.dependency.FNFUIState;
 import openfl.Assets;
@@ -106,7 +107,7 @@ class Main extends Sprite
 		[
 			['kkkri'],
 			['daianedossantos'],
-			[FlxColor.fromRGB(44,44,44)],
+			[FlxColor.fromRGB(255,0,0)],
 			'daian'
 		]
 	];
@@ -195,8 +196,8 @@ class Main extends Sprite
 		mainClassState = Type.getClass(target);
 		if (!FlxTransitionableState.skipNextTransIn)
 		{
-			curState.openSubState(new FNFTransition(0.35, false));
-			FNFTransition.finishCallback = function()
+			curState.openSubState(new YLRTransition(0.35, false));
+			YLRTransition.finishCallback = function()
 			{
 				FlxG.switchState(target);
 			};

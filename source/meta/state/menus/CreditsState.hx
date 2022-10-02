@@ -3,6 +3,7 @@ package meta.state.menus;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
@@ -51,7 +52,9 @@ class CreditsState extends MusicBeatState
 
 	private var bgTween:FlxTween;
 	private var bg:FlxSprite;
-
+	
+	private var vaca:FlxSprite;
+	
 	private var socialmedia:FlxSprite;
 
 	private var descBG:FlxSprite;
@@ -107,17 +110,43 @@ class CreditsState extends MusicBeatState
 		#end
 
 		// LOAD CHARACTERS
-		bg = new FlxSprite().loadGraphic(Paths.image('menus/base/menuDesat'));
+		//bg = new FlxSprite().loadGraphic(Paths.image('menus/base/menuDesat'));
+		//add(bg);
+		bg = new FlxBackdrop(Paths.image('menus/ylr/tileLoopWhite'), 8, 8, true, true, 1, 1);
+		bg.velocity.x = 10;
+		bg.screenCenter();
 		add(bg);
+		
+		var white:FlxSprite = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.WHITE);
+		white.scrollFactor.set();
+		white.screenCenter();
+		white.antialiasing = true;
+		white.alpha = 0.25;
+		add(white);
+		
+		var gradient:FlxSprite = new FlxSprite();
+		gradient.loadGraphic(Paths.image('menus/ylr/gradient'));
+		gradient.scrollFactor.set();
+		gradient.screenCenter();
+		gradient.antialiasing = true;
+		add(gradient);
+		
+		// vaca medonha
+		vaca = new FlxSprite(0, 3000).loadGraphic(Paths.image('backgrounds/polygons/VACA-MEDONHA'));
+		vaca.x = ((FlxG.width / 2) - (vaca.width / 2));
+		vaca.scale.set(0.8,0.8);
+		vaca.updateHitbox();
+		add(vaca);
 
 		grpCharacters = new FlxTypedGroup<Alphabet>();
 		add(grpCharacters);
-
 		for (i in 0...daTeam.length)
 		{
 			var songText:Alphabet = new Alphabet(0, (50 * i) + 30, daTeam[i][0], true, false, 0.85);
 			songText.isMenuItem = true;
+			songText.disableX = true;
 			songText.targetY = i;
+			songText.ID = i;
 			grpCharacters.add(songText);
 
 			var icon:CreditsIcon = new CreditsIcon(daTeam[i][1]);
@@ -218,6 +247,20 @@ class CreditsState extends MusicBeatState
 					iconArray[i].angle = (Math.cos(elapsedtime)) * 30;
 				}
 			}
+		}
+		
+		// spooky
+		var isSpooky:Bool = (curSelected == 27);
+		vaca.y = FlxMath.lerp(vaca.y, (isSpooky ? 200 : 4000), (isSpooky ? 0.00004 : 0.05));
+		
+		for(item in grpCharacters)
+		{
+			if(item.ID == curSelected)
+				item.x = FlxMath.lerp(item.x, 100 + 20, 0.3);
+			else if(item.ID == curSelected - 1 || item.ID == curSelected + 1)
+				item.x = FlxMath.lerp(item.x, 50 + 20, 0.3);
+			else
+				item.x = FlxMath.lerp(item.x, 20, 0.3);
 		}
 	}
 

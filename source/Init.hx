@@ -52,6 +52,18 @@ class Init extends FlxState
 			'Wether to have your game window with or without borders',
 			NOT_FORCED
 		],
+		'Modchart' => [
+			true,
+			Checkmark,
+			'Do you want your arrows to go crazy on some songs?',
+			NOT_FORCED
+		],
+		'Cinematic Mode' => [
+			false, // bunda
+			Checkmark,
+			'Wether to hide the HUD',
+			NOT_FORCED
+		],
 		'Downscroll' => [
 			false,
 			Checkmark,
@@ -174,7 +186,7 @@ class Init extends FlxState
 			FORCED
 		],
 		'Skip Text' => [
-			'never',
+			'freeplay only',
 			Selector,
 			'Decides whether to skip cutscenes and dialogue in gameplay. May be always, only in freeplay, or never.',
 			NOT_FORCED,
@@ -292,6 +304,12 @@ class Init extends FlxState
 		FlxG.mouse.useSystemCursor = true; // Use system cursor because it's prettier
 		FlxG.mouse.visible = false; // Hide mouse on start
 		FlxGraphic.defaultPersist = true; // make sure we control all of the memory
+		
+		if (FlxG.save.data.daiane == null)
+			FlxG.save.data.daiane = false;
+			
+		if (FlxG.save.data.minerMode == null)
+			FlxG.save.data.minerMode = true;
 
 		gotoTitleScreen();
 	}

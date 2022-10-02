@@ -3,6 +3,7 @@ package meta.state.menus;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.addons.display.FlxBackdrop;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
@@ -13,6 +14,7 @@ import flixel.tweens.FlxTween;
 import flixel.tweens.misc.ColorTween;
 import flixel.util.FlxColor;
 import gameObjects.userInterface.HealthIcon;
+import gameObjects.userInterface.menu.Checkmark;
 import lime.utils.Assets;
 import meta.MusicBeat.MusicBeatState;
 import meta.data.*;
@@ -58,6 +60,10 @@ class FreeplayState extends MusicBeatState
 
 	private var existingSongs:Array<String> = [];
 	private var existingDifficulties:Array<Array<String>> = [];
+	
+	public var minerCheck:Checkmark;
+	public var minerTxt:Alphabet;
+	public var minerTxtWarn:FlxText;
 
 	override function create()
 	{
@@ -124,8 +130,25 @@ class FreeplayState extends MusicBeatState
 		#end
 
 		// LOAD CHARACTERS
-		bg = new FlxSprite().loadGraphic(Paths.image('menus/base/menuDesat'));
+		//bg = new FlxSprite().loadGraphic(Paths.image('menus/base/menuDesat'));
+		//add(bg);
+		bg = new FlxBackdrop(Paths.image('menus/ylr/tileLoopWhite'), 8, 8, true, true, 1, 1);
+		bg.velocity.x = 10;
+		bg.screenCenter();
 		add(bg);
+		
+		var white:FlxSprite = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.WHITE);
+		white.scrollFactor.set();
+		white.screenCenter();
+		white.antialiasing = true;
+		white.alpha = 0.25;
+		add(white);
+		
+		var gradient:FlxSprite = new FlxSprite().loadGraphic(Paths.image('menus/ylr/gradient'));
+		gradient.scrollFactor.set();
+		gradient.screenCenter();
+		gradient.antialiasing = true;
+		add(gradient);
 
 		grpSongs = new FlxTypedGroup<Alphabet>();
 		add(grpSongs);
@@ -134,6 +157,7 @@ class FreeplayState extends MusicBeatState
 		{
 			var songText:Alphabet = new Alphabet(0, (70 * i) + 30, songs[i].songName, true, false);
 			songText.isMenuItem = true;
+			songText.disableX = false;
 			songText.targetY = i;
 			grpSongs.add(songText);
 			if(songText.width > FlxG.width) songText.width = FlxG.width - 20;
@@ -175,6 +199,27 @@ class FreeplayState extends MusicBeatState
 		selector.size = 40;
 		selector.text = ">";
 		// add(selector);
+		
+		
+		minerTxt = new Alphabet(0, 0, "Miner Mode", true, false);
+		add(minerTxt);
+		minerTxt.y = FlxG.height - minerTxt.height - -200;
+		minerTxt.x = FlxG.width - minerTxt.width - 20;
+		
+		minerCheck = ForeverAssets.generateCheckmark(0, 0, 'checkboxThingie', 'base', 'default', 'UI');
+		minerCheck.playAnim((FlxG.save.data.minerMode ? 'true' : 'false') + ' finished');
+		add(minerCheck);
+		//minerCheck.playAnim(Std.string(Init.trueSettings.get(letter.text)) + ' finished');
+		
+		/*
+		minerTxtWarn = new Alphabet(0, 0, "press space to toggle", false, false, 0.3);
+		add(minerTxtWarn);
+		*/
+		
+		minerTxtWarn = new FlxText(0, 0, "PRESS SPACE TO TOGGLE", 24);
+		minerTxtWarn.setFormat(scoreText.font, 24, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		minerTxtWarn.x = FlxG.width - minerTxtWarn.width - 20;
+		add(minerTxtWarn);
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, songColor:FlxColor)
@@ -212,11 +257,13 @@ class FreeplayState extends MusicBeatState
 		}
 	}
 
+	var elapsedtime:Float = 0;
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		var theSong = songs[curSelected].songName.toLowerCase();
 
-		var lerpVal = Main.framerateAdjust(0.1);
+		var lerpVal = Main.framerateAdjust(0.3);
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, lerpVal));
 
 		if (Math.abs(lerpScore - intendedScore) <= 10)
@@ -224,7 +271,8 @@ class FreeplayState extends MusicBeatState
 
 		var upP = controls.UI_UP_P;
 		var downP = controls.UI_DOWN_P;
-		var accepted = controls.ACCEPT;
+		//var accepted = controls.ACCEPT;
+		var accepted = FlxG.keys.justPressed.ENTER;
 
 		if (upP)
 			changeSelection(-1);
@@ -241,6 +289,9 @@ class FreeplayState extends MusicBeatState
 			threadActive = false;
 			Main.switchState(this, new MainMenuState());
 		}
+		
+		if (FlxG.keys.justPressed.SPACE && theSong == "crazy-pizza")
+			changeCheckmark(!FlxG.save.data.minerMode);
 
 		if (accepted)
 		{
@@ -257,7 +308,6 @@ class FreeplayState extends MusicBeatState
 			threadActive = false;
 
 			// isso ta mt bagunçado mas eu não sei como que faz de outro jeito :(
-			var theSong = songs[curSelected].songName.toLowerCase();
 			switch(theSong)
 			{
 				case 'da-vinci-funkin' | 'operational-system' | 'jokes':
@@ -298,10 +348,44 @@ class FreeplayState extends MusicBeatState
 			songToPlay = null;
 		}
 		mutex.release();
+		
+		// funny movements and stuff
+		elapsedtime += elapsed * Math.PI;
+		for(item in grpSongs)
+		{
+			if(item.text.toLowerCase() == "jokes")
+			{
+				item.offset.x = Math.sin(elapsedtime) * 10;
+				item.offset.y = Math.sin(elapsedtime) * 10;
+				item.angle = Math.sin(elapsedtime) * 10;
+				
+				iconArray[5].offset.x = Math.sin(elapsedtime) * 10;
+				iconArray[5].offset.y = Math.sin(elapsedtime) * 10;
+				iconArray[5].angle = Math.sin(elapsedtime) * 10;
+			}
+		}
+		
+		// select crazy pizza
+		minerTxt.y = FlxMath.lerp(minerTxt.y, FlxG.height - minerTxt.height - ((theSong == "crazy-pizza") ? 30 : -200), 0.18);
+		// o
+		minerCheck.x = minerTxt.x - minerCheck.width + 5;
+		minerCheck.y = minerTxt.y - (minerCheck.height / 2) + 2.5;
+		// oo
+		minerTxtWarn.y = minerTxt.y + minerTxt.height;
+	}
+	
+	function changeCheckmark(fuckin:Bool)
+	{
+		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+	
+		FlxG.save.data.minerMode = fuckin;
+		FlxG.save.flush();
+	
+		if (minerCheck != null)
+			minerCheck.playAnim(Std.string(fuckin));
 	}
 
 	var lastDifficulty:String;
-
 	function changeDiff(change:Int = 0)
 	{
 		curDifficulty += change;

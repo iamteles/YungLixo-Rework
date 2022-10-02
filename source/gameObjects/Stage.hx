@@ -363,7 +363,13 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				gfVersion = 'gf-pixel';
 			case 'farm':
 				gfVersion = 'gf-pixel';
+			case 'miner':
+				gfVersion = 'gf-miner';
 		}
+		
+		// aaaaaaa
+		if(PlayState.storyDifficulty == 1 && PlayState.SONG.song.toLowerCase() != 'jokes')
+			gfVersion = 'gf-miner';
 
 		return gfVersion;
 	}
@@ -430,7 +436,7 @@ class Stage extends FlxTypedGroup<FlxBasic>
 				if(PlayState.storyDifficulty == 1)
 					gf.visible = false;
 				
-				gf.scrollFactor.x = 0.8;
+				gf.x += 40;
 				dad.y += 150;
 				boyfriend.y += 150;
 				

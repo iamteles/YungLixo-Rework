@@ -314,11 +314,11 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 				iconP3.angle = iconP1.angle;
 			}
 
-			iconP3.frameCheck(PlayState.health);
+			iconP3.frameCheck(healthBar.percent);
 		}
 
-		iconP1.frameCheck(PlayState.health);
-		iconP2.frameCheck(PlayState.health);
+		iconP1.frameCheck(healthBar.percent);
+		iconP2.frameCheck(healthBar.percent);
 
 		// funny red score bar
 		scoreBar.color = (healthBar.percent < 20) ? FlxColor.fromRGB(255,35,35) : FlxColor.WHITE;

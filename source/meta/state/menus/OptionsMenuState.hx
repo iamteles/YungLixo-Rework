@@ -50,14 +50,35 @@ class OptionsMenuState extends MusicBeatState
 		#if DISCORD_RPC
 		Discord.changePresence('OPTIONS MENU', 'Main Menu');
 		#end
+		
+		// make sure the music is playing
+		ForeverTools.resetMenuMusic();
 
 		categoryMap = [
 			'main' => [
 				[
+					['vs yung lixo', callNewGroup],
 					['preferences', callNewGroup],
 					['appearance', callNewGroup],
 					['controls', openControlmenu],
 					['exit', exitMenu]
+				]
+			],
+			'vs yung lixo' => [
+				[
+					["Gameplay", null],
+					['', null],
+					['Modchart', getFromOption],
+					['Flashing Lights', getFromOption],
+					['Cinematic Mode', getFromOption],
+					['Borderless Window', getFromOption],
+					['Timer', getFromOption],
+					['', null],
+					// minecraft gaming
+					["Healthbars", null],
+					['', null],
+					['Colored Healthbars', getFromOption],
+					['Gradient Healthbars', getFromOption],
 				]
 			],
 			'preferences' => [
@@ -73,7 +94,6 @@ class OptionsMenuState extends MusicBeatState
 					['', null],
 					['Display Accuracy', getFromOption],
 					['Skip Text', getFromOption],
-					['Timer', getFromOption],
 					['', null],
 					['Meta Settings', null],
 					['', null],
@@ -86,11 +106,6 @@ class OptionsMenuState extends MusicBeatState
 			],
 			'appearance' => [
 				[
-					["Healthbars", null],
-					['', null],
-					["Colored Healthbars", getFromOption],
-					["Gradient Healthbars", getFromOption],
-					['', null],
 					['Judgements', null],
 					['', null],
 					["UI Skin", getFromOption],
@@ -112,10 +127,8 @@ class OptionsMenuState extends MusicBeatState
 					['Filter', getFromOption],
 					['Reduced Movements', getFromOption],
 					['Disable Antialiasing', getFromOption],
-					['Flashing Lights', getFromOption],
 					["Stage Opacity", getFromOption],
 					["Opacity Type", getFromOption],
-					['Borderless Window', getFromOption],
 				]
 			]
 		];
