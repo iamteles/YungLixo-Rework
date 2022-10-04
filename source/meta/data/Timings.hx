@@ -107,6 +107,9 @@ class Timings
 
 	public static function getAccuracy()
 	{
+		if(trueAccuracy > 100)
+			trueAccuracy = 100;
+	
 		return trueAccuracy;
 	}
 

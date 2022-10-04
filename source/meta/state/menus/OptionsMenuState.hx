@@ -66,6 +66,11 @@ class OptionsMenuState extends MusicBeatState
 			],
 			'vs yung lixo' => [
 				[
+					["language ", null],
+					['', null],
+					['Language', getFromOption],
+					['', null],
+					// gameplay
 					["Gameplay", null],
 					['', null],
 					['Modchart', getFromOption],

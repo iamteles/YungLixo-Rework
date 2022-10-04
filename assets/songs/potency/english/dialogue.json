@@ -1,0 +1,71 @@
+{
+    "box": "speech_bubble_talking",
+    "boxState": "normal",
+    "dialogue": [
+		{
+            "portrait": "gemaplys",
+			"expression": "normal left",
+            "text": "The fuck was that?"
+        },
+		{
+            "portrait": "bf",
+			"expression": "normal",
+            "text": "beep"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "normal right",
+            "text": "oh no..."
+        },
+		{
+			"expression": "bored right",
+			"speed": 2,
+            "text": "Arent you that blue haired dwarf\nfrom that one famous game\neveryone is talking about?"
+        },
+		{
+            "portrait": "bf",
+			"expression": "smug",
+            "text": "Yeah"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "bored left",
+			"speed": 2,
+            "text": "I knew i shouldnt have done that video about\nmodding myself into FNF..."
+        },
+		{
+			"expression": "bored right",
+            "text": "Anyways, what do you want?"
+        },
+		{
+            "portrait": "bf",
+			"expression": "normal",
+            "text": "Skdee deep bep boop"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "normal right",
+			"speed": 2,
+            "text": "So, am i supposed to beat you in a rap battle\nto leave this place?"
+        },
+		{
+            "portrait": "bf",
+			"expression": "smug",
+            "text": "yep"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "bored left",
+            "text": "Should have guessed it..."
+        },
+		{
+			"expression": "bored right",
+            "text": "Screw it, lets just get this over with\ni just want to go home."
+        },
+		{
+            "portrait": "bf",
+			"expression": "normal",
+            "text": "Beep"
+        }
+	]
+}

@@ -73,7 +73,7 @@ class CreditsState extends MusicBeatState
 		["DiogoTV",		 'diogo', 		FlxColor.fromRGB(225,228,240), 	'Coder e Artista/Animador\n(Sprites do Gemafunkin, Icon do Tibba, Portraits dos diálogos e Cutscene da Killer-Tibba)\n"Feliz Aniversário Ellysson"',"https://twitter.com/DiogoTVV", 0],
 		// artistas
 		["Amanda Burra", 'amanda', 		FlxColor.fromRGB(144,67,238), 	'Artista/Animadora\n"${amandaImage}"',																		"https://twitter.com/Burra_Amanda", 0],
-		["Aqua",		 'aqua', 		FlxColor.fromRGB(221,223,245), 	'Artista/Animador\n(Aviso na Collision)\n"danilo"',															"https://twitter.com/AquaStrikr_", 0],
+		["SOULCODE",	 'soul', 		FlxColor.fromRGB(221,223,245), 	'Artista/Animador\n(Aviso na Collision)\n"danilo"',															"https://twitter.com/SoulC0de69K", 0],
 		["Baicon",		 'baicon', 		FlxColor.fromRGB(64,128,255), 	'Artista/Animador\n(Macaco do Roblox)\n"ZAPEEEE, ZAPEEEEEE"',												"https://twitter.com/Baiconzito_", 0],
 		["Jacc",		 'Jacc', 		FlxColor.fromRGB(145,9,210), 	'Artista/Animador\n"não acredito que ele fez cover do gemamugen da coliseu kkkkkkkkkk"',					"https://twitter.com/JackGD9", 0],
 		["Johnatan o Animado",'john',	FlxColor.fromRGB(111,164,254), 	'Artista/Animador\n(MC VV, Mineirinho)\n"O mineirinho fnf foi a melhor coisa que eu já fiz na minha vida inteira"',"https://www.youtube.com/channel/UC18MTVMygNjI2mJ2yRCDXAg", 1],

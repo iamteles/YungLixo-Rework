@@ -229,8 +229,16 @@ class Init extends FlxState
 			'Enables flashing Lights, disable this if you are sensible to them',
 			NOT_FORCED
 		],
+		'Language' => [
+			'pt-br',
+			Selector,
+			'Choose the language of the UI',
+			NOT_FORCED,
+			['english', 'pt-br']
+		],
 	];
 
+	public static var trueMechanics:Array<Bool> = [];
 	public static var trueSettings:Map<String, Dynamic> = [];
 	public static var settingsDescriptions:Map<String, String> = [];
 
@@ -305,11 +313,20 @@ class Init extends FlxState
 		FlxG.mouse.visible = false; // Hide mouse on start
 		FlxGraphic.defaultPersist = true; // make sure we control all of the memory
 		
+		FlxG.save.bind('yunglixo-save');
 		if (FlxG.save.data.daiane == null)
 			FlxG.save.data.daiane = false;
 			
-		if (FlxG.save.data.minerMode == null)
-			FlxG.save.data.minerMode = true;
+		if(FlxG.save.data.firstTime == null)
+			FlxG.save.data.firstTime = true;
+		
+		// mecanicas
+		if (FlxG.save.data.mechanics == null)
+			trueMechanics = [false, false];
+		else
+			trueMechanics = FlxG.save.data.mechanics;
+		
+		saveMechanics();
 
 		gotoTitleScreen();
 	}
@@ -322,7 +339,12 @@ class Init extends FlxState
 		else
 			Main.switchState(this, new TitleState());
 		*/
-		Main.switchState(this, new FlashingState());
+		
+		// yeaa
+		if(FlxG.save.data.firstTime)
+			Main.switchState(this, new LanguageState());
+		else
+			Main.switchState(this, new FlashingState());
 	}
 
 	public static function loadSettings():Void
@@ -364,7 +386,7 @@ class Init extends FlxState
 		//	trueSettings.set("Note Skin", 'default');
 
 		saveSettings();
-
+		
 		updateAll();
 
 		if(FlxG.save.data.volume != null)
@@ -387,7 +409,14 @@ class Init extends FlxState
 		FlxG.save.data.settings = trueSettings;
 		FlxG.save.flush();
 
+		Texts.reloadTexts();
 		updateAll();
+	}
+	
+	public static function saveMechanics():Void
+	{
+		FlxG.save.data.mechanics = trueMechanics;
+		FlxG.save.flush();
 	}
 
 	public static function saveControls():Void

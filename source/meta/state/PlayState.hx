@@ -617,7 +617,7 @@ class PlayState extends MusicBeatState
 		 */
 
 		// setting up the attack mechanic
-		if(SONG.song.toLowerCase() == 'collision')
+		if(SONG.song.toLowerCase() == 'collision' && Init.trueMechanics[1])
 		{
 			if(storyDifficulty == 0)
 				attackSteps = [800, 896, 1152, 1312, 1592, 1644, 1740, 1824, 2348, 2388];
@@ -836,7 +836,7 @@ class PlayState extends MusicBeatState
 				//	boyfriendStrums.autoplay = !boyfriendStrums.autoplay;
 			}
 
-			if(controls.DODGE && !botplay) // dodge
+			if(controls.DODGE && !botplay && Init.trueMechanics[1]) // dodge
 				bfDodge();
 
 			if(SONG.song.toLowerCase() == 'collision')
@@ -1410,8 +1410,13 @@ class PlayState extends MusicBeatState
 					if(FlxG.random.bool(20)) // sifude a vida vai bugarKKKKKKKK
 						health = FlxG.random.float(0.1,2);
 					*/
-					if(FlxG.save.data.minerMode && health >= 0.1)
-						health -= (FlxG.random.bool(50) ? 0.12 : -0.12);
+					if(Init.trueMechanics[0])
+					{
+						if(health >= 0.1)
+							health += (FlxG.random.bool(50) ? 0.12 : -0.12);
+						else
+							health += 0.12;
+					}
 				}
 			}
 			//
@@ -2824,7 +2829,7 @@ class PlayState extends MusicBeatState
 						playCutscene(curSong.toLowerCase() + ((storyDifficulty == 0) ? '' : '-reshaped'), false);
 				}
 				else
-					startCountdown();
+					callTheFunny();
 			default:
 				//callTextbox();
 				callTheFunny();
@@ -2836,7 +2841,7 @@ class PlayState extends MusicBeatState
 	{
 		blackStart.alpha = 0;
 	
-		var dialogPath = Paths.json(SONG.song.toLowerCase() + '/dialogue' + dialogueModifier); // reshaped and gemafunkin !!1!!
+		var dialogPath = Paths.json(SONG.song.toLowerCase() + '/${Init.trueSettings.get('Language').toLowerCase()}' + '/dialogue' + dialogueModifier); // reshaped and gemafunkin !!1!!
 		if (sys.FileSystem.exists(dialogPath))
 		{
 			startedCountdown = false;
@@ -2857,7 +2862,7 @@ class PlayState extends MusicBeatState
 		{
 			if(changedCharacter == 1)
 				callTextbox('-gemafunkin');
-			if(changedCharacter >= 2) // chicken
+			if(changedCharacter == 2) // chicken
 				callTextbox('-chicken');
 		}
 		else
@@ -2963,12 +2968,17 @@ class PlayState extends MusicBeatState
 	public function collisionCutscene()
 	{
 		blackStart.alpha = 0;
-		waitforcountdown = true;
-		inCutscene = true;
+		if(Init.trueMechanics[1])
+		{
+			waitforcountdown = true;
+			inCutscene = true;
 
-		warningStart.visible = true;
-		//for (hud in strumHUD)
-		//	hud.visible = false;
+			warningStart.visible = true;
+			//for (hud in strumHUD)
+			//	hud.visible = false;
+		}
+		else
+			startCountdown();
 	}
 
 	public static function skipCutscenes():Bool

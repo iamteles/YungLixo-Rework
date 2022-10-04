@@ -203,7 +203,8 @@ class StoryMenuState extends MusicBeatState
 		var lerpVal = Main.framerateAdjust(0.5);
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, lerpVal));
 
-		scoreText.text = "WEEK SCORE:" + lerpScore;
+		//scoreText.text = "WEEK SCORE:" + lerpScore;
+		scoreText.text = Texts.UITexts.get('week score') + lerpScore;
 
 		txtWeekTitle.text = Main.gameWeeks[curWeek][3].toUpperCase();
 		txtWeekTitle.x = FlxG.width - (txtWeekTitle.width + 10);

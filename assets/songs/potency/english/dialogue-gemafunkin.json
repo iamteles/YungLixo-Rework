@@ -1,0 +1,30 @@
+{
+    "box": "speech_bubble_talking",
+    "boxState": "normal",
+    "dialogue": [
+		{
+            "portrait": "gemaplys",
+			"expression": "normal left",
+            "text": "The fuck was that?"
+        },
+		{
+            "portrait": "gemafunkin",
+			"expression": "normal",
+            "text": "WOOOOOOOOOOAAAH",
+			"boxState": "yell"
+        },
+		{
+            "text": "SUP SUCKER LETS RAP"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "normal right",
+            "text": "You oddly look like me",
+			"boxState": "normal"
+        },
+		{
+			"expression": "normal left",
+			"text": "Screw it, lets just get this over with\ni just want to go home."
+		}
+	]
+}

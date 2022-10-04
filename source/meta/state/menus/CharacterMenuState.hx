@@ -61,9 +61,11 @@ class CharacterMenuState extends MusicBeatState
 		// set the transitions to the previously set ones
 		transIn = FlxTransitionableState.defaultTransIn;
 		transOut = FlxTransitionableState.defaultTransOut;
-
+		
 		// uh
 		persistentUpdate = persistentDraw = true;
+		
+		FlxG.sound.playMusic(Paths.music('breakfast'), 0.7);
 
 		// background
 		var backdrop:FlxSprite = new FlxBackdrop(Paths.image('menus/ylr/tileLoop'), 8, 8, true, true, 1, 1);
@@ -125,7 +127,8 @@ class CharacterMenuState extends MusicBeatState
 
 		// from the base game lol
 
-		var versionShit:FlxText = new FlxText(10, 48, 0, "CHOOSE YOUR CHARACTER", 48);
+		//var versionShit:FlxText = new FlxText(10, 48, 0, "CHOOSE YOUR CHARACTER", 48);
+		var versionShit:FlxText = new FlxText(10, 48, 0, Texts.UITexts.get('character'), 48);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat(isMiner ? "comicBOLD.ttf" : "splatter.otf", 36, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
@@ -321,7 +324,7 @@ class CharacterMenuState extends MusicBeatState
 		FlxG.sound.play(Paths.sound('confirmMenu'));
 		var idleTimer:FlxTimer = new FlxTimer().start(1, function(timer:FlxTimer) {
 			if (FlxG.sound.music != null)
-			FlxG.sound.music.stop();
+				FlxG.sound.music.stop();
 			Main.switchState(this, new PlayState());
 		}, 1);
 	}

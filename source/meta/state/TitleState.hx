@@ -310,7 +310,8 @@ class TitleState extends MusicBeatState
 			// credTextShit.text = 'In association \nwith';
 			// credTextShit.screenCenter();
 			case 5:
-				createCoolText(['Not associated', 'with']);
+				//createCoolText(['Not associated', 'with']);
+				createCoolText(Texts.UITexts.get('title'));
 			case 7:
 				addMoreText('Arwen Team');
 				ngSpr.visible = true;

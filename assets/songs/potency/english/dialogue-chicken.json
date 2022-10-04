@@ -1,0 +1,71 @@
+{
+    "box": "speech_bubble_talking",
+    "boxState": "normal",
+    "dialogue": [
+		{
+            "portrait": "gemaplys",
+			"expression": "normal left",
+            "text": "The fuck was that?"
+        },
+		{
+            "portrait": "chicken",
+			"expression": "normal",
+            "text": "&¥"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "normal right",
+            "text": "Holy shit"
+        },
+		{
+			"expression": "normal right",
+			"speed": 2,
+            "text": "Chicken????"
+        },
+		{
+            "portrait": "chicken",
+			"expression": "normal",
+            "text": "£¢"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "normal right",
+			"speed": 2,
+            "text": "How did you get here?"
+        },
+		{
+			"expression": "normal right",
+            "text": "Wanna sing?"
+        },
+		{
+            "portrait": "chicken",
+			"expression": "normal",
+            "text": "$&"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "normal right",
+			"speed": 2,
+            "text": "If youre here\ndoes that mean president is here too?"
+        },
+		{
+            "portrait": "chicken",
+			"expression": "normal",
+            "text": "@µ"
+        },
+		{
+            "portrait": "gemaplys",
+			"expression": "bored left",
+            "text": "So, lets start singing little buddy..."
+        },
+		{
+			"expression": "normal right",
+            "text": "Wait do you have a gun?"
+        },
+		{
+            "portrait": "chicken",
+			"expression": "gun",
+            "text": "£"
+        }
+	]
+}

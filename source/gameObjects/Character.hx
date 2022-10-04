@@ -789,11 +789,10 @@ class Character extends FNFSprite
 		}
 	}
 
-	private var danced:Bool = false;
-
 	/**
 	 * FOR GF DANCING SHIT
 	 */
+	private var danced:Bool = false;
 	public function dance(?forced:Bool = false)
 	{
 		//if (!debugMode && !specialAnim)
@@ -817,26 +816,20 @@ class Character extends FNFSprite
 						playAnim('hey', forced);
 					else
 						playAnim('idle', forced);
+						
+				case 'mc': // mc vv
+					// Left/right dancing, think Skid & Pump
+					if (animation.getByName('danceLeft') != null && animation.getByName('danceRight') != null)
+					{
+						danced = !danced;
+						if (danced)
+							playAnim('danceRight', forced);
+						else
+							playAnim('danceLeft', forced);
+					}
 				
 				default:
-					if(isPlayer)
-					{
-						playAnim('idle', forced);
-					}
-					else
-					{
-						// Left/right dancing, think Skid & Pump
-						if (animation.getByName('danceLeft') != null && animation.getByName('danceRight') != null)
-						{
-							danced = !danced;
-							if (danced)
-								playAnim('danceRight', forced);
-							else
-								playAnim('danceLeft', forced);
-						}
-						else
-							playAnim('idle', forced);
-					}
+					playAnim('idle', forced);
 			}
 		}
 	}

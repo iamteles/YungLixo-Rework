@@ -61,9 +61,19 @@ class FreeplayState extends MusicBeatState
 	private var existingSongs:Array<String> = [];
 	private var existingDifficulties:Array<Array<String>> = [];
 	
-	public var minerCheck:Checkmark;
-	public var minerTxt:Alphabet;
-	public var minerTxtWarn:FlxText;
+	/*
+		AVISO!!!!
+		pra funcionar, vc precisa colocar mais um item no array trueMechanics dentro de Init.hx
+		
+		[nome da mecanica, qual musica aparece]
+	*/ 
+	public var mechanicsString:Array<Array<String>> = [
+		["miner mode", "crazy-pizza"],
+		["dodging", "collision"]
+	];
+	public var funnyCheck:Array<Checkmark> = [];
+	public var funnyTxt:Array<Alphabet> = [];
+	public var funnyWarn:Array<FlxText> = [];
 
 	override function create()
 	{
@@ -200,26 +210,36 @@ class FreeplayState extends MusicBeatState
 		selector.text = ">";
 		// add(selector);
 		
+		// oooh
+		for(i in 0...mechanicsString.length)
+		{
+			// texts
+			var minerTxt:Alphabet = new Alphabet(0, 0, mechanicsString[i][0], true, false);
+			minerTxt.y = FlxG.height - minerTxt.height - -200;
+			minerTxt.x = FlxG.width - minerTxt.width - 20;
+			
+			funnyTxt.push(minerTxt);
+			add(minerTxt);
 		
-		minerTxt = new Alphabet(0, 0, "Miner Mode", true, false);
-		add(minerTxt);
-		minerTxt.y = FlxG.height - minerTxt.height - -200;
-		minerTxt.x = FlxG.width - minerTxt.width - 20;
+			// checkmarks
+			var minerCheck:Checkmark = ForeverAssets.generateCheckmark(0, 0, 'checkboxThingie', 'base', 'default', 'UI');
+			minerCheck.playAnim((Init.trueMechanics[i] ? 'true' : 'false') + ' finished');
+			
+			funnyCheck.push(minerCheck);
+			add(minerCheck);
+			
+			// press space texts
+			var minerTxtWarn = new FlxText(0, 0, "", 24);
+			minerTxtWarn.setFormat(scoreText.font, 24, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+			minerTxtWarn.text = Texts.UITexts.get('space');
+			minerTxtWarn.x = FlxG.width - minerTxtWarn.width - 20;
+			
+			funnyWarn.push(minerTxtWarn);
+			add(minerTxtWarn);
+		}
 		
-		minerCheck = ForeverAssets.generateCheckmark(0, 0, 'checkboxThingie', 'base', 'default', 'UI');
-		minerCheck.playAnim((FlxG.save.data.minerMode ? 'true' : 'false') + ' finished');
-		add(minerCheck);
-		//minerCheck.playAnim(Std.string(Init.trueSettings.get(letter.text)) + ' finished');
-		
-		/*
-		minerTxtWarn = new Alphabet(0, 0, "press space to toggle", false, false, 0.3);
-		add(minerTxtWarn);
-		*/
-		
-		minerTxtWarn = new FlxText(0, 0, "PRESS SPACE TO TOGGLE", 24);
-		minerTxtWarn.setFormat(scoreText.font, 24, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		minerTxtWarn.x = FlxG.width - minerTxtWarn.width - 20;
-		add(minerTxtWarn);
+		// for some reason it crashes when i dont do this
+		Init.saveMechanics();
 	}
 
 	public function addSong(songName:String, weekNum:Int, songCharacter:String, songColor:FlxColor)
@@ -261,7 +281,7 @@ class FreeplayState extends MusicBeatState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-		var theSong = songs[curSelected].songName.toLowerCase();
+		var selectedSong = songs[curSelected].songName.toLowerCase();
 
 		var lerpVal = Main.framerateAdjust(0.3);
 		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, lerpVal));
@@ -290,8 +310,14 @@ class FreeplayState extends MusicBeatState
 			Main.switchState(this, new MainMenuState());
 		}
 		
-		if (FlxG.keys.justPressed.SPACE && theSong == "crazy-pizza")
-			changeCheckmark(!FlxG.save.data.minerMode);
+		if (FlxG.keys.justPressed.SPACE && threadActive)
+		{
+			for(i in 0...mechanicsString.length)
+			{
+				if(selectedSong == mechanicsString[i][1])
+					changeCheckmark(i, !FlxG.save.data.mechanics[i]);
+			}
+		}
 
 		if (accepted)
 		{
@@ -307,28 +333,32 @@ class FreeplayState extends MusicBeatState
 
 			threadActive = false;
 
+			if (FlxG.sound.music != null)
+				FlxG.sound.music.stop();
+
 			// isso ta mt bagunçado mas eu não sei como que faz de outro jeito :(
-			switch(theSong)
+			switch(selectedSong)
 			{
+				// começar a musica DIRETO
 				case 'da-vinci-funkin' | 'operational-system' | 'jokes':
-					if (FlxG.sound.music != null)
-						FlxG.sound.music.stop();
 					PlayState.changedCharacter = 0;
 					Main.switchState(this, new PlayState());
 			
+				// mudar o personagem
 				default:
 					CharacterMenuState.boyfriendModifier = '';
 					if(curDifficulty == 1) CharacterMenuState.boyfriendModifier = '-reshaped';
-					if(theSong == 'collision') CharacterMenuState.boyfriendModifier = '-pixel';
+					if(selectedSong == 'collision') CharacterMenuState.boyfriendModifier = '-pixel';
 					
-					CharacterMenuState.isMiner = (theSong == 'crazy-pizza');
+					CharacterMenuState.isMiner = (selectedSong == 'crazy-pizza');
 					
 					Main.switchState(this, new CharacterMenuState());
 			}
 		}
 
 		// Adhere the position of all the things (I'm sorry it was just so ugly before I had to fix it Shubs)
-		scoreText.text = "PERSONAL BEST:" + lerpScore;
+		//scoreText.text = "PERSONAL BEST:" + lerpScore;
+		scoreText.text = Texts.UITexts.get('best score') + lerpScore;
 		scoreText.x = FlxG.width - scoreText.width - 5;
 		scoreBG.width = scoreText.width + 8;
 		scoreBG.x = FlxG.width - scoreBG.width;
@@ -365,24 +395,45 @@ class FreeplayState extends MusicBeatState
 			}
 		}
 		
+		/*
 		// select crazy pizza
-		minerTxt.y = FlxMath.lerp(minerTxt.y, FlxG.height - minerTxt.height - ((theSong == "crazy-pizza") ? 30 : -200), 0.18);
+		minerTxt.y = FlxMath.lerp(minerTxt.y, FlxG.height - minerTxt.height - ((selectedSong == "crazy-pizza") ? 30 : -200), 0.18);
 		// o
 		minerCheck.x = minerTxt.x - minerCheck.width + 5;
 		minerCheck.y = minerTxt.y - (minerCheck.height / 2) + 2.5;
 		// oo
 		minerTxtWarn.y = minerTxt.y + minerTxt.height;
+		*/
+		
+		// fazer o check aparecer quando tu ta em cima da musica
+		for(i in 0...mechanicsString.length)
+		{
+			var tSong:String = "";
+			switch(i)
+			{
+				default:
+					tSong = "crazy-pizza";
+				case 1:
+					tSong = "collision";
+			}
+			
+			funnyTxt[i].y = FlxMath.lerp(funnyTxt[i].y, FlxG.height - funnyTxt[i].height - ((selectedSong == tSong) ? 30 : -200), 0.18);
+			
+			funnyCheck[i].x = funnyTxt[i].x - funnyCheck[i].width + 5;
+			funnyCheck[i].y = funnyTxt[i].y - (funnyCheck[i].height / 2) + 2.5;
+			
+			funnyWarn[i].y = funnyTxt[i].y + funnyTxt[i].height;
+		}
 	}
 	
-	function changeCheckmark(fuckin:Bool)
+	function changeCheckmark(what:Int, choice:Bool)
 	{
 		FlxG.sound.play(Paths.sound('scrollMenu'), 0.4);
+		
+		Init.trueMechanics[what] = choice;
+		Init.saveMechanics();
 	
-		FlxG.save.data.minerMode = fuckin;
-		FlxG.save.flush();
-	
-		if (minerCheck != null)
-			minerCheck.playAnim(Std.string(fuckin));
+		funnyCheck[what].playAnim(Std.string(choice));
 	}
 
 	var lastDifficulty:String;
@@ -392,7 +443,7 @@ class FreeplayState extends MusicBeatState
 		if (lastDifficulty != null && change != 0)
 			while (existingDifficulties[curSelected][curDifficulty] == lastDifficulty)
 				curDifficulty += change;
-
+		
 		if (curDifficulty < 0)
 			curDifficulty = existingDifficulties[curSelected].length - 1;
 		if (curDifficulty > existingDifficulties[curSelected].length - 1)
@@ -402,6 +453,8 @@ class FreeplayState extends MusicBeatState
 
 		diffText.text = '< ' + existingDifficulties[curSelected][curDifficulty] + ' >';
 		lastDifficulty = existingDifficulties[curSelected][curDifficulty];
+		
+		changeSongPlaying(true);
 	}
 
 	function changeSelection(change:Int = 0)
@@ -465,7 +518,7 @@ class FreeplayState extends MusicBeatState
 		changeSongPlaying();
 	}
 
-	function changeSongPlaying()
+	function changeSongPlaying(forceDiff:Bool = false)
 	{
 		if (songThread == null)
 		{
@@ -482,12 +535,15 @@ class FreeplayState extends MusicBeatState
 					var index:Null<Int> = Thread.readMessage(false);
 					if (index != null)
 					{
-						if (index == curSelected && index != curSongPlaying)
+						if ((index == curSelected && index != curSongPlaying) || forceDiff)
 						{
 							trace("Loading index " + index);
 
 							var inst:Sound = Paths.inst(songs[curSelected].songName);
-
+							// play reshaped
+							if(curDifficulty != 0)
+								inst = Paths.instReshaped(songs[curSelected].songName);
+							
 							if (index == curSelected && threadActive)
 							{
 								mutex.acquire();

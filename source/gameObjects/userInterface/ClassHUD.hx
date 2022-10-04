@@ -172,7 +172,8 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 
 		timeTxt = new FlxText(0, 19, 400, "", 32);
 		timeTxt.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		timeTxt.visible = !(cast(Init.trueSettings.get('Timer'), String) == 'None');
+		//timeTxt.visible = !(cast(Init.trueSettings.get('Timer'), String) == 'None');
+		timeTxt.visible = !(Init.trueSettings.get('Timer') == 'None');
 		timeTxt.scrollFactor.set();
 		timeTxt.borderSize = 2;
 		timeTxt.alpha = 0;
@@ -350,17 +351,15 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 		var importSongScore = PlayState.songScore;
 		var importPlayStateCombo = PlayState.combo;
 		var importMisses = PlayState.misses;
-		scoreBar.text = 'Score: $importSongScore';
+		//scoreBar.text = 'Score: $importSongScore';
+		scoreBar.text = Texts.UITexts.get('score') + importSongScore;
 		// testing purposes
 		var displayAccuracy:Bool = Init.trueSettings.get('Display Accuracy');
 		if (displayAccuracy)
 		{
 			var accuracy:Float = Math.floor(Timings.getAccuracy() * 100) / 100;
-			if(accuracy <= 100)
-				scoreBar.text += divider + 'Accuracy: ' + Std.string(accuracy) + '%';
-			else
-				scoreBar.text += divider + 'Accuracy: ' + '100%';
-			scoreBar.text += divider + 'Combo Breaks: ' + Std.string(PlayState.misses);
+			scoreBar.text += divider + Texts.UITexts.get('accuracy') + Std.string(accuracy) + '%';
+			scoreBar.text += divider + Texts.UITexts.get('misses') + Std.string(PlayState.misses);
 			//scoreBar.text += divider + 'Combos: ' + Std.string(PlayState.combo);
 			//scoreBar.text += divider + 'Rank: ' + Std.string(Timings.returnScoreRating().toUpperCase());
 		}
@@ -425,8 +424,7 @@ class ClassHUD extends FlxTypedGroup<FlxBasic>
 			daSpin = -daSpin;
 			iconP1.angle = -daSpin;
 			iconP2.angle = daSpin;
-
-			// 1.3
+			
 			if(daSpin > 0) { // is positive
 				iconP1.scale.set(0.7, 1.15);
 				iconP2.scale.set(1.15, 0.7);
