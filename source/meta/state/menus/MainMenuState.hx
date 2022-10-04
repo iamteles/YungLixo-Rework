@@ -111,7 +111,7 @@ class MainMenuState extends MusicBeatState
 		FlxG.camera.follow(camFollow, null, camLerp);
 
 		updateSelection();
-
+		
 		// from the base game lol
 
 		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "Forever Engine v" + Main.gameVersion, 12);
@@ -119,7 +119,7 @@ class MainMenuState extends MusicBeatState
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(versionShit);
 
-		var engineVersionShit:FlxText = new FlxText(5, FlxG.height - 18 - 16, 0, "VS Yung Lixo Rework v1.1", 12);
+		var engineVersionShit:FlxText = new FlxText(5, FlxG.height - 18 - 16, 0, "VS Yung Lixo Rework v1.5", 12);
 		engineVersionShit.scrollFactor.set();
 		engineVersionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(engineVersionShit);

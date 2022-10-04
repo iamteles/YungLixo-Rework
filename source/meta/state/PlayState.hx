@@ -20,6 +20,7 @@ import flixel.system.FlxAssets.FlxSoundAsset;
 import flixel.system.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.ui.FlxBar;
 import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
@@ -187,6 +188,8 @@ class PlayState extends MusicBeatState
 
 	var modeStage:RelativeScaleMode;
 	
+	// yunglixo
+	// yunglixo
 	var blackStart:FlxSprite;
 	// cards
 	var songAuthor:FlxSprite;
@@ -201,6 +204,11 @@ class PlayState extends MusicBeatState
 	var vaca:FollowerSprite;
 	var vineboom:FlxSprite;
 	var boomShouldFade:Bool = true;
+	// scramble
+	var scrambleSongs:Array<String> = ["polygons"];
+	var scrambleTimer:Float = 0;
+	var scrambleBarBG:FlxSprite;
+	var scrambleBar:FlxBar;
 
 	// at the beginning of the playstate
 	override public function create()
@@ -340,22 +348,21 @@ class PlayState extends MusicBeatState
 			thirdExists = true;
 		}
 
-		if(daSong == 'jokes' || daSong == 'potency' || daSong == 'polygons' || daSong == 'big-boy' || daSong == 'collision')
+		if(daSong == 'jokes')
 		{
-			// mesmo que eu só use na jokes isso nem pesa tanto
 			whiteEffect = new FlxSprite().makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.WHITE);
 			whiteEffect.scrollFactor.set();
 			whiteEffect.screenCenter();
 			whiteEffect.alpha = 0.0001;
 			add(whiteEffect);
-			
-			// funny barras
-			for(i in 0...barrasPretas.length)
-			{
-				barrasPretas[i] = new Barra((i == 0) ? true : false);
-				barrasPretas[i].cameras = [camBar];
-				add(barrasPretas[i]);
-			}
+		}
+		
+		// funny barras
+		for(i in 0...barrasPretas.length)
+		{
+			barrasPretas[i] = new Barra((i == 0) ? true : false);
+			barrasPretas[i].cameras = [camBar];
+			add(barrasPretas[i]);
 		}
 		
 		// add characters
@@ -534,7 +541,7 @@ class PlayState extends MusicBeatState
 
 		if(SONG.song.toLowerCase() == 'collision')
 		{
-			warningStart = new FlxSprite().loadGraphic(Paths.image('backgrounds/gema/mugen-start'));
+			warningStart = new FlxSprite().loadGraphic(Paths.image('backgrounds/gema/mugen-start-' + Init.trueSettings.get('Language')));
 			warningStart.visible = false;
 			warningStart.alpha = 1;
 			warningStart.cameras = [camCard];
@@ -615,6 +622,22 @@ class PlayState extends MusicBeatState
 			var shader:GraphicsShader = new GraphicsShader("", File.getContent("./assets/shaders/vhs.frag"));
 			FlxG.camera.setFilters([new ShaderFilter(shader)]);
 		 */
+		 
+		//healthBarBG = new FlxSprite(0, barY).loadGraphic(Paths.image(ForeverTools.returnSkinAsset('healthBar', PlayState.assetModifier, PlayState.changeableSkin, 'UI')));
+		scrambleBarBG = new FlxSprite().loadGraphic(Paths.image('UI/scrambleBar'));
+		scrambleBarBG.cameras = [camHUD];
+		scrambleBarBG.y = boyfriendStrums.receptors.members[0].y;
+		scrambleBarBG.x = boyfriendStrums.receptors.members[0].x - scrambleBarBG.width - 5;
+		add(scrambleBarBG);
+
+		scrambleBar = new FlxBar(scrambleBarBG.x + 5, scrambleBarBG.y + 5, BOTTOM_TO_TOP, Std.int(scrambleBarBG.width - 10), Std.int(scrambleBarBG.height - 10));
+		scrambleBar.cameras = [camHUD];
+		scrambleBar.createFilledBar(0xFF000000, FlxColor.LIME);
+		// healthBar
+		add(scrambleBar);
+		
+		scrambleBarBG.alpha = 0;
+		scrambleBar.alpha = 0;
 
 		// setting up the attack mechanic
 		if(SONG.song.toLowerCase() == 'collision' && Init.trueMechanics[1])
@@ -859,6 +882,11 @@ class PlayState extends MusicBeatState
 					strum.y = strum.initialY - (Math.sin(elapsedtime + 4 - (strum.ID + 4))) * 7.8 * songSpeed;
 				}
 			}
+			
+			scrambleNotes(elapsed);
+			scrambleBar.percent = scrambleTimer * 20;
+			scrambleBarBG.alpha = FlxMath.lerp(scrambleBarBG.alpha, (scrambleTimer > 0) ? 1 : 0.0001, 0.2);
+			scrambleBar.alpha = scrambleBarBG.alpha;
 
 			///*
 			if (startingSong)
@@ -1034,9 +1062,9 @@ class PlayState extends MusicBeatState
 				Discord.changePresence("Game Over - " + songDetails, detailsSub, iconRPC);
 				#end
 			}
-
-			if (FlxG.keys.justPressed.ONE) 
-				endSong();
+			
+			//if (FlxG.keys.justPressed.ONE) 
+			//	endSong();
 
 			/* // tava crashando o jogo se vc apertasse fora da polygons
 			if (FlxG.keys.justPressed.TWO)
@@ -1244,7 +1272,15 @@ class PlayState extends MusicBeatState
 								switch(daNote.noteType)
 								{
 									case 1:
-										health = 0;
+										scrambleTimer = 5;
+										health -= 0.35;
+										
+									dadOpponent.playAnim("shoot", true);
+									dadOpponent.specialAnim = true;
+									var shiit:FlxTimer = new FlxTimer().start(Conductor.crochet / 2000, function(timer:FlxTimer)
+									{
+										dadOpponent.specialAnim = false;
+									}, 1);
 
 									default:
 										missNoteCheck((Init.trueSettings.get('Ghost Tapping')) ? true : false, daNote.noteData, boyfriend, true);
@@ -1300,6 +1336,36 @@ class PlayState extends MusicBeatState
 		{
 			if (boyfriend.animation.curAnim.name.startsWith('sing') && !boyfriend.animation.curAnim.name.endsWith('miss'))
 				boyfriend.dance();
+		}
+	}
+	
+	var daScrambleX:Array<Float> = [];
+	function scrambleNotes(elapsed:Float)
+	{
+		if(scrambleTimer > 0)
+			scrambleTimer -= 1.3 * elapsed;
+		
+		if(scrambleSongs.contains(SONG.song.toLowerCase()))
+		{
+			for(strum in boyfriendStrums.receptors.members)
+			{
+				daScrambleX[strum.ID] = strum.initialX;
+				
+				var daX:Float = 0;
+				switch(strum.ID)
+				{
+					case 0:
+						daX = daScrambleX[3];
+					case 1:
+						daX = daScrambleX[2];
+					case 2:
+						daX = daScrambleX[1];
+					case 3:
+						daX = daScrambleX[0];
+				}
+				
+				strum.x = FlxMath.lerp(strum.x, (scrambleTimer <= 0) ? strum.initialX : daX, 0.2);
+			}
 		}
 	}
 
@@ -2103,9 +2169,9 @@ class PlayState extends MusicBeatState
 						cameraTibba = true;
 						CoolUtil.flashScreen(camGame, 3);
 					case 2864:
-						updateLyrics("Vida Boa");
+						updateLyrics(Texts.lyrics.get('kt_1'));
 					case 2870:
-						updateLyrics(" Vida Boa", true);
+						updateLyrics(' ${Texts.lyrics.get('kt_1')}', true);
 					case 2880:
 						updateLyrics("");
 				}
@@ -2187,21 +2253,21 @@ class PlayState extends MusicBeatState
 						defaultCamZoom = 0.8;
 
 					case 1553:
-						updateLyrics("MUGEN");
+						updateLyrics(Texts.lyrics.get('coll_1'));
 					case 1556:
-						updateLyrics(" É", true);
+						updateLyrics(Texts.lyrics.get('coll_2'), true);
 					case 1557:
-						updateLyrics(" A", true);
+						updateLyrics(Texts.lyrics.get('coll_3'), true);
 					case 1559:
-						updateLyrics(" CA", true);
+						updateLyrics(Texts.lyrics.get('coll_4'), true);
 					case 1562:
-						updateLyrics("BEÇA", true);
+						updateLyrics(Texts.lyrics.get('coll_5'), true);
 					case 1567:
-						updateLyrics(" DOS", true);
+						updateLyrics(Texts.lyrics.get('coll_6'), true);
 					case 1570:
-						updateLyrics(" MEUS", true);
+						updateLyrics(Texts.lyrics.get('coll_7'), true);
 					case 1574:
-						updateLyrics(" ZOVO", true);
+						updateLyrics(Texts.lyrics.get('coll_8'), true);
 					case 1584:
 						updateLyrics("");
 						CoolUtil.flashScreen(camGame, 3);
@@ -2230,32 +2296,32 @@ class PlayState extends MusicBeatState
 							barra.isOffscreen = true;
 
 					case 1793 | 2593:
-						updateLyrics("MUGEN");
+						updateLyrics(Texts.lyrics.get('coll_1'));
 					case 1796 | 2596:
-						updateLyrics(" É", true);
+						updateLyrics(Texts.lyrics.get('coll_2'), true);
 					case 1797 | 2597:
-						updateLyrics(" A", true);
+						updateLyrics(Texts.lyrics.get('coll_3'), true);
 					case 1799 | 2599:
-						updateLyrics(" CA", true);
+						updateLyrics(Texts.lyrics.get('coll_4'), true);
 					case 1803 | 2603:
-						updateLyrics("BEÇA", true);
+						updateLyrics(Texts.lyrics.get('coll_5'), true);
 					case 1810 | 2610:
-						updateLyrics(" DOS", true);
+						updateLyrics(Texts.lyrics.get('coll_6'), true);
 					case 1814 | 2614:
-						updateLyrics(" MEUS", true);
+						updateLyrics(Texts.lyrics.get('coll_7'), true);
 					case 1816: // ZOOOOOOOOO
-						updateLyrics(" Z", true);
+						updateLyrics(Texts.lyrics.get('coll_9'), true);
 					case 2618:
-						updateLyrics(" ZOVO", true);
+						updateLyrics(Texts.lyrics.get('coll_8'), true);
 					case 1824 | 2640:
 						updateLyrics("");
 						if(curStep == 1824) CoolUtil.flashScreen(camGame, 3);
 				}
-
+				
 				if(curStep > 1816 && curStep < 1824) // ZOOOOOOO
 				{
-					updateLyrics("OOO", true);
-					defaultCamZoom += 0.065;
+					updateLyrics(Texts.lyrics.get('coll_10'), true);
+					defaultCamZoom += 0.07;
 				}
 			}
 

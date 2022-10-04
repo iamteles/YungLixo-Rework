@@ -28,6 +28,7 @@ class Alphabet extends FlxSpriteGroup
 
 	// for menu shit
 	public var targetY:Float = 0;
+	public var middleX:Bool = false;
 	public var disableX:Bool = false;
 	public var controlGroupID:Int = 0;
 	public var extensionJ:Int = 0;
@@ -301,10 +302,13 @@ class Alphabet extends FlxSpriteGroup
 
 			y = FlxMath.lerp(y, (scaledY * 120) + (FlxG.height * 0.48), elapsed * 6);
 			// lmao
-			if (!disableX)
-				x = FlxMath.lerp(x, (targetY * 20) + 90, elapsed * 6);
-			else
-				x = FlxMath.lerp(x, xTo, elapsed * 6);
+			if(!middleX)
+			{
+				if (!disableX)
+					x = FlxMath.lerp(x, (targetY * 20) + 90, elapsed * 6);
+				else
+					x = FlxMath.lerp(x, xTo, elapsed * 6);
+			}
 		}
 
 		if ((text != textInit))
